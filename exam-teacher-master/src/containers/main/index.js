@@ -122,7 +122,7 @@ class Main extends React.Component {
 
 	componentWillMount(){
 		//判断用户是否已经登录
-		if(!localStorage.getItem("userName")) {
+		if(!localStorage.getItem("username")) {
 			this.props.history.push('/login');//跳转至登录页
 		}
 

@@ -40,7 +40,7 @@ class Login extends React.Component {
 
 						//本地存储用户名
 						localStorage.setItem("username", values.username);
-						//localStorage.setItem("roleSet",res.roleSet[0])
+						localStorage.setItem("roleSet",res.roleSet[0])
 
 						//跳转主页
 						this.props.history.push('/main/homepage');//react-router 4.0 写法
