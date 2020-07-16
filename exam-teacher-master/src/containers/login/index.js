@@ -43,7 +43,7 @@ class Login extends React.Component {
 						//跳转主页
 					 	this.props.history.push('/main/homepage');//react-router 4.0 写法
 				 }
-				 else if(res.respCode === "0") {//登录失败
+				 else if(res === "老师") {//登录失败
 					 this.setState({loginTip : "登录名或密码错误"})
 				 }
 				 else if(res.respCode === "-1"){ //系统错误

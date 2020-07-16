@@ -12,8 +12,8 @@ export const axiosLogin = function(params,success,error){
     }
   })
   .then((res)=>{
-    alert(res.data);
-    success(res.data);
+    alert(res);
+    success(res);
   })
   .catch(function (err) {
       error(err);
