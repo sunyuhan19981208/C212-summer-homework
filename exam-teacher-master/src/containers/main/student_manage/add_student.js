@@ -57,7 +57,7 @@ class AddStudent extends React.Component {
     if(this.props.classinfo.classArr) {
       classtArr = this.props.classinfo.classArr.map((item)=>{
         return (
-          <Option value={item.classId} key={item.classId}>{item.className}</Option>
+          <Option value={item.className} key={item.className}>{item.className}</Option>
         )
       })
     }

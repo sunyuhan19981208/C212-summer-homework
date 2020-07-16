@@ -95,7 +95,7 @@ export const  login = "http://39.107.84.0:8762/login";
 //得到科目信息
 export const subject_info = "data/subject_info.json";
 //得到班级信息
-export const get_class_info = "data/get_class_info.json";
+export const get_class_info = "http://39.107.84.0:8762/getAllClass";
 //得到知识点
 export const knowledge_point = "data/knowledgePoint.json";
 //提交题目信息（试题录入）
@@ -126,7 +126,7 @@ export const delete_class = "data/delete_class.json";
 //修改班级
 export const change_class = "data/change_class.json";
 //添加班级
-export const add_class = "data/add_class.json";
+export const add_class = "http://39.107.84.0:8762/getAllClass";
 
 //查询教师（得到一页数据）
 export const get_teacher = "data/get_teacher.json";
