@@ -1,8 +1,9 @@
-/*
-let baseUrl = "/sxt_exam/Servlet";
+
+//let baseUrl = "/sxt_exam/Servlet";
 //管理员登录
-export const  login = baseUrl;
+export const  login = "http://39.107.84.0:8762/login";
 //得到科目信息
+/*
 export const subject_info = baseUrl;
 //得到班级信息
 export const get_class_info = baseUrl;
@@ -88,8 +89,8 @@ export const get_paperId = baseUrl;
 
 
 
-
-
+/*
+假数据
 //管理员登录
 export const  login = "/data/login.json";
 //得到科目信息
@@ -172,7 +173,7 @@ export const auto_read = "data/auto_read.json";
 //得到试卷编号
 export const get_paperId = "data/get_paperId.json";
 
-
+*/
 /*
 import httpServer from '@components/httpServer.js'
 import * as URL from '@components/interfaceURL.js'
