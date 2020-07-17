@@ -126,7 +126,7 @@ export const delete_class = "data/delete_class.json";
 //修改班级
 export const change_class = "data/change_class.json";
 //添加班级
-export const add_class = "http://39.107.84.0:8762/getAllClass";
+export const add_class = "http://39.107.84.0:8762/addClass";
 
 //查询教师（得到一页数据）
 export const get_teacher = "data/get_teacher.json";
