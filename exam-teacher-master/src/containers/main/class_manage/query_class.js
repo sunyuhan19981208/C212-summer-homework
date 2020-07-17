@@ -88,12 +88,12 @@ class QueryClass extends React.Component {
     httpServer({
       url : URL.search_class
     },{
-      className : 'ClassServiceImpl',
-      content : this.searchContent,
-      searchType : this.searchKey,
+      //className : 'ClassServiceImpl',
+      className : this.searchContent,
+      //searchType : this.searchKey,
       page : this.state.pagination.current,
       rows : this.state.pagination.pageSize,
-      type : 1
+      //type : 1
     })
     .then((res)=>{
       const data = [];

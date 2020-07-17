@@ -33,7 +33,7 @@ class AddClass extends React.Component {
           //className : '',
           //type : 2,
           //subjectId : values.subject,
-          name : values.className
+          className : values.className
         })
       }
     });
