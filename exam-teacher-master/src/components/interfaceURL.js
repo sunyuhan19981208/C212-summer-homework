@@ -118,7 +118,7 @@ export const change_student = "data/change_student.json";
 export const add_student = "data/add_student.json";
 
 //查询班级学生（得到一页数据）
-export const get_class = "data/get_class.json";
+export const get_class = "http://39.107.84.0:8762/getAllClass";
 //查询班级（模糊搜索）
 export const search_class = "data/search_class.json";
 //删除班级
