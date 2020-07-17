@@ -35,7 +35,6 @@ class AddClass extends React.Component {
           //subjectId : values.subject,
           className : values.className
         })
-        alert(values.className);
       }
     });
   }
