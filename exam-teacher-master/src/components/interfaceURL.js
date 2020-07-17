@@ -122,9 +122,9 @@ export const get_class = "http://39.107.84.0:8762/getAllClass";
 //查询班级（模糊搜索）
 export const search_class = "http://39.107.84.0:8762/queryClassByName";
 //删除班级
-export const delete_class = "data/delete_class.json";
+export const delete_class = "http://39.107.84.0:8762/deleteClass";
 //修改班级
-export const change_class = "data/change_class.json";
+export const change_class = "http://39.107.84.0:8762/updateClass";
 //添加班级
 export const add_class = "http://39.107.84.0:8762/addClass";
 
