@@ -107,9 +107,9 @@ export const paper_info = "data/paperInfo.json";
 export const search_score = "data/search_score.json";
 
 //查询所有学生（得到一页数据）
-export const get_student = "data/get_student.json";
+export const get_student = "http://39.107.84.0:8762/getAllStudent";
 //查询学生（模糊搜索）
-export const search_student = "data/search_student.json";
+export const search_student = "http://39.107.84.0:8762/queryStudentByName";
 //删除学生
 export const delete_student = "data/delete_student.json";
 //修改学生

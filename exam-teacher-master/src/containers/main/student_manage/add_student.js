@@ -29,10 +29,10 @@ class AddStudent extends React.Component {
         httpServer({
           url : URL.add_student
         },{
-          className : 'StudentServiceImpl',
+          // className : 'StudentServiceImpl',
           type : 2,
-          classId : values.class,
-          name : values.name
+          className : values.className,
+          username : values.username
         })
       }
     });

@@ -26,9 +26,9 @@ class QueryStudent extends React.Component {
       visibleChangeModal : false,//修改框是否显示
       curSelectClass : {//当前所选的学生
         key : 0,
-        name : "",
-        class : "",
-        studentId : 1,
+        username : "",
+        className : "",
+        userId : 1,
       },
       classInfo : [],//班级信息
     }
@@ -42,7 +42,7 @@ class QueryStudent extends React.Component {
     httpServer({
       url : URL.get_student
     },{
-      className : 'StudentServiceImpl',
+      // className : 'StudentServiceImpl',
       page : this.state.pagination.current,
       rows : this.state.pagination.pageSize,
       type : 1,
@@ -51,21 +51,21 @@ class QueryStudent extends React.Component {
       const data = [];
       for (let i = 0; i < res.data.data.length; i++) {
 
-        let className = "";
-        this.props.classinfo.classArr.some((item)=>{
-          if(item.classId == res.data.data[i].classId) {
-            className = item.className;
-            return true;
-          }
-          return false;
-        })
+        // let className = "";
+        // this.props.classinfo.classArr.some((item)=>{
+        //   if(item.className == res.data.data[i].className) {
+        //     className = item.className;
+        //     return true;
+        //   }
+        //   return false;
+        // })
 
         data.push({
           key: i,
-          name: res.data.data[i].name,
-          class : className,
-          classId : res.data.data[i].classId,
-          studentId : res.data.data[i].stuId
+          username: res.data.data[i].username,
+          className : res.data.data[i].className,
+          // classId : res.data.data[i].classId,
+          userId : res.data.data[i].userId
         });
       }
 
@@ -83,31 +83,31 @@ class QueryStudent extends React.Component {
     httpServer({
       url : URL.search_student
     },{
-      className : 'StudentServiceImpl',
-      content : this.searchContent,
+      // className : 'StudentServiceImpl',
+      username : this.searchContent,
       searchType : this.searchKey,
       page : this.state.pagination.current,
       rows : this.state.pagination.pageSize,
-      type : 1
+      // type : 1
     })
     .then((res)=>{
       const data = [];
       for (let i = 0; i < res.data.data.length; i++) {
-        let className = "";
-        this.props.classinfo.classArr.some((item)=>{
-          if(item.classId == res.data.data[i].classId) {
-            className = item.className;
-            return true;
-          }
-          return false;
-        })
+        // let className = "";
+        // this.props.classinfo.classArr.some((item)=>{
+        //   if(item.classId == res.data.data[i].classId) {
+        //     className = item.className;
+        //     return true;
+        //   }
+        //   return false;
+        // })
 
         data.push({
-          key: i,
-          name: res.data.data[i].name,
-          class : className,
-          classId : res.data.data[i].classId,
-          studentId : res.data.data[i].stuId
+          // key: i,
+          username: res.data.data[i].username,
+          // class : className,
+          className : res.data.data[i].className,
+          userId : res.data.data[i].userId
         });
       }
       this.state.pagination.total = res.data.total;
@@ -155,7 +155,7 @@ class QueryStudent extends React.Component {
         },{
           className : 'StudentServiceImpl',
           type : 4,
-          stuId : this.state.curSelectClass.studentId,
+          userId : this.state.curSelectClass.userId,
         })
         .then((res)=>{
           this.getPageDate();//重新获取第一页
@@ -172,7 +172,7 @@ class QueryStudent extends React.Component {
     const {form}=this.props;
     //重新设置修改模态框中三个选项的值
     form.setFieldsValue({'class': record.classId});
-    form.setFieldsValue({'name': record.name});
+    form.setFieldsValue({'name': record.username});
     this.setState({visibleChangeModal:true})
   }
 
@@ -192,10 +192,10 @@ class QueryStudent extends React.Component {
         },{
           className : "StudentServiceImpl",
           type : 3,
-          name : values.name,
-          classId : values.class,
+          username : values.username,
+          classId : values.className,
           password : values.password,
-          stuId : this.state.curSelectClass.studentId
+          userId : this.state.curSelectClass.userId
         })
         .then((res)=>{
           let className = "";
@@ -255,16 +255,16 @@ class QueryStudent extends React.Component {
 
     const columns = [{
       title: '姓名',
-      dataIndex: 'name',
-      key: 'name',
+      dataIndex: 'username',
+      // key: 'username',
     }, {
       title: '班级',
-      dataIndex: 'class',
-      key: 'class',
+      dataIndex: 'className',
+      // key: 'className',
     }, {
       title: '学号',
-      dataIndex: 'studentId',
-      key: 'studentId',
+      dataIndex: 'userId',
+      // key: 'userId',
     }, {
       title: '操作',
       key: 'action',
@@ -303,7 +303,7 @@ class QueryStudent extends React.Component {
     if(this.props.classinfo.classArr) {
       classArr = this.props.classinfo.classArr.map((item)=>{
         return (
-          <Option value={item.classId} key={item.classId}>{item.className}</Option>
+          <Option value={item.className} key={item.className}>{item.className}</Option>
         )
       })
     }
@@ -351,7 +351,7 @@ class QueryStudent extends React.Component {
                 {...formItemLayout}
                 label="学号"
               >
-              <span>{this.state.curSelectClass.studentId}</span>
+              <span>{this.state.curSelectClass.userId}</span>
               </FormItem>
               <FormItem
                 {...formItemLayout}
