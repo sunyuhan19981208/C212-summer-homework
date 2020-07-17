@@ -113,9 +113,9 @@ export const search_student = "http://39.107.84.0:8762/queryStudentByName";
 //删除学生
 export const delete_student = "data/delete_student.json";
 //修改学生
-export const change_student = "data/change_student.json";
+export const change_student = "http://39.107.84.0:8762/updateStudent";
 //添加学生
-export const add_student = "data/add_student.json";
+export const add_student = "http://39.107.84.0:8762/addStudent";
 
 //查询班级学生（得到一页数据）
 export const get_class = "http://39.107.84.0:8762/getAllClass";

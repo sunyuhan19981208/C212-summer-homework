@@ -13,7 +13,7 @@ class AddStudent extends React.Component {
   constructor(){
     super()
     this.state = {
-      pathList : ['班级管理','添加班级'],//面包屑路径
+      pathList : ['学生管理','添加学生'],//面包屑路径
     }
   }
 
@@ -71,7 +71,7 @@ class AddStudent extends React.Component {
               {...formItemLayout}
               label="姓名"
             >
-              {getFieldDecorator('name',{
+              {getFieldDecorator('username',{
                 rules: [{ required: true, message: '请输入姓名！' }],
               })(
                 <Input />
@@ -82,7 +82,7 @@ class AddStudent extends React.Component {
               label="班级"
               key = "subject"
             >
-              {getFieldDecorator('class',{
+              {getFieldDecorator('className',{
                 rules: [{ required: true, message: '请选择班级！' }],
               })(
                 <Select style={{ width: '100%' }} onChange={this.handleChange.bind(this)}>

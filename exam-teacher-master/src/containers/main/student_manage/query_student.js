@@ -85,7 +85,7 @@ class QueryStudent extends React.Component {
     },{
       // className : 'StudentServiceImpl',
       username : this.searchContent,
-      searchType : this.searchKey,
+      // searchType : this.searchKey,
       page : this.state.pagination.current,
       rows : this.state.pagination.pageSize,
       // type : 1
@@ -165,14 +165,14 @@ class QueryStudent extends React.Component {
 
   }
 
-  //点击修改班级
+  //点击修改
   changeClass(record){
     //TODO : 第一次点击this.state.curSelectClass.class为空
     this.setState({curSelectClass : record})
     const {form}=this.props;
     //重新设置修改模态框中三个选项的值
-    form.setFieldsValue({'class': record.classId});
-    form.setFieldsValue({'name': record.username});
+    form.setFieldsValue({'className': record.className});
+    form.setFieldsValue({'username': record.username});
     this.setState({visibleChangeModal:true})
   }
 
@@ -190,24 +190,24 @@ class QueryStudent extends React.Component {
         httpServer({
           url : URL.change_student
         },{
-          className : "StudentServiceImpl",
-          type : 3,
+          // className : "StudentServiceImpl",
+          // type : 3,
           username : values.username,
-          classId : values.className,
+          className : values.className,
           password : values.password,
           userId : this.state.curSelectClass.userId
         })
         .then((res)=>{
-          let className = "";
-          this.props.classinfo.classArr.some((item)=>{
-            if(item.classId == values.class) {
-              className = item.className;
-              return true;
-            }
-            return false;
-          })
-          this.state.data[this.state.curSelectClass.key].name =  values.name;
-          this.state.data[this.state.curSelectClass.key].class = className;
+          // let className = "";
+          // this.props.classinfo.classArr.some((item)=>{
+          //   if(item.classId == values.class) {
+          //     className = item.className;
+          //     return true;
+          //   }
+          //   return false;
+          // })
+          this.state.data[this.state.curSelectClass.key].username =  values.username;
+          this.state.data[this.state.curSelectClass.key].className = className;
           this.setState({data:this.state.data});
         })
 
