@@ -199,7 +199,7 @@ class QueryClass extends React.Component {
           //className : "ClassServiceImpl",
           //type : 3,
           //subjectId : values.subject,
-          //oldClassName : this.state.curSelectClass.className,
+          className : this.state.curSelectClass.className,
           //classId : this.state.curSelectClass.classId,
           status : values.status,
           //newClassName : values.className
