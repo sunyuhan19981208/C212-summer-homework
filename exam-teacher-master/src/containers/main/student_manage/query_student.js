@@ -153,8 +153,8 @@ class QueryStudent extends React.Component {
         httpServer({
           url : URL.delete_student
         },{
-          className : 'StudentServiceImpl',
-          type : 4,
+          // className : 'StudentServiceImpl',
+          // type : 4,
           userId : this.state.curSelectClass.userId,
         })
         .then((res)=>{
@@ -173,6 +173,7 @@ class QueryStudent extends React.Component {
     //重新设置修改模态框中三个选项的值
     form.setFieldsValue({'className': record.className});
     form.setFieldsValue({'username': record.username});
+    form.setFieldsValue({'password': record.password});
     this.setState({visibleChangeModal:true})
   }
 
@@ -207,7 +208,7 @@ class QueryStudent extends React.Component {
           //   return false;
           // })
           this.state.data[this.state.curSelectClass.key].username =  values.username;
-          this.state.data[this.state.curSelectClass.key].className = className;
+          this.state.data[this.state.curSelectClass.key].className = values.className;
           this.setState({data:this.state.data});
         })
 
@@ -267,7 +268,7 @@ class QueryStudent extends React.Component {
       // key: 'userId',
     }, {
       title: '操作',
-      key: 'action',
+      // key: 'action',
       render: (text, record) => (
         <span>
           <Button type="danger" size="small" onClick={this.deleteClass.bind(this,record)}>删除</Button>
