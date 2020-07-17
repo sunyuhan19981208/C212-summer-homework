@@ -142,7 +142,7 @@ class QueryStudent extends React.Component {
     this.getPageDate();
   }
 
-  //删除班级
+  //删除学生
   deleteClass(record){
     this.setState({curSelectClass : record})
     confirm({
@@ -154,7 +154,7 @@ class QueryStudent extends React.Component {
           url : URL.delete_student
         },{
           // className : 'StudentServiceImpl',
-          // type : 4,
+          type : 4,
           userId : this.state.curSelectClass.userId,
         })
         .then((res)=>{
@@ -165,7 +165,7 @@ class QueryStudent extends React.Component {
 
   }
 
-  //点击修改
+  //点击修改学生
   changeClass(record){
     //TODO : 第一次点击this.state.curSelectClass.class为空
     this.setState({curSelectClass : record})
@@ -185,7 +185,6 @@ class QueryStudent extends React.Component {
   //确认修改
   changeOk(){
     this.setState({visibleChangeModal:false})
-
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         httpServer({
@@ -198,19 +197,19 @@ class QueryStudent extends React.Component {
           password : values.password,
           userId : this.state.curSelectClass.userId
         })
-        .then((res)=>{
-          // let className = "";
-          // this.props.classinfo.classArr.some((item)=>{
-          //   if(item.classId == values.class) {
-          //     className = item.className;
-          //     return true;
-          //   }
-          //   return false;
-          // })
-          this.state.data[this.state.curSelectClass.key].username =  values.username;
-          this.state.data[this.state.curSelectClass.key].className = values.className;
-          this.setState({data:this.state.data});
-        })
+        // .then((res)=>{
+        //   // let className = "";
+        //   // this.props.classinfo.classArr.some((item)=>{
+        //   //   if(item.classId == values.class) {
+        //   //     className = item.className;
+        //   //     return true;
+        //   //   }
+        //   //   return false;
+        //   // })
+        //   this.state.data[this.state.curSelectClass.key].username =  values.username;
+        //   this.state.data[this.state.curSelectClass.key].className = values.className;
+        //   this.setState({data:this.state.data});
+        // })
 
       }
     });
@@ -358,8 +357,8 @@ class QueryStudent extends React.Component {
                 {...formItemLayout}
                 label="姓名"
               >
-                {getFieldDecorator('name',{
-                  initialValue : this.state.curSelectClass.name
+                {getFieldDecorator('username',{
+                  initialValue : this.state.curSelectClass.username
                 })(
                   <Input />
                 )}
@@ -368,8 +367,8 @@ class QueryStudent extends React.Component {
                 {...formItemLayout}
                 label="班级"
               >
-                {getFieldDecorator('class',{
-                  initialValue : this.state.curSelectClass.class
+                {getFieldDecorator('className',{
+                  initialValue : this.state.curSelectClass.className
                 })(
                   <Select style={{ width: '100%' }} onChange={this.handleChange.bind(this)}>
                     {classArr}
