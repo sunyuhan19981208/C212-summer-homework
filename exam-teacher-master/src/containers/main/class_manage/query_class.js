@@ -30,8 +30,8 @@ class QueryClass extends React.Component {
         key : 1,
         statusId : 1,
         statusName : "未毕业",
-        subjectId : 2,
-        subjectName : "Web前端"
+        //subjectId : 2,
+        //subjectName : "Web前端"
       },
     }
     this.searchKey = "1";//默认按照班级搜索  1班级 2科目  3状态
@@ -44,7 +44,7 @@ class QueryClass extends React.Component {
     httpServer({
       url : URL.get_class
     },{
-      className : 'ClassServiceImpl',
+      //className : 'ClassServiceImpl',
       page : this.state.pagination.current,
       rows : this.state.pagination.pageSize,
       type : 1,
@@ -54,21 +54,21 @@ class QueryClass extends React.Component {
       for (let i = 0; i < res.data.data.length; i++) {
 
         let statusName = res.data.data[i].status == '0' ? '已毕业' : '未毕业';
-        let subjectName = "";
-        this.props.subjectinfo.subjectArr.some((item)=>{
+        //let subjectName = "";
+        /*this.props.subjectinfo.subjectArr.some((item)=>{
           if(item.subjectid == res.data.data[i].subjectId) {
             subjectName = item.subjectname;
             return true;
           }
           return false;
-        })
+        })*/
 
         data.push({
-          key: res.data.data[i].classId,
+          key: res.data.data[i].className,
           className: res.data.data[i].className,
-          classId : res.data.data[i].classId,
-          subjectName : subjectName,
-          subjectId : res.data.data[i].subjectId,
+          //classId : res.data.data[i].classId,
+          //subjectName : subjectName,
+          //subjectId : res.data.data[i].subjectId,
           statusName: statusName,
           statusId: res.data.data[i].status
         });
@@ -99,21 +99,21 @@ class QueryClass extends React.Component {
       const data = [];
       for (let i = 0; i < res.data.data.length; i++) {
         let statusName = res.data.data[i].status == '0' ? '已毕业' : '未毕业';
-        let subjectName = "";
+        /*let subjectName = "";
         this.props.subjectinfo.subjectArr.some((item)=>{
           if(item.subjectid == res.data.data[i].subjectId) {
             subjectName = item.subjectname;
             return true;
           }
           return false;
-        })
+        })*/
 
         data.push({
-          key: res.data.data[i].classId,
+          key: res.data.data[i].className,
           className: res.data.data[i].className,
-          classId : res.data.data[i].classId,
-          subjectName : subjectName,
-          subjectId : res.data.data[i].subjectId,
+          //classId : res.data.data[i].classId,
+          //subjectName : subjectName,
+          //subjectId : res.data.data[i].subjectId,
           statusName: statusName,
           statusId: res.data.data[i].status
         });
@@ -161,7 +161,7 @@ class QueryClass extends React.Component {
         },{
           className : 'ClassServiceImpl',
           type : 4,
-          classId : record.classId
+          //classId : record.classId
         })
         .then((res)=>{
           this.getPageDate();//重新获取第一页
@@ -177,7 +177,7 @@ class QueryClass extends React.Component {
     const {form}=this.props;
     //重新设置修改模态框中三个选项的值
     form.setFieldsValue({'className': this.state.curSelectClass.className});
-    form.setFieldsValue({'subject': this.state.curSelectClass.subjectId});
+    //form.setFieldsValue({'subject': this.state.curSelectClass.subjectId});
     form.setFieldsValue({'status': this.state.curSelectClass.statusId});
     this.setState({visibleChangeModal:true})
   }
@@ -198,9 +198,9 @@ class QueryClass extends React.Component {
         },{
           className : "ClassServiceImpl",
           type : 3,
-          subjectId : values.subject,
+          //subjectId : values.subject,
           name : values.className,
-          classId : this.state.curSelectClass.classId,
+          //classId : this.state.curSelectClass.classId,
           status : values.status,
         })
       }
@@ -250,10 +250,6 @@ class QueryClass extends React.Component {
       dataIndex: 'className',
       key: 'className',
     }, {
-      title: '科目',
-      dataIndex: 'subjectName',
-      key: 'subjectName',
-    }, {
       title: '状态',
       dataIndex: 'statusName',
       key: 'statusName',
@@ -291,14 +287,14 @@ class QueryClass extends React.Component {
     };
 
     //科目信息
-    let subjectArr = [];
+    /*let subjectArr = [];
     if(this.props.subjectinfo.subjectArr) {
       subjectArr = this.props.subjectinfo.subjectArr.map((item)=>{
         return (
           <Option value={item.subjectid} key={item.subjectid}>{item.subjectname}</Option>
         )
       })
-    }
+    }*/
 
     return(
       <div>
@@ -315,8 +311,7 @@ class QueryClass extends React.Component {
               />
               <Select className="f-r m-r-20" defaultValue="1" style={{ width: 120 }} onChange={this.handleChange.bind(this)}>
                 <Option value="1">班级</Option>
-                <Option value="2">科目</Option>
-                <Option value="3">状态</Option>
+                <Option value="2">状态</Option>
               </Select>
               <Button type="primary" className="f-l" onClick={this.showAllClass.bind(this)}>所有班级</Button>
             </Col>
@@ -342,26 +337,13 @@ class QueryClass extends React.Component {
               <FormItem
                 {...formItemLayout}
                 label="班级名称"
-                key = {this.state.curSelectClass.classId}
+                key = {this.state.curSelectClass.className}
               >
                 {getFieldDecorator('className',{
                   initialValue : this.state.curSelectClass.className
                   // setFieldsValue : this.state.curSelectClass.className
                 })(
                   <Input />
-                )}
-              </FormItem>
-              <FormItem
-                {...formItemLayout}
-                label="科目"
-                key = "subject"
-              >
-                {getFieldDecorator('subject',{
-                  initialValue : this.state.curSelectClass.subjectId
-                })(
-                  <Select style={{ width: '100%' }} onChange={this.handleChange.bind(this)}>
-                    {subjectArr}
-                  </Select>
                 )}
               </FormItem>
               <FormItem

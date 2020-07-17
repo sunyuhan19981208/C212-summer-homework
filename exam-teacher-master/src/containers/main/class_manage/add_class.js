@@ -8,6 +8,7 @@ import BreadcrumbCustom from '@components/BreadcrumbCustom'
 import { connect } from 'react-redux'
 import httpServer from '@components/httpServer.js'
 import * as URL from '@components/interfaceURL.js'
+//import axios from 'axios'
 
 class AddClass extends React.Component {
   constructor(){
@@ -29,9 +30,9 @@ class AddClass extends React.Component {
         httpServer({
           url : URL.add_class
         },{
-          className : 'ClassServiceImpl',
-          type : 2,
-          subjectId : values.subject,
+          //className : '',
+          //type : 2,
+          //subjectId : values.subject,
           name : values.className
         })
       }
@@ -53,6 +54,7 @@ class AddClass extends React.Component {
     };
 
     //科目信息
+    /*
     let subjectArr = [];
     if(this.props.subjectinfo.subjectArr) {
       subjectArr = this.props.subjectinfo.subjectArr.map((item)=>{
@@ -61,7 +63,7 @@ class AddClass extends React.Component {
         )
       })
     }
-
+*/
     return(
       <div>
         <BreadcrumbCustom pathList={this.state.pathList}></BreadcrumbCustom>
@@ -75,19 +77,6 @@ class AddClass extends React.Component {
                 rules: [{ required: true, message: '请输入班级名称！' }],
               })(
                 <Input />
-              )}
-            </FormItem>
-            <FormItem
-              {...formItemLayout}
-              label="科目"
-              key = "subject"
-            >
-              {getFieldDecorator('subject',{
-                rules: [{ required: true, message: '请选择科目！' }],
-              })(
-                <Select style={{ width: '100%' }} onChange={this.handleChange.bind(this)}>
-                  {subjectArr}
-                </Select>
               )}
             </FormItem>
             <Row>
