@@ -159,9 +159,9 @@ class QueryClass extends React.Component {
         httpServer({
           url : URL.delete_class
         },{
-          className : 'ClassServiceImpl',
+          //className : 'ClassServiceImpl',
           type : 4,
-          //classId : record.classId
+          className : record.className
         })
         .then((res)=>{
           this.getPageDate();//重新获取第一页
@@ -176,7 +176,7 @@ class QueryClass extends React.Component {
     this.setState({curSelectClass : record})
     const {form}=this.props;
     //重新设置修改模态框中三个选项的值
-    form.setFieldsValue({'className': this.state.curSelectClass.className});
+    //form.setFieldsValue({'className': this.state.curSelectClass.className});
     //form.setFieldsValue({'subject': this.state.curSelectClass.subjectId});
     form.setFieldsValue({'status': this.state.curSelectClass.statusId});
     this.setState({visibleChangeModal:true})
@@ -196,12 +196,13 @@ class QueryClass extends React.Component {
         httpServer({
           url : URL.change_class
         },{
-          className : "ClassServiceImpl",
-          type : 3,
+          //className : "ClassServiceImpl",
+          //type : 3,
           //subjectId : values.subject,
-          name : values.className,
+          //oldClassName : this.state.curSelectClass.className,
           //classId : this.state.curSelectClass.classId,
           status : values.status,
+          //newClassName : values.className
         })
       }
     });
@@ -248,11 +249,11 @@ class QueryClass extends React.Component {
     const columns = [{
       title: '班级',
       dataIndex: 'className',
-      key: 'className',
+      //key: 'className',
     }, {
       title: '状态',
       dataIndex: 'statusName',
-      key: 'statusName',
+      //key: 'statusName',
     }, {
       title: '操作',
       key: 'action',
@@ -334,18 +335,6 @@ class QueryClass extends React.Component {
             key={this.state.curSelectClass.key}
           >
             <Form onSubmit={this.changeOk.bind(this)}>
-              <FormItem
-                {...formItemLayout}
-                label="班级名称"
-                key = {this.state.curSelectClass.className}
-              >
-                {getFieldDecorator('className',{
-                  initialValue : this.state.curSelectClass.className
-                  // setFieldsValue : this.state.curSelectClass.className
-                })(
-                  <Input />
-                )}
-              </FormItem>
               <FormItem
                 {...formItemLayout}
                 label="状态"
