@@ -42,8 +42,8 @@ class QCheckin extends React.Component {
             url : URL.knowledge_point
           },{
             //className : 'KnowledgePointInfoServiceImpl',
-            subjectId : item.subjectid,
-            gradeId : myProps.match.params.level
+            gradeId : item.subjectid,
+            subjectId : myProps.match.params.level
           })
           .then((res)=>{
             this.state.knowledgePoint = res.data.data;
