@@ -180,9 +180,9 @@ class Main extends React.Component {
 		this.state.subjectArr.forEach((item)=>{
 			subjectArr.push(
 				<MenuItemGroup key={"subject"+item.subjectid} title={item.subjectname}>
-					<Menu.Item key={item.subjectid+"_1"}><Link to={"/main/q_checkin/"+item.subjectid+"/1"}>初级</Link></Menu.Item>
-					<Menu.Item key={item.subjectid+"_2"}><Link to={"/main/q_checkin/"+item.subjectid+"/2"}>中级</Link></Menu.Item>
-					<Menu.Item key={item.subjectid+"_3"}><Link to={"/main/q_checkin/"+item.subjectid+"/3"}>高级</Link></Menu.Item>
+					<Menu.Item key={item.subjectid+"_1"}><Link to={"/main/q_checkin/"+item.subjectid+"/1"}>一年级</Link></Menu.Item>
+					<Menu.Item key={item.subjectid+"_2"}><Link to={"/main/q_checkin/"+item.subjectid+"/2"}>二年级</Link></Menu.Item>
+					<Menu.Item key={item.subjectid+"_3"}><Link to={"/main/q_checkin/"+item.subjectid+"/3"}>三年级</Link></Menu.Item>
 				</MenuItemGroup>
 			)
 		})

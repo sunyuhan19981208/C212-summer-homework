@@ -2,9 +2,12 @@
   "respCode": "1",
   "data": [{
     "subjectid": 1,
-    "subjectname": "java"
-  }, {
+    "subjectname": "初中"
+  }
+  ,
+   {
     "subjectid": 2,
-    "subjectname": "前端"
-  }]
+    "subjectname": "高中"
+  }
+]
 }

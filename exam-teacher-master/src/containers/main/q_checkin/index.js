@@ -58,13 +58,13 @@ class QCheckin extends React.Component {
 
     switch(myProps.match.params.level) {
       case '1' :
-        this.state.pathList.push('初级');
+        this.state.pathList.push('一年级');
       break;
       case '2' :
-        this.state.pathList.push('中级');
+        this.state.pathList.push('二年级');
       break;
       case  '3' :
-      this.state.pathList.push('高级');
+      this.state.pathList.push('三年级');
       break;
     }
     this.setState({
@@ -125,9 +125,6 @@ class QCheckin extends React.Component {
               </TabPane>
               <TabPane tab="简答题" key="5">
                 <QShortAnswer knowledgePoint={this.state.knowledgePoint} type={this.props.match.params.type} level={this.props.match.params.level}></QShortAnswer>
-              </TabPane>
-              <TabPane tab="程序题" key="6">
-                <QProgram knowledgePoint={this.state.knowledgePoint} type={this.props.match.params.type} level={this.props.match.params.level}></QProgram>
               </TabPane>
             </Tabs>
           </div>
