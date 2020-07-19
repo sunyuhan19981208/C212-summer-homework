@@ -27,28 +27,34 @@ class ChooseQuestions extends React.Component {
         "score": 0,
         "num" : 0,
         "questionType": 1,  //选择
-        "knowledgePointInfo": []
+        "knowledgePointInfo": [],
+        "questionInfo" :{}
       },{
         "score": 0,
         "num" : 0,
         "questionType": 2,  //多选
-        "knowledgePointInfo": []
-      },{
+        "knowledgePointInfo": [],
+        "questionInfo" :{}
+      },
+      /*{
         "score": 0,
         "num" : 0,
         "questionType": 3,  //判断
         "knowledgePointInfo": []
+      },*/
+      {
+        "score": 0,
+        "num" : 0,
+        "questionType": 3,  //填空
+        "knowledgePointInfo": [],
+        "questionInfo" :{}
       },{
         "score": 0,
         "num" : 0,
-        "questionType": 4,  //填空
-        "knowledgePointInfo": []
-      },{
-        "score": 0,
-        "num" : 0,
-        "questionType": 5,  //简答
-        "knowledgePointInfo": []
-      },
+        "questionType": 4,  //简答
+        "knowledgePointInfo": [],
+        "questionInfo" :{}
+      }
       // {
       //   "score": 0,
       //   "num" : 0,
@@ -56,7 +62,8 @@ class ChooseQuestions extends React.Component {
       //   "knowledgePointInfo": []
       // }
     ],
-      knowledgePointInfo : [] //知识点列表
+      knowledgePointInfo : [] , //知识点列表
+      questionInfo : [] //题目列表
     }
     this.subjectId = -1;
     this.gradeId = -1;
@@ -87,7 +94,8 @@ class ChooseQuestions extends React.Component {
         let obj = {
           "score": item.score,
           "questionType": item.questionType,
-          "knowledgePointInfo" :{}
+          "knowledgePointInfo" :{},
+          "questionInfo" :{}
         }
 
         let countTotal = 0;
@@ -104,11 +112,13 @@ class ChooseQuestions extends React.Component {
         totalScore += countTotal*item.score;
 
         notSendObj.questionObjects.push(obj);
+
+        //循环每个题目
       }
     })
 
     let sendOutObj = {
-      "className" : 'MakeOutPaperImpl',
+      //"className" : 'MakeOutPaperImpl',
       "paperInfo" : JSON.stringify(notSendObj),
     }
 
@@ -141,9 +151,9 @@ class ChooseQuestions extends React.Component {
     httpServer({
       url : URL.knowledge_point
     },{
-      className : 'KnowledgePointInfoServiceImpl',
-      subjectId : this.subjectId,
-      gradeId : this.gradeId
+      //className : 'KnowledgePointInfoServiceImpl',
+      gradeId : this.subjectId,
+      subjectId : this.gradeId
     })
     .then((res)=>{
       this.state.knowledgePointInfo = res.data.data;
@@ -151,6 +161,7 @@ class ChooseQuestions extends React.Component {
     })
 
   }
+  
 
   //选择科目
   subjectChange(value){
@@ -215,7 +226,7 @@ class ChooseQuestions extends React.Component {
             <Row>
               <Col span={8}>
                 <FormItem
-                  label="科目"
+                  label="年级"
                   {...formItemLayoutTop}
                 >
                   {getFieldDecorator('subjectId')(
@@ -227,7 +238,7 @@ class ChooseQuestions extends React.Component {
               </Col>
               <Col span={8}>
                 <FormItem
-                  label="级别"
+                  label="科目"
                   {...formItemLayoutTop}
                 >
                   {getFieldDecorator('gradeId')(
@@ -243,8 +254,8 @@ class ChooseQuestions extends React.Component {
             <ChooseCard title="选择题" knowledgePointInfo={this.state.knowledgePointInfo} singleQuestion={this.state.ChooseQuestionList[0]}></ChooseCard>
             <ChooseCard title="多选题" knowledgePointInfo={this.state.knowledgePointInfo} singleQuestion={this.state.ChooseQuestionList[1]}></ChooseCard>
             {/* <ChooseCard title="判断题" knowledgePointInfo={this.state.knowledgePointInfo} singleQuestion={this.state.ChooseQuestionList[2]}></ChooseCard> */}
-            <ChooseCard title="填空题" knowledgePointInfo={this.state.knowledgePointInfo} singleQuestion={this.state.ChooseQuestionList[3]}></ChooseCard>
-            <ChooseCard title="简答题" knowledgePointInfo={this.state.knowledgePointInfo} singleQuestion={this.state.ChooseQuestionList[4]}></ChooseCard>
+            <ChooseCard title="填空题" knowledgePointInfo={this.state.knowledgePointInfo} singleQuestion={this.state.ChooseQuestionList[2]}></ChooseCard>
+            <ChooseCard title="简答题" knowledgePointInfo={this.state.knowledgePointInfo} singleQuestion={this.state.ChooseQuestionList[3]}></ChooseCard>
             {/* <ChooseCard title="程序题" knowledgePointInfo={this.state.knowledgePointInfo} singleQuestion={this.state.ChooseQuestionList[5]}></ChooseCard> */}
 
             <FormItem

@@ -98,6 +98,8 @@ export const subject_info = "data/subject_info.json";
 export const get_class_info = "http://39.107.84.0:8762/getAllClass";
 //得到知识点
 export const knowledge_point = "http://39.107.84.0:8763/getKnowledgePoint";
+//得到题目
+export const get_question = "http://39.107.84.0:8763/getQuestion";
 //提交题目信息（试题录入）
 export const q_checkin = "data/q_checkin.json";
 //出卷
