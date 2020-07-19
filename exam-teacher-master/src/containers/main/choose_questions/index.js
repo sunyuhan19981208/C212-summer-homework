@@ -242,7 +242,7 @@ class ChooseQuestions extends React.Component {
             </Row>
             <ChooseCard title="选择题" knowledgePointInfo={this.state.knowledgePointInfo} singleQuestion={this.state.ChooseQuestionList[0]}></ChooseCard>
             <ChooseCard title="多选题" knowledgePointInfo={this.state.knowledgePointInfo} singleQuestion={this.state.ChooseQuestionList[1]}></ChooseCard>
-            <ChooseCard title="判断题" knowledgePointInfo={this.state.knowledgePointInfo} singleQuestion={this.state.ChooseQuestionList[2]}></ChooseCard>
+            {/* <ChooseCard title="判断题" knowledgePointInfo={this.state.knowledgePointInfo} singleQuestion={this.state.ChooseQuestionList[2]}></ChooseCard> */}
             <ChooseCard title="填空题" knowledgePointInfo={this.state.knowledgePointInfo} singleQuestion={this.state.ChooseQuestionList[3]}></ChooseCard>
             <ChooseCard title="简答题" knowledgePointInfo={this.state.knowledgePointInfo} singleQuestion={this.state.ChooseQuestionList[4]}></ChooseCard>
             {/* <ChooseCard title="程序题" knowledgePointInfo={this.state.knowledgePointInfo} singleQuestion={this.state.ChooseQuestionList[5]}></ChooseCard> */}

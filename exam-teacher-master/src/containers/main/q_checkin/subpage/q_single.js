@@ -36,6 +36,7 @@ class QSingle extends React.Component {
           return;
         }
         let choice = [];
+        alert(values.tigan);
         for(let variable in values) {
           if (/^option/.test(variable)) {
             choice.push(values[variable]);
@@ -46,11 +47,11 @@ class QSingle extends React.Component {
         httpServer({
           url : URL.q_checkin
         },{
-          className : 'QuestionInfoServiceImpl',
+          // className : 'QuestionInfoServiceImpl',
           gradeId : this.props.level,
-          pointId : values.knowledgePoint,
-          questionstem : values.tigan,
-          imageSrc : '',
+          knowledgePointId : values.knowledgePoint,
+          questionStem : values.tigan,
+          // imageSrc : '',
           type : 2,
           answer : this.state.rightAnswer,
           choice : choice,
@@ -78,7 +79,7 @@ class QSingle extends React.Component {
     }
     keys.push({
       option : String.fromCharCode(nextOptionCode),
-      key : ++localCounter
+      key : ++localCounter,
     });
     // this.setState({answerOptions : this.state.answerOptions})
     form.setFieldsValue({

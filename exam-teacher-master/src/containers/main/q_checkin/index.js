@@ -117,9 +117,9 @@ class QCheckin extends React.Component {
               <TabPane tab="多选题" key="multiple">
                 <QMultiple knowledgePoint={this.state.knowledgePoint} type={this.props.match.params.type} level={this.props.match.params.level}></QMultiple>
               </TabPane>
-              <TabPane tab="判断题" key="true_or_false ">
+              {/* <TabPane tab="判断题" key="true_or_false ">
                 <QtureOrFalse knowledgePoint={this.state.knowledgePoint} type={this.props.match.params.type} level={this.props.match.params.level}></QtureOrFalse>
-              </TabPane>
+              </TabPane> */}
               <TabPane tab="填空题" key="4">
                 <QFillIn knowledgePoint={this.state.knowledgePoint} type={this.props.match.params.type} level={this.props.match.params.level}></QFillIn>
               </TabPane>
