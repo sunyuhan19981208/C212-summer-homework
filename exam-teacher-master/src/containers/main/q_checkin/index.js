@@ -58,13 +58,13 @@ class QCheckin extends React.Component {
 
     switch(myProps.match.params.level) {
       case '1' :
-        this.state.pathList.push('一年级');
+        this.state.pathList.push('语文');
       break;
       case '2' :
-        this.state.pathList.push('二年级');
+        this.state.pathList.push('数学');
       break;
       case  '3' :
-      this.state.pathList.push('三年级');
+      this.state.pathList.push('英语');
       break;
     }
     this.setState({
