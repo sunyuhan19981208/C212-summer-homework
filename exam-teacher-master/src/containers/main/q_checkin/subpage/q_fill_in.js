@@ -29,11 +29,11 @@ class QFillIn extends React.Component {
         httpServer({
           url : URL.q_checkin
         },{
-          className : 'QuestionInfoServiceImpl',
+          // className : 'QuestionInfoServiceImpl',
           gradeId : this.props.level,
           pointId : values.knowledgePoint,
-          questionstem : values.tigan,
-          imageSrc : '',
+          questionStem : values.tigan,
+          // imageSrc : '',
           type : 1,
         })
 

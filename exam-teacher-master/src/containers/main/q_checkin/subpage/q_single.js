@@ -49,7 +49,7 @@ class QSingle extends React.Component {
         },{
           // className : 'QuestionInfoServiceImpl',
           gradeId : this.props.level,
-          knowledgePointId : values.knowledgePoint,
+          pointId : values.knowledgePoint,
           questionStem : values.tigan,
           // imageSrc : '',
           type : 2,
