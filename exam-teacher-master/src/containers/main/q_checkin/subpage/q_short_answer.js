@@ -31,11 +31,14 @@ class QShortAnswer extends React.Component {
           url : URL.q_checkin
         },{
           // className : 'QuestionInfoServiceImpl',
-          gradeId : this.props.level,
+          // gradeId : this.props.level,
           pointId : values.knowledgePoint,
           questionStem : values.tigan,
           // imageSrc : '',
           type : 5,
+          answer:"",
+          choice:"",
+          choiceType : 0,
         })
 
       }

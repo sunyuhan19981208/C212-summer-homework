@@ -30,9 +30,12 @@ class QFillIn extends React.Component {
           url : URL.q_checkin
         },{
           // className : 'QuestionInfoServiceImpl',
-          gradeId : this.props.level,
+          // gradeId : this.props.level,
           pointId : values.knowledgePoint,
           questionStem : values.tigan,
+          answer:"",
+          choice:"",
+          choiceType : 0,
           // imageSrc : '',
           type : 1,
         })

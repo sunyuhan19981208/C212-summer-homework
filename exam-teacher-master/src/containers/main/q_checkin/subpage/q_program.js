@@ -30,8 +30,8 @@ class QProgram extends React.Component {
         httpServer({
           url : URL.q_checkin
         },{
-          className : 'QuestionInfoServiceImpl',
-          gradeId : this.props.level,
+          // className : 'QuestionInfoServiceImpl',
+          // gradeId : this.props.level,
           pointId : values.knowledgePoint,
           questionstem : values.tigan,
           imageSrc : '',

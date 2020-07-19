@@ -35,20 +35,22 @@ class QSingle extends React.Component {
           });
           return;
         }
-        let choice = [];
-        alert(values.tigan);
+        let choice = "";
         for(let variable in values) {
           if (/^option/.test(variable)) {
-            choice.push(values[variable]);
+            choice=choice+values[variable]+",";
           }
         }
+        alert(choice);
 
         //提交题目信息
         httpServer({
-          url : URL.q_checkin
+          url : URL.q_checkin,
+          contentType: "application/x-www-form-urlencoded;charset=utf-8"
+          // charset=utf-8
         },{
           // className : 'QuestionInfoServiceImpl',
-          gradeId : this.props.level,
+          // gradeId : this.props.level,
           pointId : values.knowledgePoint,
           questionStem : values.tigan,
           // imageSrc : '',
