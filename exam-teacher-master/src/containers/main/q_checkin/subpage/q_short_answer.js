@@ -1,4 +1,4 @@
-//单选题
+//简答题
 import React from 'react';
 import ReactDOM from 'react-dom'
 

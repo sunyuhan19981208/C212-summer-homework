@@ -215,7 +215,7 @@ class ChooseQuestions extends React.Component {
             <Row>
               <Col span={8}>
                 <FormItem
-                  label="级别"
+                  label="科目"
                   {...formItemLayoutTop}
                 >
                   {getFieldDecorator('subjectId')(
@@ -227,7 +227,7 @@ class ChooseQuestions extends React.Component {
               </Col>
               <Col span={8}>
                 <FormItem
-                  label="科目"
+                  label="级别"
                   {...formItemLayoutTop}
                 >
                   {getFieldDecorator('gradeId')(

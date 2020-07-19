@@ -41,7 +41,7 @@ class QCheckin extends React.Component {
           httpServer({
             url : URL.knowledge_point
           },{
-            className : 'KnowledgePointInfoServiceImpl',
+            //className : 'KnowledgePointInfoServiceImpl',
             subjectId : item.subjectid,
             gradeId : myProps.match.params.level
           })
