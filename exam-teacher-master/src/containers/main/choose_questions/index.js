@@ -24,36 +24,36 @@ class ChooseQuestions extends React.Component {
       pathList : ['出卷'],
       localCounter : 0,
       ChooseQuestionList :[{//出卷列表
-        "score": 0,
-        "num" : 0,
+         "score": 0,
+        // "num" : 0,
         "questionType": 1,  //选择
         "knowledgePointInfo": [],
-        "questionInfo" :{}
+        "questionId" :{}
       },{
-        "score": 0,
-        "num" : 0,
+         "score": 0,
+        // "num" : 0,
         "questionType": 2,  //多选
         "knowledgePointInfo": [],
-        "questionInfo" :{}
+        "questionId" :{}
       },
       /*{
-        "score": 0,
-        "num" : 0,
+         "score": 0,
+        // "num" : 0,
         "questionType": 3,  //判断
         "knowledgePointInfo": []
       },*/
       {
-        "score": 0,
-        "num" : 0,
+         "score": 0,
+        // "num" : 0,
         "questionType": 3,  //填空
         "knowledgePointInfo": [],
-        "questionInfo" :{}
+        "questionId" :{}
       },{
-        "score": 0,
-        "num" : 0,
+         "score": 0,
+        // "num" : 0,
         "questionType": 4,  //简答
         "knowledgePointInfo": [],
-        "questionInfo" :{}
+        "questionId" :{}
       }
       // {
       //   "score": 0,
@@ -63,7 +63,7 @@ class ChooseQuestions extends React.Component {
       // }
     ],
       knowledgePointInfo : [] , //知识点列表
-      questionInfo : [] //题目列表
+      //questionInfo : [] //题目列表
     }
     this.subjectId = -1;
     this.gradeId = -1;
@@ -84,21 +84,20 @@ class ChooseQuestions extends React.Component {
 
     let notSendObj = {
       "questionObjects" : [],
-      "gradeId": this.gradeId,
-      "subjectId": this.subjectId,
-      "content": "备注"
+      "subjectId": this.gradeId,
+      "gradeId": this.subjectId,
+      //"content": "备注"
     };
     //整合出题信息
     this.state.ChooseQuestionList.forEach((item)=>{//循环每种类型的题目
-      if(item.num > 0) {
+      //if(item.num > 0) {
         let obj = {
           "score": item.score,
           "questionType": item.questionType,
-          "knowledgePointInfo" :{},
-          "questionInfo" :{}
+          //"knowledgePointInfo" :{},
+          "questionId" : item.questionId
         }
-
-        let countTotal = 0;
+        /*let countTotal = 0;
         //循环每个知识点
         item.knowledgePointInfo.forEach((item2)=>{
           if(!obj.knowledgePointInfo[item2.knowledge]) {
@@ -109,20 +108,19 @@ class ChooseQuestions extends React.Component {
           }
           countTotal += item2.count;
         })
-        totalScore += countTotal*item.score;
+        totalScore += countTotal*item.score;*/
 
         notSendObj.questionObjects.push(obj);
-
-        //循环每个题目
-      }
+      //}
     })
 
     let sendOutObj = {
       //"className" : 'MakeOutPaperImpl',
       "paperInfo" : JSON.stringify(notSendObj),
     }
+    this.sendChooseQuestion(sendOutObj);
 
-    if(totalScore !== 100) {//总分不是100
+    /*if(totalScore !== 100) {//总分不是100
       Modal.confirm({
         title: '提示',
         content: '这套试卷的总分是'+totalScore+"分,你确定提交吗？",
@@ -137,7 +135,7 @@ class ChooseQuestions extends React.Component {
     else {//总分是100
       this.sendChooseQuestion(sendOutObj);
     }
-    // console.log(sendOutObj)
+    // console.log(sendOutObj)*/
 
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
