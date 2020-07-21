@@ -31,7 +31,7 @@ class ChooseCard extends React.Component {
   questionChange(i, value) {
 
     this.props.singleQuestion.questionId[i] = value;
-
+    this.props.singleQuestion.questionId.splice(i,1);
   }
 
   //个数比改变
@@ -59,6 +59,7 @@ class ChooseCard extends React.Component {
     form.setFieldsValue({
       keys: keys,
     });
+    
   }
 
   //增加选项

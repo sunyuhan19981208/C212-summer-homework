@@ -28,13 +28,13 @@ class ChooseQuestions extends React.Component {
         // "num" : 0,
         "questionType": 1,  //选择
         "knowledgePointInfo": [],
-        "questionId" :{}
+        "questionId" :[]
       },{
          "score": 0,
         // "num" : 0,
         "questionType": 2,  //多选
         "knowledgePointInfo": [],
-        "questionId" :{}
+        "questionId" :[]
       },
       /*{
          "score": 0,
@@ -47,13 +47,13 @@ class ChooseQuestions extends React.Component {
         // "num" : 0,
         "questionType": 3,  //填空
         "knowledgePointInfo": [],
-        "questionId" :{}
+        "questionId" :[]
       },{
          "score": 0,
         // "num" : 0,
         "questionType": 4,  //简答
         "knowledgePointInfo": [],
-        "questionId" :{}
+        "questionId" :[]
       }
       // {
       //   "score": 0,
