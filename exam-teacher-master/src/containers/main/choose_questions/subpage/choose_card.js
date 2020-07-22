@@ -31,7 +31,7 @@ class ChooseCard extends React.Component {
   questionChange(i, value) {
 
     this.props.singleQuestion.questionId[i] = value;
-    this.props.singleQuestion.questionId.splice(i,1);
+    //this.props.singleQuestion.questionId.splice(i,1);
   }
 
   //个数比改变
@@ -53,6 +53,7 @@ class ChooseCard extends React.Component {
 
   //删除选项
   deleteOption(key, i) {
+    //this.props.singleQuestion.questionId.splice(key-1,1);
     const { form } = this.props;
     let keys = form.getFieldValue('keys');
     keys = keys.filter(item => item !== key)
