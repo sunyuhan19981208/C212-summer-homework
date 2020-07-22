@@ -43,11 +43,12 @@
   left: 0;
   bottom: 0;
   right: 0;
+  width: 100%;
   /* background-image: url('/sxt_exam/lqw/images/login-bg-small.jpg'); */
   background-image: url('../images/login-bg-small.jpg');
   background-size: cover;
   min-height: 580px;
-  min-width: 800px
+  min-width: 800px;
 }
 
 .login .login-content-wrap {
@@ -56,14 +57,17 @@
   height: 100%;
   min-height: 580px;
   background: rgba(255, 255, 255, .4);
+  /* margin:0 auto;失效 */
   top: 0;
-  right: 0;
+  left: 35%;
+  right: 35%;  
 }
 
 .login .login-content {
-  width: 360px;
-  height: 580px;
+  width: 380px;
+  height: 500px;
   margin: auto;
+  border-radius: 15px;
   background: rgba(255, 255, 255, 1);
   position: absolute;
   left: 0;
@@ -79,7 +83,14 @@
   margin-top: 50px
 }
 
+/* 忘记密码 */
+.login .login-form-forgot{
+  float: right;
+
+}
+
 .login .login-form-button {
+  font-family: "微软雅黑";
   width: 100%;
 }
 
@@ -89,9 +100,18 @@
   margin-top: 50px
 }
 
+
+/* 解决chrome自动保存密码后input有蓝色背景的问题 */
+:-webkit-autofill {      
+  -webkit-text-fill-color: black !important;
+  transition: background-color 5000s ease-in-out 0s;
+ }
+
+
 .login .login-tip {
   color: red;
-  margin-bottom: 10px
+  margin-bottom: 10px;
+  
 }
 
 /* 主界面 */

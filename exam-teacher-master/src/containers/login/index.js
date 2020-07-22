@@ -63,34 +63,42 @@ class Login extends React.Component {
 		return(
 			<div className="login">
 				<div className="login-content-wrap">
-						<div className="login-content">
-							{/* <img className="logo" src="/sxt_exam/lqw/images/logo.jpg"/> */}
-							<img className="logo" src={require("@assets/images/logo.jpg")}/>
-							<div className="login-from">
-								<div className="login-tip">{this.state.loginTip}</div>
-								<Form onSubmit={this.handleSubmit.bind(this)} className="login-form">
-					        <FormItem>
-					          {getFieldDecorator('username', {
-					            rules: [{ required: true, message: '请输入用户名！' }],
-					          })(
-					            <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="用户名" />
-					          )}
-					        </FormItem>
-					        <FormItem>
-					          {getFieldDecorator('password', {
-					            rules: [{ required: true, message: '请输入密码！' }],
-					          })(
-					            <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="密码" />
-					          )}
-					        </FormItem>
-					        <FormItem>
-						          <Button type="primary" htmlType="submit" className="login-form-button">
-						          	登录
-						          </Button>
-					        </FormItem>
-					      </Form>
-							</div>
+					<div className="login-content">
+						{/* <img className="logo" src="/sxt_exam/lqw/images/logo.jpg"/> */}
+						<img className="logo" src={require("@assets/images/logo.jpg")}/>
+						<div className="login-from">
+							<div className="login-tip">{this.state.loginTip}</div>
+							<Form onSubmit={this.handleSubmit.bind(this)} className="login-form">
+								<FormItem >
+								{getFieldDecorator('username', {
+									rules: [{ required: true, message: '请输入用户名！' }],
+								})(
+									<Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.55)' }} />} placeholder="用户名" />
+								)}
+								</FormItem>
+								<FormItem >
+								{getFieldDecorator('password', {
+									rules: [{ required: true, message: '请输入密码！' }],
+								})(
+									<Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.55)' }} />} type="password" placeholder="密码" />								
+								)}
+								</FormItem>
+								<FormItem >
+									<Form.Item name="remember" valuePropName="checked" noStyle>
+										<Checkbox>Remember me</Checkbox>								
+									<a className="login-form-forgot" href="">
+									Forgot password
+									</a>
+									</Form.Item>
+								</FormItem>
+								<FormItem>
+									<Button type="primary" htmlType="submit" className="login-form-button">
+										登录
+									</Button>
+								</FormItem>
+							</Form>
 						</div>
+					</div>
 				</div>
 			</div>
 		)
