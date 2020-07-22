@@ -20,16 +20,16 @@ axios.interceptors.response.use(response => {
 function successState(res) {
   //这里可以隐藏loading
   //统一判断后端返回的错误码
-  if(res.data.respCode === "1"){
-    if(res.data.respMsg) {
+  if(res.respCode === "1"){
+    if(res.respMsg) {
       message.success(res.data.respMsg);
     }
   }
   else {
-    if(res.data.respMsg) {
+    if(res.respMsg) {
       Modal.error({
         title: '出错了',
-        content: res.data.respMsg,
+        content: res.respMsg,
         okText : '确定'
       });
     }
@@ -79,7 +79,7 @@ const httpServer = (opts, data) => {
     timeout: 10000,
     params: Object.assign(Public, data),
     data: data,
-    transformRequest: [function (data) {
+    transformRequest: opts.method == 'get'?[function (data) {
 		  let ret = ''
 		  for (let it in data) {
         if(data[it] instanceof Array) {
@@ -93,7 +93,7 @@ const httpServer = (opts, data) => {
 		  }
       console.log(ret);
 		  return ret
-		}],
+		}]:[],
     headers: opts.method == 'get'
       ? {
         'X-Requested-With': 'XMLHttpRequest',
@@ -102,7 +102,8 @@ const httpServer = (opts, data) => {
       }
       : {
         'X-Requested-With': 'XMLHttpRequest',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+        "Accept": "application/json",
+        "Content-Type": "application/json; charset=UTF-8"
       }
   }
 
