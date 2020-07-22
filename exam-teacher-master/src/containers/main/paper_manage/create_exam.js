@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Form,Input,Select,Row,Col,Button,DatePicker } from 'antd';
+import { Form, Input, Select, Row, Col, Button, DatePicker } from 'antd';
 const FormItem = Form.Item;
 const Option = Select.Option;
 
@@ -15,54 +15,52 @@ import 'moment/locale/zh-cn';
 moment.locale('zh-cn');
 
 class CreateExam extends React.Component {
-  constructor(){
+  constructor() {
     super()
     this.state = {
-      pathList : ['考试管理','创建考试'],//面包屑路径
-      classId : 0,
-      levelId : 0,
-      paperIdList : [],
+      pathList: ['考试管理', '创建考试'],//面包屑路径
+      className: "",
+      gradeId: -1,
+      subjectId: -1,
+      paperIdList: [],
     }
-    this.havePaperName = 0;
   }
 
   //选择班级
   handleChange(value) {
-    this.classId = value;
-    this.havePaperName ++;
-    if(this.havePaperName == 2) {
-      this.havePaperName = 0;
-      httpServer({
-        url : URL.get_paperId
-      },{
-        className : 'GetPaperIdImpl',
-        classId : this.classId,
-        gradeId : this.levelId,
-      })
-      .then((res)=>{
+    this.className = value;
+  }
+
+  //获取试卷编号
+  getPaperId() {
+    httpServer({
+      url: URL.get_paperId
+    }, {
+      gradeId: this.gradeId,
+      subjectId: this.subjectId,
+    })
+      .then((res) => {
         let respData = res.data.data;
-        this.setState({paperIdList : respData})
+        this.setState({ paperIdList: respData })
       })
+
+
+  }
+
+  //选择年级
+  gradeChange(value) {
+    this.gradeId = value;
+    if (this.gradeId >= -1 && this.subjectId >= -1) {
+      this.getPaperId();
+
     }
   }
 
-  //选择等级
-  changeLevel(value){
-    this.levelId = value;
-    this.havePaperName ++;
-    if(this.havePaperName == 2) {
-      this.havePaperName = 0;
-      httpServer({
-        url : URL.get_paperId
-      },{
-        className : 'GetPaperIdImpl',
-        classId : this.classId,
-        gradeId : this.levelId,
-      })
-      .then((res)=>{
-        let respData = res.data.data;
-        this.setState({paperIdList : respData})
-      })
+  //选择科目
+  subjectChange(value) {
+    this.subjectId = value;
+    if (this.gradeId >= -1 && this.subjectId >= -1) {
+      this.getPaperId();
     }
   }
 
@@ -72,26 +70,25 @@ class CreateExam extends React.Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         httpServer({
-          url : URL.create_exam
-        },{
-          className : 'CreateTestImpl',
-          classId : values.classId,
-          paperId : values.paperId,
-          startTime : values.startTime.format('YYYY-MM-DD HH:mm:ss'),
-          endTime : values.endTime.format('YYYY-MM-DD HH:mm:ss'),
-          examName : values.examName,
+          url: URL.create_exam
+        }, {
+          className: values.className,
+          paperId: values.paperId,
+          startTime: values.startTime.format('YYYY-MM-DD HH:mm:ss'),
+          endTime: values.endTime.format('YYYY-MM-DD HH:mm:ss'),
+          examName: values.examName,
         })
       }
     });
   }
 
-  render(){
+  render() {
     const { getFieldDecorator } = this.props.form;
     //表单布局
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
-        sm: { span: 4 , offset : 4},
+        sm: { span: 4, offset: 4 },
       },
       wrapperCol: {
         xs: { span: 24 },
@@ -101,23 +98,26 @@ class CreateExam extends React.Component {
 
     //班级信息
     let classtArr = [];
-    if(this.props.classinfo.classArr) {
-      classtArr = this.props.classinfo.classArr.map((item)=>{
+    if (this.props.classinfo.classArr) {
+      classtArr = this.props.classinfo.classArr.map((item) => {
         return (
-          <Option value={item.classId} key={item.classId}>{item.className}</Option>
+          <Option value={item.className} key={item.className}>{item.className}</Option>
         )
       })
     }
 
+
     //试卷编号
     let paperIdList = [];
-    paperIdList = this.state.paperIdList.map((item)=>{
-      return(
+    paperIdList = this.state.paperIdList.map((item) => {
+      return (
         <Option value={item} key={item}>{item}</Option>
       )
     })
 
-    return(
+
+
+    return (
       <div>
         <BreadcrumbCustom pathList={this.state.pathList}></BreadcrumbCustom>
         <div className="change-password-content">
@@ -126,7 +126,7 @@ class CreateExam extends React.Component {
               {...formItemLayout}
               label="班级"
             >
-              {getFieldDecorator('classId')(
+              {getFieldDecorator('className')(
                 <Select style={{ width: '100%' }} onChange={this.handleChange.bind(this)}>
                   {classtArr}
                 </Select>
@@ -143,13 +143,24 @@ class CreateExam extends React.Component {
             </FormItem>
             <FormItem
               {...formItemLayout}
-              label="级别"
+              label="年级"
             >
-              {getFieldDecorator('level')(
-                <Select style={{ width: '100%' }} onChange={this.changeLevel.bind(this)}>
-                  <Option value={1}>初级</Option>
-                  <Option value={2}>中级</Option>
-                  <Option value={3}>高级</Option>
+              {getFieldDecorator('gradeId')(
+                <Select style={{ width: 120 }} onChange={this.gradeChange.bind(this)}>
+                  <Option value="1">初中</Option>
+                  <Option value="2">高中</Option>
+                </Select>
+              )}
+            </FormItem>
+            <FormItem
+              {...formItemLayout}
+              label="科目"
+            >
+              {getFieldDecorator('subjectId')(
+                <Select style={{ width: 120 }} onChange={this.subjectChange.bind(this)}>
+                  <Option value="1">语文</Option>
+                  <Option value="2">数学</Option>
+                  <Option value="3">英语</Option>
                 </Select>
               )}
             </FormItem>
@@ -158,7 +169,7 @@ class CreateExam extends React.Component {
               label="试卷编号"
             >
               {getFieldDecorator('paperId')(
-                <Select notFoundContent="请选择班级和级别" style={{ width: '100%' }}>
+                <Select notFoundContent="请选择科目和年级" style={{ width: '100%' }}>
                   {paperIdList}
                 </Select>
               )}
@@ -172,7 +183,7 @@ class CreateExam extends React.Component {
                   showTime
                   format="YYYY-MM-DD HH:mm:ss"
                   placeholder="选择时间"
-                  style={{width:'100%'}}
+                  style={{ width: '100%' }}
                 />
               )}
             </FormItem>
@@ -185,7 +196,7 @@ class CreateExam extends React.Component {
                   showTime
                   format="YYYY-MM-DD HH:mm:ss"
                   placeholder="选择时间"
-                  style={{width:'100%'}}
+                  style={{ width: '100%' }}
                 />
               )}
             </FormItem>
@@ -201,12 +212,13 @@ class CreateExam extends React.Component {
   }
 }
 
+
 function mapStateToProps(state) {
-    return {
-        classinfo: state.classinfo
-    }
+  return {
+    classinfo: state.classinfo,
+  }
 }
 
 export default connect(
-    mapStateToProps
+  mapStateToProps
 )(Form.create()(CreateExam))

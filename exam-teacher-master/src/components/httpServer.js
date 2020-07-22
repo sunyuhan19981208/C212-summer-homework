@@ -33,13 +33,13 @@ function successState(res) {
         okText : '确定'
       });
     }
-    else {
-      Modal.error({
-        title: '出错了',
-        content: '服务器开小差了~请稍后再试',
-        okText : '确定'
-      });
-    }
+    // else {
+    //   Modal.error({
+    //     title: '出错了',
+    //     content: '服务器开小差了~请稍后再试',
+    //     okText : '确定'
+    //   });
+    // }
 
   }
 }
