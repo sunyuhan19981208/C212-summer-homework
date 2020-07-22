@@ -142,7 +142,7 @@ export const delete_teacher = "data/delete_teacher.json";
 export const add_teacher = "data/add_teacher.json";
 
 //创建考试
-export const create_exam = "data/create_exam.json";
+export const create_exam = "http://39.107.84.0:8763/createExam";
 
 //查询试卷（得到一页数据）
 export const get_papers = "data/get_papers.json";
@@ -172,7 +172,7 @@ export const change_password = "data/change_password.json";
 export const auto_read = "data/auto_read.json";
 
 //得到试卷编号
-export const get_paperId = "data/get_paperId.json";
+export const get_paperId = "http://39.107.84.0:8763/getPaperList";
 
 
 /*
