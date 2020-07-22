@@ -79,39 +79,21 @@ class ChooseQuestions extends React.Component {
   //提交
   handleSubmit(e){
     e.preventDefault();
-
-    let totalScore = 0;//这套试卷的总分
-
     let notSendObj = {
       "questionObjects" : [],
       "subjectId": this.gradeId,
       "gradeId": this.subjectId,
-      //"content": "备注"
     };
     //整合出题信息
-    this.state.ChooseQuestionList.forEach((item)=>{//循环每种类型的题目
-      //if(item.num > 0) {
+    this.state.ChooseQuestionList.forEach((item)=>{
         let obj = {
           "score": item.score,
-          "questionType": item.questionType,
+          //"questionType": item.questionType,
           //"knowledgePointInfo" :{},
           "questionId" : item.questionId
         }
-        /*let countTotal = 0;
-        //循环每个知识点
-        item.knowledgePointInfo.forEach((item2)=>{
-          if(!obj.knowledgePointInfo[item2.knowledge]) {
-            obj.knowledgePointInfo[item2.knowledge] = item2.count;
-          }
-          else {
-            obj.knowledgePointInfo[item2.knowledge] = obj.knowledgePointInfo[item2.knowledge] + item2.count;
-          }
-          countTotal += item2.count;
-        })
-        totalScore += countTotal*item.score;*/
-
         notSendObj.questionObjects.push(obj);
-      //}
+      
     })
 
     let sendOutObj = {
@@ -119,29 +101,6 @@ class ChooseQuestions extends React.Component {
       "paperInfo" : JSON.stringify(notSendObj),
     }
     this.sendChooseQuestion(sendOutObj);
-
-    /*if(totalScore !== 100) {//总分不是100
-      Modal.confirm({
-        title: '提示',
-        content: '这套试卷的总分是'+totalScore+"分,你确定提交吗？",
-        okText: '确认',
-        cancelText: '取消',
-        onOk: ()=>{
-          //用户点击确认
-          this.sendChooseQuestion(sendOutObj);
-        },
-      });
-    }
-    else {//总分是100
-      this.sendChooseQuestion(sendOutObj);
-    }
-    // console.log(sendOutObj)*/
-
-    this.props.form.validateFieldsAndScroll((err, values) => {
-      if (!err) {
-        // console.log('Received values of form: ', values);
-      }
-    });
   }
 
   getKnowledgePoint(){
@@ -206,15 +165,6 @@ class ChooseQuestions extends React.Component {
       },
     }
 
-    //科目信息
-    let subjectArr = [];
-    if(this.props.subjectinfo.subjectArr) {
-      subjectArr = this.props.subjectinfo.subjectArr.map((item)=>{
-        return (
-          <Option value={item.subjectid} key={item.subjectid}>{item.subjectname}</Option>
-        )
-      })
-    }
 
     return (
       <div>
@@ -229,7 +179,8 @@ class ChooseQuestions extends React.Component {
                 >
                   {getFieldDecorator('subjectId')(
                     <Select style={{ width: 120 }} onChange={this.subjectChange.bind(this)}>
-                      {subjectArr}
+                      <Option value="1">初中</Option>
+                      <Option value="2">高中</Option>
                     </Select>
                   )}
                 </FormItem>
@@ -271,12 +222,5 @@ class ChooseQuestions extends React.Component {
   }
 }
 
-function mapStateToProps(state) {
-    return {
-        subjectinfo: state.subjectinfo
-    }
-}
 
-export default connect(
-    mapStateToProps
-)(Form.create()(ChooseQuestions))
+export default (Form.create()(ChooseQuestions))

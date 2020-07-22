@@ -103,7 +103,7 @@ export const get_question = "http://39.107.84.0:8763/getQuestion";
 //提交题目信息（试题录入）
 export const q_checkin = "http://39.107.84.0:8763/addQuestion";
 //出卷
-export const paper_info = "data/paperInfo.json";
+export const paper_info = "http://39.107.84.0:8763/addPaper";
 
 //成绩查询
 export const search_score = "data/search_score.json";
