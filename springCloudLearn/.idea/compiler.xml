@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="euraka-server" />
+        <module name="service-exam" />
+        <module name="service-feign" />
+        <module name="service-resources" />
+        <module name="service-ribbon" />
+        <module name="service-user" />
+        <module name="service-zuul" />
+        <module name="springCloudLearn" />
+        <module name="test" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="euraka-server" target="1.8" />
+      <module name="service-exam" target="1.8" />
+      <module name="service-feign" target="1.8" />
+      <module name="service-resources" target="1.8" />
+      <module name="service-ribbon" target="1.8" />
+      <module name="service-user" target="1.8" />
+      <module name="service-zuul" target="1.8" />
+      <module name="springCloudLearn" target="1.8" />
+      <module name="test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="euraka-server" options="-parameters" />
+      <module name="service-exam" options="-parameters" />
+      <module name="service-feign" options="" />
+      <module name="service-resources" options="-parameters" />
+      <module name="service-ribbon" options="" />
+      <module name="service-user" options="-parameters" />
+      <module name="service-zuul" options="" />
+      <module name="springCloudLearn" options="-parameters" />
+      <module name="test" options="-parameters" />
+    </option>
+  </component>
+</project>
