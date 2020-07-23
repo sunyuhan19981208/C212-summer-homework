@@ -20,26 +20,26 @@ axios.interceptors.response.use(response => {
 function successState(res) {
   //这里可以隐藏loading
   //统一判断后端返回的错误码
-  if(res.respCode === "1"){
-    if(res.respMsg) {
+  if(res.data.respCode === 1){
+    if(res.data.respMsg) {
       message.success(res.data.respMsg);
     }
   }
   else {
-    if(res.respMsg) {
+    if(res.data.respMsg) {
       Modal.error({
         title: '出错了',
-        content: res.respMsg,
+        content: res.data.respMsg,
         okText : '确定'
       });
     }
-    // else {
-    //   Modal.error({
-    //     title: '出错了',
-    //     content: '服务器开小差了~请稍后再试',
-    //     okText : '确定'
-    //   });
-    // }
+    else {
+      Modal.error({
+        title: '出错了',
+        content: '服务器开小差了~请稍后再试',
+        okText : '确定'
+      });
+    }
 
   }
 }
