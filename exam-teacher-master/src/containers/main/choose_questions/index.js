@@ -72,6 +72,7 @@ class ChooseQuestions extends React.Component {
   //发送出卷请求
   sendChooseQuestion(sendObj){
     httpServer({
+      method : "post",
       url : URL.paper_info
     },sendObj)
   }
@@ -88,18 +89,13 @@ class ChooseQuestions extends React.Component {
     this.state.ChooseQuestionList.forEach((item)=>{
         let obj = {
           "score": item.score,
-          //"questionType": item.questionType,
-          //"knowledgePointInfo" :{},
           "questionId" : item.questionId
         }
         notSendObj.questionObjects.push(obj);
       
     })
 
-    let sendOutObj = {
-      //"className" : 'MakeOutPaperImpl',
-      "paperInfo" : JSON.stringify(notSendObj),
-    }
+    let sendOutObj = JSON.stringify(notSendObj);
     this.sendChooseQuestion(sendOutObj);
   }
 

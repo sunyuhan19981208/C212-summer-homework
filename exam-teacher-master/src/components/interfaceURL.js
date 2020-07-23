@@ -91,7 +91,7 @@ export const get_paperId = baseUrl;
 
 
 //管理员登录
-export const  login = "http://39.107.84.0:8762/login";
+export const login = "http://39.107.84.0:8762/login";
 //得到科目信息
 export const subject_info = "data/subject_info.json";
 //得到班级信息
@@ -142,7 +142,9 @@ export const delete_teacher = "data/delete_teacher.json";
 export const add_teacher = "data/add_teacher.json";
 
 //创建考试
-export const create_exam = "data/create_exam.json";
+export const create_exam = "http://39.107.84.0:8763/createExam";
+//获得试卷题目
+export const get_paper = "http://39.107.84.0:8763/getExamByClassName";
 
 //查询试卷（得到一页数据）
 export const get_papers = "data/get_papers.json";
@@ -172,7 +174,7 @@ export const change_password = "data/change_password.json";
 export const auto_read = "data/auto_read.json";
 
 //得到试卷编号
-export const get_paperId = "data/get_paperId.json";
+export const get_paperId = "http://39.107.84.0:8763/getPaperList";
 
 
 /*

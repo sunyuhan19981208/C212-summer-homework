@@ -70,7 +70,7 @@ class CreateExam extends React.Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         httpServer({
-          url: URL.create_exam
+          url: URL.create_exam,
         }, {
           className: values.className,
           paperId: values.paperId,
@@ -81,6 +81,7 @@ class CreateExam extends React.Component {
       }
     });
   }
+
 
   render() {
     const { getFieldDecorator } = this.props.form;

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Menu, Icon, Button,Layout,Typography} from 'antd';
-import {Sider,Content,Header} from 'antd/lib/layout';
+const {Sider,Content,Header}=Layout;
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 import { connect } from 'react-redux'
@@ -11,7 +11,7 @@ import * as subjectinfoActions from '../../actions/subjectinfo'
 import * as classinfoActions from '../../actions/classinfo'
 
 //路由组件
-import { Route,Link,Switch  } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 
 //头部条
 import HeaderBar from './header_bar'
@@ -55,110 +55,110 @@ import * as URL from '@components/interfaceURL.js'
 
 
 class Main extends React.Component {
-	constructor(){
+	constructor() {
 		super();
 		this.state = {
-			defaultOpenKeys : [],//菜单默认打开项
-			defaultSelectedKeys : [],//菜单默认选择项
+			defaultOpenKeys: [],//菜单默认打开项
+			defaultSelectedKeys: [],//菜单默认选择项
 			openKeys: [],//菜单打开项
-			subjectArr:[],//科目数组
-			roleSet : '',
+			subjectArr: [],//科目数组
+			roleSet: '',
 		}
-		this.rootSubmenuKeys = ['q_checkin', 'student_manage','teacher_manage','paper_manage','personal_center','class_manage'];
+		this.rootSubmenuKeys = ['q_checkin', 'student_manage', 'teacher_manage', 'paper_manage', 'personal_center', 'class_manage'];
 	}
 
 	//根据路由判断 用户选择了菜单中的哪一项
-	whoIsChecked(){
-		if(this.props.location.pathname.indexOf('/main/q_checkin') != -1) {//试题录入
-			this.setState({defaultOpenKeys : ['q_checkin']})
-			this.setState({openKeys : ['q_checkin']})
+	whoIsChecked() {
+		if (this.props.location.pathname.indexOf('/main/q_checkin') != -1) {//试题录入
+			this.setState({ defaultOpenKeys: ['q_checkin'] })
+			this.setState({ openKeys: ['q_checkin'] })
 			let arr = this.props.location.pathname.split('/');
-			let str = arr[arr.length-2] + '_' + arr[arr.length-1];
-			this.setState({defaultSelectedKeys : [str]})
+			let str = arr[arr.length - 2] + '_' + arr[arr.length - 1];
+			this.setState({ defaultSelectedKeys: [str] })
 		}
-		else if(this.props.location.pathname.indexOf('/main/choose_questions') != -1) {//试题查询
-			this.setState({defaultSelectedKeys : ['choose_questions']})
+		else if (this.props.location.pathname.indexOf('/main/choose_questions') != -1) {//试题查询
+			this.setState({ defaultSelectedKeys: ['choose_questions'] })
 		}
-		else if(this.props.location.pathname.indexOf('/main/score_search') != -1) {//成绩查询
-			this.setState({defaultSelectedKeys : ['score_search']})
+		else if (this.props.location.pathname.indexOf('/main/score_search') != -1) {//成绩查询
+			this.setState({ defaultSelectedKeys: ['score_search'] })
 		}
-		else if(this.props.location.pathname.indexOf('/main/student_manage') != -1) {//学生管理
-			this.setState({defaultOpenKeys : ['student_manage']})
-			this.setState({openKeys : ['student_manage']})
+		else if (this.props.location.pathname.indexOf('/main/student_manage') != -1) {//学生管理
+			this.setState({ defaultOpenKeys: ['student_manage'] })
+			this.setState({ openKeys: ['student_manage'] })
 			let arr = this.props.location.pathname.split('/');
-			let str = arr[arr.length-1];
-			this.setState({defaultSelectedKeys : [str]})
+			let str = arr[arr.length - 1];
+			this.setState({ defaultSelectedKeys: [str] })
 		}
-		else if(this.props.location.pathname.indexOf('/main/teacher_manage') != -1) {//教师管理
-			this.setState({defaultOpenKeys : ['teacher_manage']})
-			this.setState({openKeys : ['teacher_manage']})
+		else if (this.props.location.pathname.indexOf('/main/teacher_manage') != -1) {//教师管理
+			this.setState({ defaultOpenKeys: ['teacher_manage'] })
+			this.setState({ openKeys: ['teacher_manage'] })
 			let arr = this.props.location.pathname.split('/');
-			let str = arr[arr.length-1];
-			this.setState({defaultSelectedKeys : [str]})
+			let str = arr[arr.length - 1];
+			this.setState({ defaultSelectedKeys: [str] })
 		}
-		else if(this.props.location.pathname.indexOf('/main/class_manage') != -1) {//班级管理
-			this.setState({defaultOpenKeys : ['class_manage']})
-			this.setState({openKeys : ['class_manage']})
+		else if (this.props.location.pathname.indexOf('/main/class_manage') != -1) {//班级管理
+			this.setState({ defaultOpenKeys: ['class_manage'] })
+			this.setState({ openKeys: ['class_manage'] })
 			let arr = this.props.location.pathname.split('/');
-			let str = arr[arr.length-1];
-			this.setState({defaultSelectedKeys : [str]})
+			let str = arr[arr.length - 1];
+			this.setState({ defaultSelectedKeys: [str] })
 		}
-		else if(this.props.location.pathname.indexOf('/main/paper_manage') != -1) {//考试管理
-			this.setState({defaultOpenKeys : ['paper_manage']})
-			this.setState({openKeys : ['paper_manage']})
+		else if (this.props.location.pathname.indexOf('/main/paper_manage') != -1) {//考试管理
+			this.setState({ defaultOpenKeys: ['paper_manage'] })
+			this.setState({ openKeys: ['paper_manage'] })
 			let arr = this.props.location.pathname.split('/');
-			let str = arr[arr.length-1];
-			this.setState({defaultSelectedKeys : [str]})
-			if(this.props.location.pathname.indexOf('scoring') != -1) {
-				this.setState({defaultSelectedKeys : ['scoring']})
+			let str = arr[arr.length - 1];
+			this.setState({ defaultSelectedKeys: [str] })
+			if (this.props.location.pathname.indexOf('scoring') != -1) {
+				this.setState({ defaultSelectedKeys: ['scoring'] })
 			}
 		}
-		else if(this.props.location.pathname.indexOf('/main/personal_center') != -1) {//个人中心
-			this.setState({defaultOpenKeys : ['personal_center']})
-			this.setState({openKeys : ['personal_center']})
+		else if (this.props.location.pathname.indexOf('/main/personal_center') != -1) {//个人中心
+			this.setState({ defaultOpenKeys: ['personal_center'] })
+			this.setState({ openKeys: ['personal_center'] })
 			let arr = this.props.location.pathname.split('/');
-			let str = arr[arr.length-1];
-			this.setState({defaultSelectedKeys : [str]})
+			let str = arr[arr.length - 1];
+			this.setState({ defaultSelectedKeys: [str] })
 		}
 	}
 
-	componentWillMount(){
+	componentWillMount() {
 		//判断用户是否已经登录
-		if(!localStorage.getItem("username")) {
+		if (!localStorage.getItem("username")) {
 			this.props.history.push('/login');//跳转至登录页
 		}
 
-		this.setState({roleSet : localStorage.getItem("roleSet")})
+		this.setState({ roleSet: localStorage.getItem("roleSet") })
 
 		//获取科目信息
 		httpServer({
-			method : 'get',
-			url : URL.subject_info,
-		},{
-			className : 'SubjectInfoServiceImpl'
+			method: 'get',
+			url: URL.subject_info,
+		}, {
+			className: 'SubjectInfoServiceImpl'
 		})
-		.then((res)=>{
-			this.setState({subjectArr : res.data.data})
-			//状态存储
-			this.props.subjectinfoActions.setSubjectInfo({
-				subjectArr: this.state.subjectArr
+			.then((res) => {
+				this.setState({ subjectArr: res.data.data })
+				//状态存储
+				this.props.subjectinfoActions.setSubjectInfo({
+					subjectArr: this.state.subjectArr
+				})
 			})
-		})
 
 		//获取班级信息
 		httpServer({
-      method : 'get',
-      url : URL.get_class_info
-    },{
-      className : 'ClassServiceImpl',
-      type : 5
-    })
-    .then((res)=>{
-			//状态存储
-			this.props.classinfoActions.setClassInfo({
-				classArr: res.data.data
+			method: 'get',
+			url: URL.get_class_info
+		}, {
+			className: 'ClassServiceImpl',
+			type: 5
+		})
+			.then((res) => {
+				//状态存储
+				this.props.classinfoActions.setClassInfo({
+					classArr: res.data.data
+				})
 			})
-    })
 
 		//菜单选择情况
 		this.whoIsChecked();
@@ -179,12 +179,12 @@ class Main extends React.Component {
 	render(){
 		//动态渲染科目信息，试题目录子目录
 		let subjectArr = [];
-		this.state.subjectArr.forEach((item)=>{
+		this.state.subjectArr.forEach((item) => {
 			subjectArr.push(
-				<MenuItemGroup key={"subject"+item.subjectid} title={item.subjectname}>
-					<Menu.Item key={item.subjectid+"_1"}><Link to={"/main/q_checkin/"+item.subjectid+"/1"}>语文</Link></Menu.Item>
-					<Menu.Item key={item.subjectid+"_2"}><Link to={"/main/q_checkin/"+item.subjectid+"/2"}>数学</Link></Menu.Item>
-					<Menu.Item key={item.subjectid+"_3"}><Link to={"/main/q_checkin/"+item.subjectid+"/3"}>英语</Link></Menu.Item>
+				<MenuItemGroup key={"subject" + item.subjectid} title={item.subjectname}>
+					<Menu.Item key={item.subjectid + "_1"}><Link to={"/main/q_checkin/" + item.subjectid + "/1"}>语文</Link></Menu.Item>
+					<Menu.Item key={item.subjectid + "_2"}><Link to={"/main/q_checkin/" + item.subjectid + "/2"}>数学</Link></Menu.Item>
+					<Menu.Item key={item.subjectid + "_3"}><Link to={"/main/q_checkin/" + item.subjectid + "/3"}>英语</Link></Menu.Item>
 				</MenuItemGroup>
 			)
 		})
@@ -231,8 +231,8 @@ class Main extends React.Component {
 
 							{/* 学生管理 */}
 							<SubMenu key="student_manage" title={<span><Icon type="usergroup-add" /><span>学生管理</span></span>}>
-									<Menu.Item key="add_student"><Link to="/main/student_manage/add_student">添加学生</Link></Menu.Item>
-									<Menu.Item key="query_student"><Link to="/main/student_manage/query_student">查询学生</Link></Menu.Item>
+								<Menu.Item key="add_student"><Link to="/main/student_manage/add_student">添加学生</Link></Menu.Item>
+								<Menu.Item key="query_student"><Link to="/main/student_manage/query_student">查询学生</Link></Menu.Item>
 							</SubMenu>
 									
 							{/* 教师管理 */}		
@@ -241,7 +241,7 @@ class Main extends React.Component {
 									<Menu.Item key="add_teacher"><Link to="/main/teacher_manage/add_teacher">添加教师</Link></Menu.Item>
 									<Menu.Item key="query_teacher"><Link to="/main/teacher_manage/query_teacher">查询教师</Link></Menu.Item>
 								</SubMenu> :
-								''
+									''
 							}
 
 							{/* 班级管理 */}		
@@ -312,19 +312,19 @@ class Main extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return {
-        subjectinfo: state.subjectinfo
-    }
+	return {
+		subjectinfo: state.subjectinfo
+	}
 }
 
 function mapDispatchToProps(dispatch) {
-    return {
-        subjectinfoActions: bindActionCreators(subjectinfoActions, dispatch),
-				classinfoActions: bindActionCreators(classinfoActions, dispatch),
-    }
+	return {
+		subjectinfoActions: bindActionCreators(subjectinfoActions, dispatch),
+		classinfoActions: bindActionCreators(classinfoActions, dispatch),
+	}
 }
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+	mapStateToProps,
+	mapDispatchToProps
 )(Main)

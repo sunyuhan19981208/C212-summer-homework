@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/euraka-server/euraka-server.iml" filepath="$PROJECT_DIR$/euraka-server/euraka-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-exam/service-exam.iml" filepath="$PROJECT_DIR$/service-exam/service-exam.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-feign/service-feign.iml" filepath="$PROJECT_DIR$/service-feign/service-feign.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-resources/service-resources.iml" filepath="$PROJECT_DIR$/service-resources/service-resources.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-ribbon/service-ribbon.iml" filepath="$PROJECT_DIR$/service-ribbon/service-ribbon.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-user/service-user.iml" filepath="$PROJECT_DIR$/service-user/service-user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/service-zuul/service-zuul.iml" filepath="$PROJECT_DIR$/service-zuul/service-zuul.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springCloudLearn.iml" filepath="$PROJECT_DIR$/springCloudLearn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test/test.iml" filepath="$PROJECT_DIR$/test/test.iml" />
+    </modules>
+  </component>
+</project>
