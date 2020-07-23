@@ -52,7 +52,7 @@ class HeaderBar extends React.Component {
         theme="dark"
         onClick={this.handleClick.bind(this)}>
         <Menu.Item key="h" ><Icon type="search"/><span className="h2">在线考试平台</span></Menu.Item>        
-
+        {/* <img className="logo" src={require("@assets/images/logo.jpg")}/> */}
         <SubMenu title={<span><Icon type="user" />{this.props.userinfo.username}</span>} >
             <Menu.Item key="sign_out"><Link to="/login">退出</Link></Menu.Item>
             <Menu.Item key="change_password"><Link to="/main/personal_center/change_password">修改密码</Link></Menu.Item>

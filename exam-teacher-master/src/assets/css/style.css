@@ -161,11 +161,17 @@
 } */
 
 /* content */
-.site-layout-background {
+.ant-layout-content {
     width: auto;
     height: 70%;
     background: #fff;
+    overflow-y: auto;
 }
+.ant-layout-content .right-box{
+  display: inline-block;
+  width: 100%;   
+}
+
 /* Header */
 .ant-layout-header ul{
     padding: 10px;
@@ -305,19 +311,21 @@
   border-right : none;
 }
 
-.right-box {
+
+/* .right-box {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   min-width: 700px;
   padding: 20px 20px 0;
   position: absolute;
-  top: 0;
+  top:0;
   left: 200px;
   right: 0;
   bottom: 0;
   overflow-y: auto;
-}
+} */
+
 .top-bar {
   border: 0;
   border-bottom: 1px solid #e8e8e8;
@@ -325,10 +333,10 @@
   box-shadow: none;
   line-height: 46px;
 }
-.right-box .user-menu {
+/* .right-box .user-menu {
   cursor: pointer;
   padding: 0 20px;
-}
+} */
 
 .el-button--text {
   color: #000
