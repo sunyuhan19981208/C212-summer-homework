@@ -35,7 +35,7 @@
       <module name="service-exam" options="-parameters" />
       <module name="service-feign" options="" />
       <module name="service-resources" options="-parameters" />
-      <module name="service-ribbon" options="" />
+      <module name="service-ribbon" options="-parameters" />
       <module name="service-user" options="-parameters" />
       <module name="service-zuul" options="" />
       <module name="springCloudLearn" options="-parameters" />

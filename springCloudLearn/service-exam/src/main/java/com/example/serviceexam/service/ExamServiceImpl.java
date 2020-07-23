@@ -30,4 +30,9 @@ public class ExamServiceImpl implements ExamService{
         return examId;
     }
 
+    @Override
+    public List<Exam> selectExamByClassName(String className) {
+        return examMapper.selectExamByClassName(className);
+    }
+
 }

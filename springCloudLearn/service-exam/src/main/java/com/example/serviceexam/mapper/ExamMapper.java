@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -19,4 +20,6 @@ public interface ExamMapper {
     @Insert("insert into exam(examId, examName,startTime ,endTime ,paperId,className )VALUES(#{examId}, #{examName},#{startTime} ,#{endTime} ,#{paperId} ,#{className}  ) ")
     void createExam(@Param("examId")int examId,@Param("examName")String examName,@Param("startTime")String startTime,
                     @Param("endTime")String endTime,@Param("paperId")int paperId,@Param("className")String className);
+    @Select("select * from exam where className=#{className}")
+    List<Exam>selectExamByClassName(@Param("className")String className);
 }
