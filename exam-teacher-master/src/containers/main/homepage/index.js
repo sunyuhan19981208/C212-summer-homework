@@ -45,11 +45,11 @@ export default class Homepage extends React.Component {
             <FastEnterCard title="班级管理" icon="layout"></FastEnterCard>
           </Link>
         </div>
-        <div className="fast-enter-card">
+        {/* <div className="fast-enter-card">
           <Link to="/main/paper_manage/scoring">
             <FastEnterCard title="在线阅卷  " icon="desktop"></FastEnterCard>
           </Link>
-        </div>
+        </div> */}
       </div>
     )
   }

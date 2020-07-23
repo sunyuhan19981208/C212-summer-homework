@@ -165,7 +165,7 @@ class ChooseQuestions extends React.Component {
     return (
       <div>
         <BreadcrumbCustom pathList={this.state.pathList}></BreadcrumbCustom>
-        <div className="choose-questions-content" style={{ background: '#F5F5F5', padding: '30px' }}>
+        <div className="choose-questions-content" style={{ background: 'rgba(240,242,245,0.4)', padding: '30px' }}>
           <Form onSubmit={this.handleSubmit.bind(this)} className="ant-advanced-search-form">
             <Row>
               <Col span={8}>

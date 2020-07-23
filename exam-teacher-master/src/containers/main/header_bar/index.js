@@ -1,6 +1,7 @@
 import React from 'react'
 
-import { Menu, Icon, Button } from 'antd';
+import { Menu, Icon,Typography } from 'antd';
+
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
@@ -48,12 +49,15 @@ class HeaderBar extends React.Component {
     return(
       <Menu
         mode="horizontal"
-        onClick={this.handleClick.bind(this)}
-      >
-        <SubMenu title={<span><Icon type="user" />{this.props.userinfo.username}</span>}>
+        theme="dark"
+        onClick={this.handleClick.bind(this)}>
+        <Menu.Item key="h" ><Icon type="search"/><span className="h2">在线考试平台</span></Menu.Item>        
+
+        <SubMenu title={<span><Icon type="user" />{this.props.userinfo.username}</span>} >
             <Menu.Item key="sign_out"><Link to="/login">退出</Link></Menu.Item>
             <Menu.Item key="change_password"><Link to="/main/personal_center/change_password">修改密码</Link></Menu.Item>
-        </SubMenu>
+        </SubMenu>   
+
       </Menu>
     )
   }
