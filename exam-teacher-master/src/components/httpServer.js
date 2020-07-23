@@ -20,14 +20,14 @@ axios.interceptors.response.use(response => {
 function successState(res) {
   //这里可以隐藏loading
   //统一判断后端返回的错误码
-  if(res.data.respCode === 1){
+  if(res.data.respCode == "1"){
     if(res.data.respMsg) {
       message.success(res.data.respMsg);
     }
   }
   else {
     if(res.data.respMsg) {
-      Modal.error({
+      Modal.error({ 
         title: '出错了',
         content: res.data.respMsg,
         okText : '确定'
