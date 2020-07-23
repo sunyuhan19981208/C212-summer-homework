@@ -16,7 +16,8 @@ class Login extends React.Component {
 	constructor() {
 		super()
 		this.state = {
-			loginTip: ''
+			loginTip: '',
+			userId: ""
 		}
 	}
 
@@ -30,35 +31,30 @@ class Login extends React.Component {
 					username: values.username,
 					password: values.password
 				}, (res) => {
-					if (res === "老师") {//登录成功
+					if (res.data.respCode === 1) {//登录成功
 						//发送Action  向Store 写入用户名和密码
+						//this.state.userId = res.userId;
 						this.props.userinfoActions.login({
 							username: values.username
 						})
 
 						//本地存储用户名
 						localStorage.setItem("username", values.username);
+						//localStorage.setItem("userId", this.state.userId);
 						// localStorage.setItem("roleSet",res.roleSet[0])
 
 						//跳转主页
-						this.props.history.push('/main/homepage');//react-router 4.0 写法
+						if (res.data.level === "老师") {
+							this.props.history.push('/main/homepage');
+						}
+						else if(res.data.level === "学生") {
+							this.props.history.push('/student_master/homepage')
+						}
 					}
-					else if (res === "学生") {//登录成功
-						//发送Action  向Store 写入用户名和密码
-						this.props.userinfoActions.login({
-							username: values.username
-						})
-
-						//本地存储用户名
-						localStorage.setItem("username", values.username);
-
-						//跳转主页
-						this.props.history.push('/student_master/homepage');//react-router 4.0 写法
-					}
-					else if (res.respCode === "0") {//登录失败
+					else if (res.data.respCode === 0) {//登录失败
 						this.setState({ loginTip: "登录名或密码错误" })
 					}
-					else if (res.respCode === "-1") { //系统错误
+					else if (res.data.respCode === -1) { //系统错误
 						this.setState({ loginTip: "系统出错了，请稍等~" })
 					}
 				}, (err) => {

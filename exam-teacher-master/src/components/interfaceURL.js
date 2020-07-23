@@ -91,7 +91,7 @@ export const get_paperId = baseUrl;
 
 
 //管理员登录
-export const  login = "http://39.107.84.0:8762/login";
+export const login = "http://39.107.84.0:8762/login";
 //得到科目信息
 export const subject_info = "data/subject_info.json";
 //得到班级信息

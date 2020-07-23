@@ -15,6 +15,9 @@ import HeaderBar from './header_bar/index.js'
 //首页
 import Homepage from './homepage/index.js'
 
+//答题卡
+import ExamCard from './exam_card/index.js'
+
 //个人中心
 import ChangePassword from './personal_center/change_password';
 
@@ -123,6 +126,8 @@ class StuMaster extends React.Component {
                             <Route path="/student_master/homepage" component={Homepage} />
                             {/* 个人中心 */}
                             <Route path="/student_master/personal_center/change_password" component={ChangePassword} />
+                            {/* 答题卡 */}
+                            <Route path="/student_master/exam_card" component={ExamCard} />
 
                         </Switch>
                     </div>
