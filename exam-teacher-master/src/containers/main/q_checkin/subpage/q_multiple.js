@@ -47,10 +47,9 @@ class QMultiple extends React.Component {
             choice=choice+values[variable]+",";
           }
         }
-        alert(choice);
         let answer ="";
-        for(let ra in this.state.rightAnswer)
-          answer+=ra;
+        for(let i=0;i<this.state.rightAnswer.length;i++)
+          answer+=this.state.rightAnswer[i]+",";
 
         //提交题目信息
         httpServer({
