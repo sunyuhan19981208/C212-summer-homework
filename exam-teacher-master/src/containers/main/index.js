@@ -1,8 +1,8 @@
 import React from 'react'
-import { Menu, Icon, Button } from 'antd';
+import { Menu, Icon, Button,Layout,Typography} from 'antd';
+import {Sider,Content,Header} from 'antd/lib/layout';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
-
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -51,6 +51,8 @@ import ChangePassword from './personal_center/change_password';
 
 import httpServer from '@components/httpServer.js'
 import * as URL from '@components/interfaceURL.js'
+
+
 
 class Main extends React.Component {
 	constructor(){
@@ -175,7 +177,7 @@ class Main extends React.Component {
   }
 
 	render(){
-		//动态渲染科目信息
+		//动态渲染科目信息，试题目录子目录
 		let subjectArr = [];
 		this.state.subjectArr.forEach((item)=>{
 			subjectArr.push(
@@ -187,39 +189,53 @@ class Main extends React.Component {
 			)
 		})
 
-
-		return(
-			<div>
-				<div id="leftMenu">
-					{/* <img className="logo" src="/sxt_exam/lqw/images/logo.jpg"/> */}
-					<img className="logo" src={require("@assets/images/logo.jpg")}/>
-					<div>
-		        <Menu
-		          mode="inline"
+		
+		return(            
+			<Layout>
+				<Header className="header">
+					<HeaderBar></HeaderBar>
+				</Header>
+				<Layout>
+					{/* <div id="leftMenu">     */}
+					{/* <img className="logo" src={require("@assets/images/logo.jpg")}/> */}
+					<Sider>	
+						{/* <div><img className="logo" src={require("@assets/images/logo.jpg")}/></div>	 */}
+						<Menu
+							mode="inline"
 							defaultOpenKeys={this.state.defaultOpenKeys}
 							defaultSelectedKeys={this.state.defaultSelectedKeys}
 							openKeys={this.state.openKeys}
-        			onOpenChange={this.onOpenChange.bind(this)}
-		        >
+							onOpenChange={this.onOpenChange.bind(this)}
+							style={{ height: '100%', borderRight: 0 }}>
+							
+							<div><img className="logo" src={require("@assets/images/logo.jpg")}/></div>	
+							{/* 试题录入 */}
 							<SubMenu key="q_checkin" title={<span><Icon type="form" /><span>试题录入</span></span>}>
 								{subjectArr}
 							</SubMenu>
+							
+							{/* 出卷 */}
 							<Menu.Item key="choose_questions">
 								<Link to="/main/choose_questions">
-			            <Icon type="profile" />
-			            <span>出卷</span>
+									<Icon type="profile" />
+									<span>出卷</span>
 								</Link>
-		          </Menu.Item>
-		          <Menu.Item key="score_search">
+							</Menu.Item>
+							{/* 成绩查询 */}
+							<Menu.Item key="score_search">
 								<Link to="/main/score_search">
-			            <Icon type="search" />
-			            <span>成绩查询</span>
+									<Icon type="search" />
+									<span>成绩查询</span>
 								</Link>
-		          </Menu.Item>
+							</Menu.Item>
+
+							{/* 学生管理 */}
 							<SubMenu key="student_manage" title={<span><Icon type="usergroup-add" /><span>学生管理</span></span>}>
 									<Menu.Item key="add_student"><Link to="/main/student_manage/add_student">添加学生</Link></Menu.Item>
 									<Menu.Item key="query_student"><Link to="/main/student_manage/query_student">查询学生</Link></Menu.Item>
 							</SubMenu>
+									
+							{/* 教师管理 */}		
 							{
 								this.state.roleSet == '1' ? <SubMenu key="teacher_manage" title={<span><Icon type="user-add" /><span>教师管理</span></span>}>
 									<Menu.Item key="add_teacher"><Link to="/main/teacher_manage/add_teacher">添加教师</Link></Menu.Item>
@@ -227,59 +243,71 @@ class Main extends React.Component {
 								</SubMenu> :
 								''
 							}
+
+							{/* 班级管理 */}		
 							<SubMenu key="class_manage" title={<span><Icon type="layout" /><span>班级管理</span></span>}>
 								<Menu.Item key="add_class"><Link to="/main/class_manage/add_class">添加班级</Link></Menu.Item>
 								<Menu.Item key="query_class"><Link to="/main/class_manage/query_class">查询班级</Link></Menu.Item>
 							</SubMenu>
+							
+							{/* 考试管理 */}		
 							<SubMenu key="paper_manage" title={<span><Icon type="desktop" /><span>考试管理</span></span>}>
 								<Menu.Item key="create_exam"><Link to="/main/paper_manage/create_exam">创建考试</Link></Menu.Item>
 								<Menu.Item key="scoring"><Link to="/main/paper_manage/scoring">在线阅卷</Link></Menu.Item>
 							</SubMenu>
+							
+							{/* 个人中心 */}		
 							<SubMenu key="personal_center" title={<span><Icon type="user" /><span>个人中心</span></span>}>
 								<Menu.Item key="change_password"><Link to="/main/personal_center/change_password">修改密码</Link></Menu.Item>
 							</SubMenu>
-		        </Menu>
-		      </div>
-				</div>
-				<div id="rightWrap">
-					<HeaderBar></HeaderBar>
-					<div className="right-box">
-						<Switch>
-							{/* 主页 */}
-							<Route path="/main/homepage" component={Homepage}/>
+						</Menu>
+					</Sider>		
+				
+					<Layout style={{ padding: '30px 20px' }}> 
+						<Content className="site-layout-background" style={{padding: 24,margin: 0,minHeight: 280,}}>					
+							
+							<div className="right-box">
+								<Switch>
+									{/* 主页 */}
+									<Route path="/main/homepage" component={Homepage}/>
 
-							{/* 试题录入 */}
-							<Route path="/main/q_checkin/:type/:level" component={QCheckin}/>
+									{/* 试题录入 */}
+									<Route path="/main/q_checkin/:type/:level" component={QCheckin}/>
 
-							<Route path="/main/choose_questions" component={ChooseQuestions}/>
-							<Route path="/main/score_search" component={ScoreSearch}/>
+									<Route path="/main/choose_questions" component={ChooseQuestions}/>
+									<Route path="/main/score_search" component={ScoreSearch}/>
 
-							{/* 学生管理 */}
-							<Route path="/main/student_manage/add_student" component={AddStudent}/>
-							<Route path="/main/student_manage/query_student" component={QueryStudent}/>
+									{/* 学生管理 */}
+									<Route path="/main/student_manage/add_student" component={AddStudent}/>
+									<Route path="/main/student_manage/query_student" component={QueryStudent}/>
 
-							{/* 教师管理 */}
-							<Route path="/main/teacher_manage/add_teacher" component={AddTeacher}/>
-							<Route path="/main/teacher_manage/query_teacher" component={QueryTeacher}/>
+									{/* 教师管理 */}
+									<Route path="/main/teacher_manage/add_teacher" component={AddTeacher}/>
+									<Route path="/main/teacher_manage/query_teacher" component={QueryTeacher}/>
 
-							{/* 班级管理 */}
-							<Route path="/main/class_manage/add_class" component={AddClass}/>
-							<Route path="/main/class_manage/query_class" component={QueryClass}/>
+									{/* 班级管理 */}
+									<Route path="/main/class_manage/add_class" component={AddClass}/>
+									<Route path="/main/class_manage/query_class" component={QueryClass}/>
 
-							{/* 考试管理 */}
-							<Route path="/main/paper_manage/create_exam" component={CreateExam}/>
-							<Route path="/main/paper_manage/scoring/all_papers/reading_paper/:paperId/:classId/:instId" component={ReadingPaper}/>
-							<Route path="/main/paper_manage/scoring/all_papers/:paperId/:classId/:managerId" component={AllPapers}/>
-							<Route path="/main/paper_manage/scoring" component={ScoringPaper}/>
+									{/* 考试管理 */}
+									<Route path="/main/paper_manage/create_exam" component={CreateExam}/>
+									<Route path="/main/paper_manage/scoring/all_papers/reading_paper/:paperId/:classId/:instId" component={ReadingPaper}/>
+									<Route path="/main/paper_manage/scoring/all_papers/:paperId/:classId/:managerId" component={AllPapers}/>
+									<Route path="/main/paper_manage/scoring" component={ScoringPaper}/>
 
-							{/* 个人中心 */}
-							<Route path="/main/personal_center/change_password" component={ChangePassword}/>
+									{/* 个人中心 */}
+									<Route path="/main/personal_center/change_password" component={ChangePassword}/>
 
-						</Switch>
-          </div>
-				</div>
-			</div>
+								</Switch>
+          					</div> 
+						</Content>
+					</Layout>
+				</Layout>
+			</Layout>
 		)
+
+
+
 	}
 }
 
