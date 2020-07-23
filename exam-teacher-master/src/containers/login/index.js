@@ -45,6 +45,7 @@ class Login extends React.Component {
 						// localStorage.setItem("roleSet",res.roleSet[0])
 
 						//跳转主页
+						alert(res.data.level);
 						if (res.data.level === "老师") {
 							this.props.history.push('/main/homepage');
 						}

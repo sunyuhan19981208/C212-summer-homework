@@ -48,6 +48,9 @@ class QMultiple extends React.Component {
           }
         }
         alert(choice);
+        let answer ="";
+        for(let ra in this.state.rightAnswer)
+          answer+=ra;
 
         //提交题目信息
         httpServer({
@@ -60,7 +63,7 @@ class QMultiple extends React.Component {
           questionStem : values.tigan,
           // imageSrc : '',
           type : 2,
-          answer : this.state.rightAnswer,
+          answer : answer,
           choice : choice,
           choiceType : 1
         })
