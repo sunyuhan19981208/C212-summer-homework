@@ -17,7 +17,7 @@ class Login extends React.Component {
 		super()
 		this.state = {
 			loginTip: '',
-			userId: ""
+
 		}
 	}
 
@@ -33,14 +33,15 @@ class Login extends React.Component {
 				}, (res) => {
 					if (res.data.respCode === 1) {//登录成功
 						//发送Action  向Store 写入用户名和密码
-						//this.state.userId = res.userId;
 						this.props.userinfoActions.login({
-							username: values.username
+							username: values.username,
+							classOfCurStudent:res.data.className,
+							//userId:res.data.userId
 						})
 
 						//本地存储用户名
 						localStorage.setItem("username", values.username);
-						//localStorage.setItem("userId", this.state.userId);
+						//localStorage.setItem("userId", res.data.userId);
 						// localStorage.setItem("roleSet",res.roleSet[0])
 
 						//跳转主页
@@ -48,6 +49,7 @@ class Login extends React.Component {
 							this.props.history.push('/main/homepage');
 						}
 						else if(res.data.level === "学生") {
+							localStorage.setItem("classOfCurStudent",res.data.className)
 							this.props.history.push('/student_master/homepage')
 						}
 					}

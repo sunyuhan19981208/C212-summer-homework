@@ -143,6 +143,8 @@ export const add_teacher = "data/add_teacher.json";
 
 //创建考试
 export const create_exam = "http://39.107.84.0:8763/createExam";
+//获得试卷题目
+export const get_paper = "http://39.107.84.0:8763/getExamByClassName";
 
 //查询试卷（得到一页数据）
 export const get_papers = "data/get_papers.json";

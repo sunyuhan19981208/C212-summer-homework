@@ -60,20 +60,6 @@ class StuMaster extends React.Component {
 
         this.setState({ roleSet: localStorage.getItem("roleSet") })
 
-        //获取班级信息
-        httpServer({
-            method: 'get',
-            url: URL.get_class_info
-        }, {
-            //type: 5
-        })
-            .then((res) => {
-                //状态存储
-                this.props.classinfoActions.setClassInfo({
-                    classArr: res.data.data
-                })
-            })
-
         //菜单选择情况
         this.whoIsChecked();
     }
@@ -142,6 +128,12 @@ class StuMaster extends React.Component {
 }
 
 
+function mapStateToProps(state) {
+    return {
+        userinfo: state.userinfo
+    }
+}
+
 function mapDispatchToProps(dispatch) {
     return {
         classinfoActions: bindActionCreators(classinfoActions, dispatch),
@@ -149,5 +141,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(
+    mapStateToProps,
     mapDispatchToProps
 )(StuMaster)
