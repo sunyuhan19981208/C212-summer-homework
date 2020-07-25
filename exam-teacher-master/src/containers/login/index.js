@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, Popconfirm,notification } from 'antd';
 const FormItem = Form.Item;
 import { Link } from 'react-router-dom'
 
@@ -43,11 +43,10 @@ class Login extends React.Component {
 						localStorage.setItem("username", values.username);
 						//localStorage.setItem("userId", res.data.userId);
 						// localStorage.setItem("roleSet",res.roleSet[0])
-
-						//跳转主页
-						alert(res.data.level);
+							
+						//alert("hello"+res.data.level);   //使用加号连接
 						if (res.data.level === "老师") {
-							this.props.history.push('/main/homepage');
+							this.props.history.push('/main/homepage');	
 						}
 						else if(res.data.level === "学生") {
 							localStorage.setItem("classOfCurStudent",res.data.className)
@@ -56,9 +55,11 @@ class Login extends React.Component {
 					}
 					else if (res.data.respCode === 0) {//登录失败
 						this.setState({ loginTip: "登录名或密码错误" })
+						
 					}
 					else if (res.data.respCode === -1) { //系统错误
 						this.setState({ loginTip: "系统出错了，请稍等~" })
+						
 					}
 				}, (err) => {
 					console.log(err);
@@ -70,13 +71,15 @@ class Login extends React.Component {
 	}
 
 	render() {
+		
+			
 		const { getFieldDecorator } = this.props.form;
 		return (
 			<div className="login">
 				<div className="login-content-wrap">
 					<div className="login-content">
 						{/* <img className="logo" src="/sxt_exam/lqw/images/logo.jpg"/> */}
-						<img className="logo" src={require("@assets/images/logo.jpg")} />
+						<img className="logo" src={require("@assets/images/logo-bg.png")} />
 						<div className="login-from">
 							<div className="login-tip">{this.state.loginTip}</div>
 							<Form onSubmit={this.handleSubmit.bind(this)} className="login-form">
@@ -97,13 +100,15 @@ class Login extends React.Component {
 								<FormItem >
 									<Form.Item name="remember" valuePropName="checked" noStyle>
 										<Checkbox>Remember me</Checkbox>
-										<a className="login-form-forgot" href="">
-											Forgot password
-									</a>
+										<Popconfirm title="抱歉，请联系您的管理员修改密码！"  okText="Ok" cancelText="Sorry">
+											<a className="login-form-forgot" href="#">
+												Forgot password
+											</a>
+										</Popconfirm>
 									</Form.Item>
 								</FormItem>
 								<FormItem>
-									<Button type="primary" htmlType="submit" className="login-form-button">
+									<Button type="primary" htmlType="submit" className="login-form-button" >
 										登录
 									</Button>
 								</FormItem>

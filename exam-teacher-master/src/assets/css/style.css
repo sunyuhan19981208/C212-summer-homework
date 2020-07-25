@@ -45,8 +45,10 @@
   right: 0;
   width: 100%;
   /* background-image: url('/sxt_exam/lqw/images/login-bg-small.jpg'); */
-  background-image: url('../images/login-bg-small.jpg');
+  background-image: url('../images/b1.jpg');
   background-size: cover;
+  background-attachment:fixed;
+  background-position: 0% 80%; 
   min-height: 580px;
   min-width: 800px;
 }
@@ -83,10 +85,16 @@
   margin-top: 50px
 }
 
-/* 忘记密码 */
-.login .login-form-forgot{
-  float: right;
 
+.login .login-form-forgot{ /* 忘记密码 */
+  float: right;
+}
+.ant-popover .ant-popover-buttons .ant-btn-sm{ /* 隐藏气泡cancelText */
+  display: none;
+}
+.ant-popover .ant-popover-buttons .ant-btn-primary{
+  display: inline-block;
+  width: 50px;  
 }
 
 .login .login-form-button {
@@ -100,7 +108,6 @@
   margin-top: 50px
 }
 
-
 /* 解决chrome自动保存密码后input有蓝色背景的问题 */
 :-webkit-autofill {      
   -webkit-text-fill-color: black !important;
@@ -111,7 +118,6 @@
 .login .login-tip {
   color: red;
   margin-bottom: 10px;
-  
 }
 
 /* 使用layout代替 */
@@ -134,7 +140,7 @@
 .ant-layout-sider .logo {
   display: block;
   width: 130px;
-  margin: 50px auto;
+  margin: 40px auto;
 }
 
 .ant-layout-sider .ant-menu-inline {
@@ -172,25 +178,40 @@
   width: 100%;   
 }
 
-/* Header */
+/* Header头部菜单栏 */
 .ant-layout-header ul{
     padding: 10px;
 }
 
-.ant-layout-header .h2{
-  font-size: 20px;
-  letter-spacing: 2px;
+.ant-layout-header .ant-menu-item.h1{
+  position: absolute;
+  left:0;
+  padding-top: 9px;
+  
+  padding-left: 15px;
+}
+.ant-layout-header .ant-menu-item.h2{
+  /* padding-top: 10px; */
+  position: relative;
+  float:left;
 }
 
-.ant-layout-header .ant-menu-item{
-  padding-top: 10px;
-  position: absolute;
-  left: 0;
+.ant-layout-header .ant-menu-item .tlogo{
+  width: 45px;
+  height: 36px;
+}
+.ant-layout-header .ant-menu-item .title{
+  width: 170px;
+  height: 32px;
 }
 .ant-layout-header .ant-menu-submenu{
     position: relative;
     float: right;
-
+}
+.ant-layout-header .ant-menu-submenu img{
+  width: 25px;
+  height: 20px;
+  padding-right: 5px;
 }
 
 /* 面包屑 */

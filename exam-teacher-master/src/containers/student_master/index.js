@@ -82,7 +82,7 @@ class StuMaster extends React.Component {
             <div>
                 <div id="leftMenu">
                     {/* <img className="logo" src="/sxt_exam/lqw/images/logo.jpg"/> */}
-                    <img className="logo" src={require("@assets/images/logo.jpg")} />
+                    <img className="logo" src={require("@assets/images/logo-bg.png")} />
                     <div>
                         <Menu
                             mode="inline"

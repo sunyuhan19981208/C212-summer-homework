@@ -123,6 +123,8 @@ class Main extends React.Component {
 	}
 
 	componentWillMount() {
+
+		document.title = this.props.title;
 		//判断用户是否已经登录
 		if (!localStorage.getItem("username")) {
 			this.props.history.push('/login');//跳转至登录页
@@ -208,7 +210,7 @@ class Main extends React.Component {
 							onOpenChange={this.onOpenChange.bind(this)}
 							style={{ height: '100%', borderRight: 0 }}>
 							
-							<div><img className="logo" src={require("@assets/images/logo.jpg")}/></div>	
+							<div><img className="logo" src={require("@assets/images/logo-bg.png")}/></div>	
 							{/* 试题录入 */}
 							<SubMenu key="q_checkin" title={<span><Icon type="form" /><span>试题录入</span></span>}>
 								{subjectArr}
