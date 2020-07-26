@@ -41,7 +41,7 @@ class Login extends React.Component {
 
 						//本地存储用户名
 						localStorage.setItem("username", values.username);
-						//localStorage.setItem("userId", res.data.userId);
+						localStorage.setItem("userId", res.data.userId);
 						// localStorage.setItem("roleSet",res.roleSet[0])
 							
 						//alert("hello"+res.data.level);   //使用加号连接

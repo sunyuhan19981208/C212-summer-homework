@@ -6,21 +6,16 @@
     "className": "test班级1",
     "examName":"test考试1",
     "examDate": "2018-01-30",
-    "managerId": 1,
+    "teacherId":"1",
     "paperId": 2,
-    "status": 1,
-    "stuId": 0,
     "totalscore": 0
   },{
     "autoTotalScore": 0,
     "className": "test班级2",
     "examName":"test考试2",
     "examDate": "2018-02-30",
-    "instId": 13,
-    "managerId": 1,
+    "teacherId":"11",
     "paperId": 2,
-    "status": 1,
-    "stuId": 0,
     "totalscore": 0
   }]
 }

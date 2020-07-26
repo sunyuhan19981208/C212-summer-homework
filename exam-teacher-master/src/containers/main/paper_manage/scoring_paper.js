@@ -9,6 +9,7 @@ const confirm = Modal.confirm;
 //路由组件
 import { Link } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
+import { connect } from 'react-redux'
 
 import httpServer from '@components/httpServer.js';
 import * as URL from '@components/interfaceURL.js'
@@ -31,6 +32,20 @@ class ScoringPaper extends React.Component {
     this.searchKey = "1";
     this.turnStatus = "NORMAL"; //NORMAL:正常翻页   SEARCH:搜索翻页
     this.searchContent = ""; //搜索内容
+  }
+
+  componentWillMount() {
+    this.getPageDate();
+    //如果状态管理中没有内容（用户刷新网页）
+    //去取localStorage的用户名
+    // if(!this.props.userinfo.userId) {
+    //   if(localStorage.getItem("userId")) {
+    //     //发送Action  向Store 写入用户名
+    //     this.props.userinfoActions.login({
+    //       teacherId: localStorage.getItem("userId")
+    //     })
+    //   }
+    // }
   }
 
   //搜索类型
@@ -65,6 +80,7 @@ class ScoringPaper extends React.Component {
     httpServer({
       url: URL.get_papers
     }, {
+      teacherId: this.props.userinfo.userId,
       page: this.state.pagination.current,
       rows: this.state.pagination.pageSize,
       type: 1,
@@ -132,9 +148,7 @@ class ScoringPaper extends React.Component {
       })
   }
 
-  componentWillMount() {
-    this.getPageDate();
-  }
+
 
   //翻页
   handleTableChange(pagination, filters, sorter) {
@@ -173,7 +187,7 @@ class ScoringPaper extends React.Component {
   }
 
   render() {
-    const { getFieldDecorator } = this.props.form;
+    //const { getFieldDecorator } = this.props.form;
 
     let localeObj = {
       emptyText: '暂无数据'
@@ -202,7 +216,7 @@ class ScoringPaper extends React.Component {
         </span>
       ),
     },
-  ];
+    ];
 
 
 
@@ -237,10 +251,20 @@ class ScoringPaper extends React.Component {
             onChange={this.handleTableChange.bind(this)}
           />
         </div>
-        
+
       </div>
     )
   }
 }
 // export default Form.create()(ScoringPaper)
-export default withRouter(Form.create()(ScoringPaper));
+
+
+// connect(mapStateToProps,mapDispatchToProps);
+
+export default withRouter(
+  connect((state) => {
+    return {
+      userinfo: state.userinfo
+    }
+  })(ScoringPaper)
+);
