@@ -123,8 +123,8 @@ class Main extends React.Component {
 	}
 
 	componentWillMount() {
-
-		document.title = this.props.title;
+	
+		document.title = "在线考试平台";  //设置页面Title   this.props.title
 		//判断用户是否已经登录
 		if (!localStorage.getItem("username")) {
 			this.props.history.push('/login');//跳转至登录页
@@ -198,10 +198,7 @@ class Main extends React.Component {
 					<HeaderBar></HeaderBar>
 				</Header>
 				<Layout>
-					{/* <div id="leftMenu">     */}
-					{/* <img className="logo" src={require("@assets/images/logo.jpg")}/> */}
 					<Sider>	
-						{/* <div><img className="logo" src={require("@assets/images/logo.jpg")}/></div>	 */}
 						<Menu
 							mode="inline"
 							defaultOpenKeys={this.state.defaultOpenKeys}

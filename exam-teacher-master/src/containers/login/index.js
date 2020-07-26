@@ -1,5 +1,6 @@
 import React from 'react'
-import { Form, Icon, Input, Button, Checkbox, Popconfirm,notification } from 'antd';
+import { Form, Icon, Input, Button, Checkbox, Popconfirm,message,notification } from 'antd';
+//import {SmileOutlined} from "@ant-design/icons";
 const FormItem = Form.Item;
 import { Link } from 'react-router-dom'
 
@@ -23,6 +24,18 @@ class Login extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
+
+		const openNotification = () => {    //登录消息提醒
+					notification.open({
+					message: "Hello,"+this.props.userinfo.username ,
+					description:
+						"快乐的一天又开始了，请多注意休息哦。关注头发，拒绝秃头，从我做起！",
+					//icon: <SmileOutlined style={{ color: '#108ee9' } } />,
+					duration: 7,
+					className: 'ntf',
+					});
+			}
+
 		this.props.form.validateFields((err, values) => {
 			if (!err) {
 				axiosLogin({
@@ -38,6 +51,7 @@ class Login extends React.Component {
 							classOfCurStudent:res.data.className,
 							//userId:res.data.userId
 						})
+						openNotification();
 
 						//本地存储用户名
 						localStorage.setItem("username", values.username);
@@ -55,24 +69,22 @@ class Login extends React.Component {
 					}
 					else if (res.data.respCode === 0) {//登录失败
 						this.setState({ loginTip: "登录名或密码错误" })
+						message.error("登录名或密码错误,登录失败",3)
 						
 					}
 					else if (res.data.respCode === -1) { //系统错误
 						this.setState({ loginTip: "系统出错了，请稍等~" })
+						message.error("系统出错了，请稍等~",3)
 						
 					}
 				}, (err) => {
 					console.log(err);
 				});
-
-
 			}
 		});
 	}
 
-	render() {
-		
-			
+	render() {		
 		const { getFieldDecorator } = this.props.form;
 		return (
 			<div className="login">
@@ -108,7 +120,7 @@ class Login extends React.Component {
 									</Form.Item>
 								</FormItem>
 								<FormItem>
-									<Button type="primary" htmlType="submit" className="login-form-button" >
+									<Button type="primary" htmlType="submit" className="login-form-button"  >
 										登录
 									</Button>
 								</FormItem>
