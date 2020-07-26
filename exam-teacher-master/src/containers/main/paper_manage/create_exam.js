@@ -20,15 +20,22 @@ class CreateExam extends React.Component {
     this.state = {
       pathList: ['考试管理', '创建考试'],//面包屑路径
       className: "",
+      teacherId: "",
       gradeId: -1,
       subjectId: -1,
       paperIdList: [],
+      teacherList: [],
     }
   }
 
   //选择班级
   handleChange(value) {
     this.className = value;
+  }
+
+  //选择阅卷老师
+  teacherChange(value) {
+    this.teacherId = value;
   }
 
   //获取试卷编号
@@ -43,8 +50,18 @@ class CreateExam extends React.Component {
         let respData = res.data.data;
         this.setState({ paperIdList: respData })
       })
+  }
 
-
+  //获取教师信息
+  getTeacher() {
+    httpServer({
+      url: URL.get_teacher
+    }, {
+    })
+      .then((res) => {
+        this.state.teacherList = res.data.data;
+        this.setState({ teacherList: this.state.teacherList })
+      })
   }
 
   //选择年级
@@ -73,6 +90,7 @@ class CreateExam extends React.Component {
           url: URL.create_exam,
         }, {
           className: values.className,
+          teacherId: values.teacherId,
           paperId: values.paperId,
           startTime: values.startTime.format('YYYY-MM-DD HH:mm:ss'),
           endTime: values.endTime.format('YYYY-MM-DD HH:mm:ss'),
@@ -80,6 +98,10 @@ class CreateExam extends React.Component {
         })
       }
     });
+  }
+
+  componentWillMount(){
+    this.getTeacher();
   }
 
 
@@ -115,6 +137,18 @@ class CreateExam extends React.Component {
         <Option value={item} key={item}>{item}</Option>
       )
     })
+
+    
+    //阅卷教师信息
+    let teacherList = [];
+    if (this.state.teacherList.length != 0) {
+      teacherList = this.state.teacherList.map((item) => {
+        return (
+          <Option value={item.userId} key={item.userId}>{item.username}</Option>
+        )
+      })
+    }
+
 
 
 
@@ -172,6 +206,16 @@ class CreateExam extends React.Component {
               {getFieldDecorator('paperId')(
                 <Select notFoundContent="请选择科目和年级" style={{ width: '100%' }}>
                   {paperIdList}
+                </Select>
+              )}
+            </FormItem>
+            <FormItem
+              {...formItemLayout}
+              label="阅卷老师"
+            >
+              {getFieldDecorator('teacherId')(
+                <Select notFoundContent="请选择阅卷老师" style={{ width: '100%' }} onChange={this.teacherChange.bind(this)}>
+                  {teacherList}
                 </Select>
               )}
             </FormItem>
