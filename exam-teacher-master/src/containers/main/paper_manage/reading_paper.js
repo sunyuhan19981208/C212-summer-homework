@@ -30,7 +30,7 @@ class ReadingPaper extends React.Component {
     httpServer({
       url : URL.get_stu_answer
     },{
-      className : 'GetQuestionStuAnswerImpl',
+      //className : 'GetQuestionStuAnswerImpl',
       instId : instId,
     })
     .then((res)=>{
