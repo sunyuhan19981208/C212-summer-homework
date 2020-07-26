@@ -35,4 +35,9 @@ public class ExamServiceImpl implements ExamService{
         return examMapper.selectExamByClassName(className);
     }
 
+    @Override
+    public void relateExamToTeacher(int examId,int userId) {
+        examMapper.relateExamToTeacher(examId,userId);
+    }
+
 }

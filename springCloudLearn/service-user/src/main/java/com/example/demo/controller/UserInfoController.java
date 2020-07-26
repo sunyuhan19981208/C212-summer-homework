@@ -27,7 +27,7 @@ public class UserInfoController {
     public String getUsername(HttpServletRequest request){
         String sessionId= CookieUtil.getSessionIdByCookie(request);
         System.out.println(sessionId);
-        String userId=(String)redisTemplate.opsForValue().get(sessionId);
+        int userId=(Integer) redisTemplate.opsForValue().get(sessionId);
         System.out.println(userId);
         String username=userService.selectByUserId(userId).getUsername();
         return username;
@@ -40,7 +40,7 @@ public class UserInfoController {
                 put("respMsg", "该用户名已存在");
             }
         };
-        String uid=userService.getNewUserId();
+        int uid=userService.getNewUserId();
         userService.addUser(username,"123456","学生");
         userService.addStudent(uid,className);
         return new HashMap<String, Object>() {
@@ -71,7 +71,7 @@ public class UserInfoController {
         };
     }
     @RequestMapping(value="/updateStudent",produces = {MediaType.APPLICATION_JSON_VALUE})
-    public HashMap<String,Object>update(@RequestParam("userId")String userId,@RequestParam("username")String username,
+    public HashMap<String,Object>update(@RequestParam("userId")int userId,@RequestParam("username")String username,
                                         @RequestParam("password")String password,@RequestParam("className")String className){
         userService.updateStudent(userId,className);
         userService.updateUser(userId,username,password);
@@ -83,7 +83,7 @@ public class UserInfoController {
         };
     }
     @RequestMapping(value = "/deleteStudent",produces = {MediaType.APPLICATION_JSON_VALUE})
-    public HashMap<String,Object>deleteStudent(@RequestParam("userId")String userId){
+    public HashMap<String,Object>deleteStudent(@RequestParam("userId")int userId){
         if(userService.selectByUserId(userId)==null)
             return new HashMap<String, Object>() {
                 {

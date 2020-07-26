@@ -46,11 +46,89 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/controller/ExamController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="34" column="50" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
+            <state relative-caret-position="305">
+              <caret line="33" column="69" lean-forward="true" selection-start-line="33" selection-start-column="69" selection-end-line="33" selection-end-column="69" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/mapper/QuestionMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="296">
+              <caret line="16" column="53" lean-forward="true" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/mapper/PaperMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="18" column="114" selection-start-line="18" selection-start-column="114" selection-end-line="18" selection-end-column="114" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/controller/KnowledgeController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/mapper/SubmitMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="11" column="96" lean-forward="true" selection-start-line="11" selection-start-column="96" selection-end-line="11" selection-end-column="96" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/SubmitService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="57">
+              <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/SubmitServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="21" column="24" lean-forward="true" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/controller/SubmitController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="95">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -65,129 +143,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/ExamService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/QuestionServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="26" column="53" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/controller/PaperController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1064">
-              <caret line="65" column="65" selection-start-line="65" selection-start-column="65" selection-end-line="65" selection-end-column="65" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/QuestionService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
+            <state relative-caret-position="152">
               <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/entity/Exam.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-              <folding>
-                <element signature="e#614#615#0" expanded="true" />
-                <element signature="e#643#644#0" expanded="true" />
-                <element signature="e#684#685#0" expanded="true" />
-                <element signature="e#720#721#0" expanded="true" />
-                <element signature="e#755#756#0" expanded="true" />
-                <element signature="e#786#787#0" expanded="true" />
-                <element signature="e#834#835#0" expanded="true" />
-                <element signature="e#874#875#0" expanded="true" />
-                <element signature="e#910#911#0" expanded="true" />
-                <element signature="e#942#943#0" expanded="true" />
-                <element signature="e#992#993#0" expanded="true" />
-                <element signature="e#1034#1035#0" expanded="true" />
-                <element signature="e#1237#1238#0" expanded="true" />
-                <element signature="e#1267#1268#0" expanded="true" />
-                <element signature="e#1316#1317#0" expanded="true" />
-                <element signature="e#1354#1355#0" expanded="true" />
-                <element signature="e#1385#1386#0" expanded="true" />
-                <element signature="e#1415#1416#0" expanded="true" />
-                <element signature="e#1458#1459#0" expanded="true" />
-                <element signature="e#1496#1497#0" expanded="true" />
-                <element signature="e#1370#1371#0" expanded="true" />
-                <element signature="e#1402#1403#0" expanded="true" />
-                <element signature="e#1455#1456#0" expanded="true" />
-                <element signature="e#1497#1498#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/entity/KnowledgePoint.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/entity/Paper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-              <folding>
-                <element signature="e#335#336#0" expanded="true" />
-                <element signature="e#365#366#0" expanded="true" />
-                <element signature="e#408#409#0" expanded="true" />
-                <element signature="e#446#447#0" expanded="true" />
-                <element signature="e#477#478#0" expanded="true" />
-                <element signature="e#507#508#0" expanded="true" />
-                <element signature="e#550#551#0" expanded="true" />
-                <element signature="e#588#589#0" expanded="true" />
-                <element signature="e#621#622#0" expanded="true" />
-                <element signature="e#653#654#0" expanded="true" />
-                <element signature="e#700#701#0" expanded="true" />
-                <element signature="e#742#743#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/PaperServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="361">
-              <caret line="27" column="33" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1174#1175#0" expanded="true" />
-                <element signature="e#1240#1241#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -220,11 +181,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/service-user/src/main/resources/application.yml" />
-        <option value="$PROJECT_DIR$/service-user/src/main/java/com/example/demo/util/MD5Util.java" />
-        <option value="$PROJECT_DIR$/service-zuul/src/main/resources/application.yml" />
-        <option value="$PROJECT_DIR$/service-exam/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/service-zuul/src/main/java/com/example/demo/util/CookieUtil.java" />
         <option value="$PROJECT_DIR$/service-zuul/src/main/java/com/example/demo/UserFilter.java" />
         <option value="$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/util/CookieUtil.java" />
         <option value="$PROJECT_DIR$/service-user/src/main/java/com/example/demo/util/CookieUtil.java" />
@@ -236,10 +192,6 @@
         <option value="$PROJECT_DIR$/service-user/src/main/java/com/example/demo/mapper/ClassMapper.java" />
         <option value="$PROJECT_DIR$/service-user/src/main/java/com/example/demo/service/ClassInfoServiceImpl.java" />
         <option value="$PROJECT_DIR$/service-user/src/main/java/com/example/demo/controller/ClassInfoController.java" />
-        <option value="$PROJECT_DIR$/service-user/src/main/java/com/example/demo/service/UserService.java" />
-        <option value="$PROJECT_DIR$/service-user/src/main/java/com/example/demo/service/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/service-user/src/main/java/com/example/demo/mapper/UserMapper.java" />
-        <option value="$PROJECT_DIR$/service-user/src/main/java/com/example/demo/controller/UserInfoController.java" />
         <option value="$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/entity/Subject.java" />
         <option value="$PROJECT_DIR$/service-exam/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/controller/ExamListController.java" />
@@ -265,12 +217,21 @@
         <option value="$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/PaperServiceImpl.java" />
         <option value="$PROJECT_DIR$/service-user/src/main/java/com/example/demo/controller/LoginController.java" />
         <option value="$PROJECT_DIR$/service-user/src/main/java/com/example/demo/service/ClassInfoService.java" />
+        <option value="$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/mapper/PaperMapper.java" />
+        <option value="$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/entity/Exam.java" />
+        <option value="$PROJECT_DIR$/service-user/src/main/java/com/example/demo/controller/UserInfoController.java" />
+        <option value="$PROJECT_DIR$/service-user/src/main/java/com/example/demo/service/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/service-user/src/main/java/com/example/demo/service/UserService.java" />
+        <option value="$PROJECT_DIR$/service-user/src/main/java/com/example/demo/controller/TeacherController.java" />
+        <option value="$PROJECT_DIR$/service-user/src/main/java/com/example/demo/mapper/UserMapper.java" />
         <option value="$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/mapper/ExamMapper.java" />
         <option value="$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/ExamService.java" />
         <option value="$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/ExamServiceImpl.java" />
-        <option value="$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/mapper/PaperMapper.java" />
         <option value="$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/controller/ExamController.java" />
-        <option value="$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/entity/Exam.java" />
+        <option value="$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/SubmitService.java" />
+        <option value="$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/SubmitServiceImpl.java" />
+        <option value="$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/mapper/SubmitMapper.java" />
+        <option value="$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/controller/SubmitController.java" />
       </list>
     </option>
   </component>
@@ -293,6 +254,15 @@
           <item name="service-exam" type="9519ce18:MavenProjectsStructure$ProjectNode" />
           <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
         </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="service-user" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="service-user" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
       </expand>
       <select />
     </treeState>
@@ -309,6 +279,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -317,11 +288,75 @@
               <item name="springCloudLearn" type="b2602c69:ProjectViewProjectNode" />
               <item name="springCloudLearn" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="springCloudLearn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springCloudLearn" type="462c0819:PsiDirectoryNode" />
+              <item name="service-exam" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="springCloudLearn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springCloudLearn" type="462c0819:PsiDirectoryNode" />
+              <item name="service-exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="springCloudLearn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springCloudLearn" type="462c0819:PsiDirectoryNode" />
+              <item name="service-exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="springCloudLearn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springCloudLearn" type="462c0819:PsiDirectoryNode" />
+              <item name="service-exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="springCloudLearn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springCloudLearn" type="462c0819:PsiDirectoryNode" />
+              <item name="service-exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="serviceexam" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="springCloudLearn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springCloudLearn" type="462c0819:PsiDirectoryNode" />
+              <item name="service-exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="serviceexam" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="springCloudLearn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springCloudLearn" type="462c0819:PsiDirectoryNode" />
+              <item name="service-exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="serviceexam" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="springCloudLearn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="springCloudLearn" type="462c0819:PsiDirectoryNode" />
+              <item name="service-exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="serviceexam" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -334,7 +369,7 @@
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1595729378022" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1595752537723" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -343,17 +378,17 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\admin\Documents\Tencent Files\547818451\FileRecv\tutors\springCloudLearn\service-resources\src\main\resources\static" />
-      <recent name="C:\Users\admin\Documents\Tencent Files\547818451\FileRecv\tutors\springCloudLearn\service-resources\src\main\resources\page" />
-      <recent name="C:\Users\admin\Documents\Tencent Files\547818451\FileRecv\tutors\springCloudLearn\service-ribbon\src\main\resources" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.demo.util" />
       <recent name="com.example.serviceexam.util" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\admin\Documents\Tencent Files\547818451\FileRecv\tutors\springCloudLearn\service-resources\src\main\resources\static" />
+      <recent name="C:\Users\admin\Documents\Tencent Files\547818451\FileRecv\tutors\springCloudLearn\service-resources\src\main\resources\page" />
+      <recent name="C:\Users\admin\Documents\Tencent Files\547818451\FileRecv\tutors\springCloudLearn\service-ribbon\src\main\resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -553,7 +588,9 @@
       <workItem from="1595421103153" duration="1278000" />
       <workItem from="1595469576766" duration="12170000" />
       <workItem from="1595556502769" duration="776000" />
-      <workItem from="1595728549051" duration="825000" />
+      <workItem from="1595728549051" duration="1363000" />
+      <workItem from="1595731389518" duration="4881000" />
+      <workItem from="1595748623640" duration="3006000" />
     </task>
     <servers />
   </component>
@@ -590,7 +627,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="242806000" />
+    <option name="totallyTimeSpent" value="251231000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -603,8 +640,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17910448" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18230277" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -614,7 +652,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.37310195" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.37310195" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -627,7 +665,7 @@
       <window_info anchor="bottom" id="Database Changes" order="12" weight="0.32936078" />
       <window_info anchor="bottom" id="Version Control" order="13" />
       <window_info anchor="bottom" id="Messages" order="14" weight="0.3286334" />
-      <window_info anchor="bottom" id="Run Dashboard" order="15" weight="0.3264642" />
+      <window_info anchor="bottom" id="Run Dashboard" order="15" visible="true" weight="0.3264642" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -648,64 +686,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/service-ribbon/src/main/java/com/example/demo/config/RedisConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-ribbon/src/main/java/com/example/demo/controller/HelloControler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-ribbon/src/main/java/com/example/demo/ServiceRibbonApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-ribbon/src/main/java/com/example/demo/service/HelloService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-feign/src/main/java/com/example/demo/service/HelloService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-user/src/main/java/com/example/demo/controller/TestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-user/src/main/java/com/example/demo/controller/UserInfoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="94" column="42" selection-start-line="94" selection-start-column="42" selection-end-line="94" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/service-exam/src/main/resources/application.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -727,34 +707,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service-user/src/main/java/com/example/demo/ServiceHiApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/src/test/java/com/example/demo/test.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
           <caret line="4" column="29" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-user/src/main/java/com/example/demo/mapper/ClassMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-user/src/main/java/com/example/demo/mapper/UserMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="32" column="45" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -769,16 +725,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="608">
           <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-user/src/main/java/com/example/demo/controller/ClassInfoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1198">
-          <caret line="71" column="13" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -823,53 +769,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service-user/src/main/java/com/example/demo/controller/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="28" column="57" lean-forward="true" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-user/src/main/java/com/example/demo/service/ClassInfoService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/service-user/src/main/java/com/example/demo/entity/Student.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="10" column="33" lean-forward="true" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-user/src/main/java/com/example/demo/service/UserServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="695">
-          <caret line="67" column="38" selection-start-line="67" selection-start-column="38" selection-end-line="67" selection-end-column="38" />
-          <folding>
-            <element signature="e#1184#1185#0" expanded="true" />
-            <element signature="e#1236#1237#0" expanded="true" />
-            <element signature="e#1725#1726#0" expanded="true" />
-            <element signature="e#1783#1784#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-user/src/main/java/com/example/demo/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -880,9 +783,78 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/KnowledgePointServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/PaperService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="55" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/controller/QuestionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/QuestionServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="26" column="53" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/controller/PaperController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1064">
+          <caret line="65" column="65" selection-start-line="65" selection-start-column="65" selection-end-line="65" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/PaperServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="27" column="33" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1174#1175#0" expanded="true" />
+            <element signature="e#1240#1241#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-user/src/main/java/com/example/demo/ServiceHiApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/service-user/src/main/java/com/example/demo/service/ClassInfoServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
+        <state relative-caret-position="494">
           <caret line="39" column="65" selection-start-line="39" selection-start-column="65" selection-end-line="39" selection-end-column="65" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -892,6 +864,172 @@
             <element signature="e#739#740#0" expanded="true" />
             <element signature="e#1196#1197#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-user/src/main/java/com/example/demo/service/ClassInfoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-user/src/main/java/com/example/demo/mapper/ClassMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-user/src/main/java/com/example/demo/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" column="35" lean-forward="true" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-user/src/main/java/com/example/demo/service/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="72" column="30" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-user/src/main/java/com/example/demo/mapper/UserMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="36" column="48" lean-forward="true" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-user/src/main/java/com/example/demo/controller/UserInfoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="90" column="48" lean-forward="true" selection-start-line="90" selection-start-column="48" selection-end-line="90" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-user/src/main/java/com/example/demo/controller/TestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-user/src/main/java/com/example/demo/controller/TeacherController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="530">
+          <caret line="57" column="94" selection-start-line="57" selection-start-column="94" selection-end-line="57" selection-end-column="94" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-user/src/main/java/com/example/demo/controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="28" column="57" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-user/src/main/java/com/example/demo/controller/ClassInfoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="682">
+          <caret line="71" column="13" selection-start-line="71" selection-start-column="13" selection-end-line="71" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/entity/Exam.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+          <folding>
+            <element signature="e#614#615#0" expanded="true" />
+            <element signature="e#643#644#0" expanded="true" />
+            <element signature="e#684#685#0" expanded="true" />
+            <element signature="e#720#721#0" expanded="true" />
+            <element signature="e#755#756#0" expanded="true" />
+            <element signature="e#786#787#0" expanded="true" />
+            <element signature="e#834#835#0" expanded="true" />
+            <element signature="e#874#875#0" expanded="true" />
+            <element signature="e#910#911#0" expanded="true" />
+            <element signature="e#942#943#0" expanded="true" />
+            <element signature="e#992#993#0" expanded="true" />
+            <element signature="e#1034#1035#0" expanded="true" />
+            <element signature="e#1370#1371#0" expanded="true" />
+            <element signature="e#1402#1403#0" expanded="true" />
+            <element signature="e#1455#1456#0" expanded="true" />
+            <element signature="e#1497#1498#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/entity/KnowledgePoint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/entity/Paper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding>
+            <element signature="e#335#336#0" expanded="true" />
+            <element signature="e#365#366#0" expanded="true" />
+            <element signature="e#408#409#0" expanded="true" />
+            <element signature="e#446#447#0" expanded="true" />
+            <element signature="e#477#478#0" expanded="true" />
+            <element signature="e#507#508#0" expanded="true" />
+            <element signature="e#550#551#0" expanded="true" />
+            <element signature="e#588#589#0" expanded="true" />
+            <element signature="e#621#622#0" expanded="true" />
+            <element signature="e#653#654#0" expanded="true" />
+            <element signature="e#700#701#0" expanded="true" />
+            <element signature="e#742#743#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/entity/PaperInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#935#936#0" expanded="true" />
+            <element signature="e#973#974#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/entity/Subject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -932,32 +1070,117 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/entity/PaperInfo.java">
+    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/KnowledgePointService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="133">
+          <caret line="7" column="69" selection-start-line="7" selection-start-column="69" selection-end-line="7" selection-end-column="69" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#935#936#0" expanded="true" />
-            <element signature="e#973#974#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/ExamServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="682">
+          <caret line="39" column="54" selection-start-line="39" selection-start-column="54" selection-end-line="39" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#469#470#0" expanded="true" />
+            <element signature="e#517#518#0" expanded="true" />
+            <element signature="e#1008#1009#0" expanded="true" />
+            <element signature="e#1074#1075#0" expanded="true" />
+            <element signature="e#1129#1130#0" expanded="true" />
+            <element signature="e#1177#1178#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/mapper/ExamMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="23" column="73" selection-start-line="23" selection-start-column="73" selection-end-line="23" selection-end-column="73" />
+        <state relative-caret-position="475">
+          <caret line="25" column="83" selection-start-line="25" selection-start-column="83" selection-end-line="25" selection-end-column="83" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/mapper/QuestionMapper.java">
+    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/ExamService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="19" column="121" selection-start-line="19" selection-start-column="121" selection-end-line="19" selection-end-column="121" />
+        <state relative-caret-position="190">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/QuestionService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/SubmitService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/mapper/SubmitMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="96" lean-forward="true" selection-start-line="11" selection-start-column="96" selection-end-line="11" selection-end-column="96" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/SubmitServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="21" column="24" lean-forward="true" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/controller/SubmitController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/ServiceExamApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/controller/KnowledgeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/controller/ExamController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="33" column="69" lean-forward="true" selection-start-line="33" selection-start-column="69" selection-end-line="33" selection-end-column="69" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -974,202 +1197,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/KnowledgePointService.java">
+    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/mapper/QuestionMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="69" selection-start-line="7" selection-start-column="69" selection-end-line="7" selection-end-column="69" />
+        <state relative-caret-position="296">
+          <caret line="16" column="53" lean-forward="true" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/ExamServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="33" column="63" selection-start-line="33" selection-start-column="63" selection-end-line="33" selection-end-column="63" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#469#470#0" expanded="true" />
-            <element signature="e#517#518#0" expanded="true" />
-            <element signature="e#1074#1075#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/KnowledgePointServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/PaperService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="55" selection-start-line="11" selection-start-column="55" selection-end-line="11" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/controller/QuestionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="27" column="34" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/controller/KnowledgeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/entity/Subject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/QuestionServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="26" column="53" selection-start-line="26" selection-start-column="53" selection-end-line="26" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/controller/PaperController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1064">
-          <caret line="65" column="65" selection-start-line="65" selection-start-column="65" selection-end-line="65" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/QuestionService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/entity/KnowledgePoint.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/entity/Paper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-          <folding>
-            <element signature="e#335#336#0" expanded="true" />
-            <element signature="e#365#366#0" expanded="true" />
-            <element signature="e#408#409#0" expanded="true" />
-            <element signature="e#446#447#0" expanded="true" />
-            <element signature="e#477#478#0" expanded="true" />
-            <element signature="e#507#508#0" expanded="true" />
-            <element signature="e#550#551#0" expanded="true" />
-            <element signature="e#588#589#0" expanded="true" />
-            <element signature="e#621#622#0" expanded="true" />
-            <element signature="e#653#654#0" expanded="true" />
-            <element signature="e#700#701#0" expanded="true" />
-            <element signature="e#742#743#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/PaperServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="27" column="33" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1174#1175#0" expanded="true" />
-            <element signature="e#1240#1241#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/service/ExamService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/controller/ExamController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="34" column="50" selection-start-line="34" selection-start-column="50" selection-end-line="34" selection-end-column="50" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/ServiceExamApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-exam/src/main/java/com/example/serviceexam/entity/Exam.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="29" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="29" />
-          <folding>
-            <element signature="e#614#615#0" expanded="true" />
-            <element signature="e#643#644#0" expanded="true" />
-            <element signature="e#684#685#0" expanded="true" />
-            <element signature="e#720#721#0" expanded="true" />
-            <element signature="e#755#756#0" expanded="true" />
-            <element signature="e#786#787#0" expanded="true" />
-            <element signature="e#834#835#0" expanded="true" />
-            <element signature="e#874#875#0" expanded="true" />
-            <element signature="e#910#911#0" expanded="true" />
-            <element signature="e#942#943#0" expanded="true" />
-            <element signature="e#992#993#0" expanded="true" />
-            <element signature="e#1034#1035#0" expanded="true" />
-            <element signature="e#1237#1238#0" expanded="true" />
-            <element signature="e#1267#1268#0" expanded="true" />
-            <element signature="e#1316#1317#0" expanded="true" />
-            <element signature="e#1354#1355#0" expanded="true" />
-            <element signature="e#1385#1386#0" expanded="true" />
-            <element signature="e#1415#1416#0" expanded="true" />
-            <element signature="e#1458#1459#0" expanded="true" />
-            <element signature="e#1496#1497#0" expanded="true" />
-            <element signature="e#1370#1371#0" expanded="true" />
-            <element signature="e#1402#1403#0" expanded="true" />
-            <element signature="e#1455#1456#0" expanded="true" />
-            <element signature="e#1497#1498#0" expanded="true" />
           </folding>
         </state>
       </provider>
