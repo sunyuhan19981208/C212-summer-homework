@@ -55,12 +55,17 @@ class Login extends React.Component {
 
 						//本地存储用户名
 						localStorage.setItem("username", values.username);
-						//localStorage.setItem("userId", res.data.userId);
+						localStorage.setItem("userId", res.data.userId);
 						// localStorage.setItem("roleSet",res.roleSet[0])
 							
 						//alert("hello"+res.data.level);   //使用加号连接
 						if (res.data.level === "老师") {
+							localStorage.setItem("roleSet","0");
 							this.props.history.push('/main/homepage');	
+						}
+						else if(res.data.level === "系统管理员"){
+							localStorage.setItem("roleSet","1");
+							this.props.history.push('/main/homepage');
 						}
 						else if(res.data.level === "学生") {
 							localStorage.setItem("classOfCurStudent",res.data.className)

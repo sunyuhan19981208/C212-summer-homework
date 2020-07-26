@@ -28,10 +28,9 @@ class AllPapers extends React.Component {
     httpServer({
       url : URL.get_all_papers
     },{
-      className : 'QueryExamServiceImpl',
       page : this.state.pagination.current,
       rows : this.state.pagination.pageSize,
-      type : 2,
+      //type : 2,
       paperId : paperId,
       classId : classId,
       managerId : managerId,

@@ -8,14 +8,21 @@ import java.util.List;
 public interface UserService {
     List<User>selectAllUser();
     User selectByUsername(String username);
-    User selectByUserId(String userId);
-    int addStudent(String username,String className);
+    User selectByUserId(int userId);
+    int addStudent(int userId,String className);
     int addUser(String username,String password,String level);
     List<Student>selectAllStudent();
-    String getNewUserId();
+    int getNewUserId();
     List<Student>queryUserByName(String username);
-    void updateUser(String userId,String username,String password);
-    void updateStudent(String userId,String className);
-    void deleteUser(String userId);
-    void deleteStudent(String userId);
+    void updateUser(int userId,String username,String password);
+    void updateStudent(int userId,String className);
+    void deleteUser(int userId);
+    void deleteStudent(int userId);
+
+    //教师
+    int addTeacher(String username);
+    List<User> selectAllTeacher();
+    public List<User>selectTeacherByName(String username);
+    void deleteTeacher(int userId);
+
 }

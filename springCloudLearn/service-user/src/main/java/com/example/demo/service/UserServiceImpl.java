@@ -23,18 +23,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User selectByUserId(String userId) {
+    public User selectByUserId(int userId) {
         return userMapper.selectByUserId(userId);
     }
 
     @Override
-    public int addStudent(String userId, String className) {
+    public int addStudent(int userId, String className) {
         return userMapper.addStudent(userId,className);
     }
 
     @Override
     public int addUser(String username, String password, String level) {
-        String userId=getNewUserId();
+        int userId=getNewUserId();
         return userMapper.addUser(userId,username,password,level);
     }
 
@@ -44,8 +44,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String getNewUserId() {
-        return String.valueOf(userMapper.getMaxUserId()+1);
+    public int getNewUserId() {
+        return userMapper.getMaxUserId()+1;
     }
 
     @Override
@@ -54,22 +54,44 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(String userId, String username, String password) {
+    public void updateUser(int userId, String username, String password) {
         userMapper.updateUser(userId,username,password);
     }
 
     @Override
-    public void updateStudent(String userId, String className) {
+    public void updateStudent(int userId, String className) {
         userMapper.updateStudent(userId,className);
     }
 
     @Override
-    public void deleteUser(String userId) {
+    public void deleteUser(int userId) {
         userMapper.deleteUser(userId);
     }
 
     @Override
-    public void deleteStudent(String userId) {
+    public void deleteStudent(int userId) {
         userMapper.deleteStudent(userId);
+    }
+
+    @Override
+    public int addTeacher(String username) {
+        int userId=getNewUserId();
+        userMapper.addUser(userId,username,"123456","老师");
+        return userId;
+    }
+
+    @Override
+    public List<User> selectAllTeacher() {
+        return userMapper.selectAllTeacher();
+    }
+    @Override
+    public List<User>selectTeacherByName(String username){
+        return userMapper.selectTeacherByName(username);
+    }
+
+
+    @Override
+    public void deleteTeacher(int userId) {
+        userMapper.deleteUser(userId);
     }
 }

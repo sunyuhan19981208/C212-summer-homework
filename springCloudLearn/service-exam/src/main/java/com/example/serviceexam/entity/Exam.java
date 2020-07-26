@@ -6,15 +6,15 @@ public class Exam {
     private int examId;
     private String examName;
     private String className;
-    private Timestamp beginTime;
+    private Timestamp startTime;
     private Timestamp endTime;
     private int paperId;
 
-    public Exam(int examId, String examName, String className, Timestamp beginTime, Timestamp endTime, int paperId) {
+    public Exam(int examId, String examName, Timestamp startTime, Timestamp endTime, int paperId, String className) {
         this.examId = examId;
         this.examName = examName;
         this.className = className;
-        this.beginTime = beginTime;
+        this.startTime = startTime;
         this.endTime = endTime;
         this.paperId = paperId;
     }
@@ -43,13 +43,6 @@ public class Exam {
         this.className = className;
     }
 
-    public Timestamp getBeginTime() {
-        return beginTime;
-    }
-
-    public void setBeginTime(Timestamp beginTime) {
-        this.beginTime = beginTime;
-    }
 
     public Timestamp getEndTime() {
         return endTime;
@@ -65,5 +58,13 @@ public class Exam {
 
     public void setPaperId(int paperId) {
         this.paperId = paperId;
+    }
+
+    public Timestamp getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Timestamp startTime) {
+        this.startTime = startTime;
     }
 }

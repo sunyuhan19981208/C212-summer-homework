@@ -27,7 +27,6 @@ class AddTeacher extends React.Component {
     httpServer({
       url : URL.get_manager_id
     },{
-      className : 'ManagerServiceImpl',
       type : 5,
     })
     .then((res)=>{
@@ -43,11 +42,7 @@ class AddTeacher extends React.Component {
         httpServer({
           url : URL.add_teacher
         },{
-          className : 'ManagerServiceImpl',
-          type : 1,
-          roleId : values.roleId,
-          name : values.name,
-          managerId : this.state.managerId,
+          username : values.name,
         })
       }
     });
@@ -79,27 +74,10 @@ class AddTeacher extends React.Component {
           <Form onSubmit={this.handleSubmit.bind(this)}>
             <FormItem
               {...formItemLayout}
-              label="工号"
-            >
-              <span>{this.state.managerId}</span>
-            </FormItem>
-            <FormItem
-              {...formItemLayout}
               label="姓名"
             >
               {getFieldDecorator('name')(
                 <Input />
-              )}
-            </FormItem>
-            <FormItem
-              {...formItemLayout}
-              label="角色"
-            >
-              {getFieldDecorator('roleId')(
-                <Select style={{ width: '100%' }}>
-                  <Option value={2}>教学</Option>
-                  <Option value={3}>教务</Option>
-                </Select>
               )}
             </FormItem>
             <Row>

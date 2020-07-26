@@ -22,4 +22,6 @@ public interface ExamMapper {
                     @Param("endTime")String endTime,@Param("paperId")int paperId,@Param("className")String className);
     @Select("select * from exam where className=#{className}")
     List<Exam>selectExamByClassName(@Param("className")String className);
+    @Insert("insert into exam_to_teacher(examId,userId)values(#{examId},#{userId})")
+    void relateExamToTeacher(@Param("examId")int examId,@Param("userId")int userId);
 }

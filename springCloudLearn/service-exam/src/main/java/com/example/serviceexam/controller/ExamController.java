@@ -19,8 +19,9 @@ public class ExamController {
     ExamService examService;
     @RequestMapping(value="/createExam",produces = {MediaType.APPLICATION_JSON_VALUE})
     public HashMap<String,Object>createExam(@RequestParam("className")String className,@RequestParam("paperId")int paperId,@RequestParam("startTime")String startTime,
-                                     @RequestParam("endTime")String endTime,@RequestParam("examName")String examName){
-        examService.createExam(examName,startTime,endTime,paperId,className);
+                                     @RequestParam("endTime")String endTime,@RequestParam("examName")String examName,@RequestParam("teacherId")int teacherId){
+        int examId=examService.createExam(examName,startTime,endTime,paperId,className);
+        examService.relateExamToTeacher(examId,teacherId);
         return new HashMap<String,Object>(){
             {
                 put("respCode",1);
@@ -31,6 +32,9 @@ public class ExamController {
     @RequestMapping(value = "/getExamByClass",produces = {MediaType.APPLICATION_JSON_VALUE})
     public HashMap<String,Object>getExamByClass(@RequestParam("className")String className){
         List<Exam> list=examService.selectExamByClassName(className);
+        for(Exam exam:list){
+            System.out.println(exam.getExamName());
+        }
         return new HashMap<String,Object>(){
             {
                 put("respCode",1);
