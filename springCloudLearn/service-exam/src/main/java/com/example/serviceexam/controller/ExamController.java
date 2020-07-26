@@ -31,6 +31,9 @@ public class ExamController {
     @RequestMapping(value = "/getExamByClass",produces = {MediaType.APPLICATION_JSON_VALUE})
     public HashMap<String,Object>getExamByClass(@RequestParam("className")String className){
         List<Exam> list=examService.selectExamByClassName(className);
+        for(Exam exam:list){
+            System.out.println(exam.getExamName());
+        }
         return new HashMap<String,Object>(){
             {
                 put("respCode",1);
