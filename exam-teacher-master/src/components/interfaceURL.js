@@ -131,15 +131,15 @@ export const change_class = "http://39.107.84.0:8762/updateClass";
 export const add_class = "http://39.107.84.0:8762/addClass";
 
 //查询教师（得到一页数据）
-export const get_teacher = "data/get_teacher.json";
+export const get_teacher = "http://39.107.84.0:8762/selectAllTeacher";
 //查询教师（模糊搜索）
-export const search_teacher = "data/search_teacher.json";
+export const search_teacher = "http://39.107.84.0:8762/queryTeacherByName";
 //修改老师
-export const change_teacher = "data/change_teacher.json";
+//export const change_teacher = "data/change_teacher.json";
 //删除老师
-export const delete_teacher = "data/delete_teacher.json";
+export const delete_teacher = "http://39.107.84.0:8762/deleteUser";
 //添加老师
-export const add_teacher = "data/add_teacher.json";
+export const add_teacher = "http://39.107.84.0:8762/addTeacher";
 
 //创建考试
 export const create_exam = "http://39.107.84.0:8763/createExam";
