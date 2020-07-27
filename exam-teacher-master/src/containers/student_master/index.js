@@ -24,6 +24,8 @@ import ExamCard from './exam_card/index.js'
 //个人中心
 import ChangePassword from './personal_center/change_password';
 
+import QCheckin from './q_checkin/index.js';
+
 import httpServer from '@components/httpServer.js'
 import * as URL from '@components/interfaceURL.js'
 
@@ -99,7 +101,7 @@ class StuMaster extends React.Component {
                             <div><img className="logo" src={require("@assets/images/logo-bg.png")} /></div>
                             
                             <Menu.Item key="exam_card">
-                                <Link to="/student_master/exam_card"><Icon type="profile" /> <span>开始考试</span> </Link>                                                                                                     
+                                <Link to="/student_master/q_checkin"><Icon type="profile" /> <span>开始考试</span> </Link>                                                                                                     
                             </Menu.Item>
 
                             <SubMenu key="personal_center" title={<span><Icon type="user" /><span>个人中心</span></span>}>
@@ -116,7 +118,8 @@ class StuMaster extends React.Component {
                                     {/* 个人中心 */}
                                     <Route path="/student_master/personal_center/change_password" component={ChangePassword} />
                                     {/* 答题卡 */}
-                                    <Route path="/student_master/exam_card" component={ExamCard} />
+                                    {/* <Route path="/student_master/exam_card" component={ExamCard} /> */}
+                                    <Route path="/student_master/q_checkin" component={QCheckin} />
 
                                 </Switch>
                             </div>	
