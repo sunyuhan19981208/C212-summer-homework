@@ -18,6 +18,7 @@ class ChangePassword extends React.Component {
   }
 
   //test
+  //
   // componentWillMount() {
 
   //   this.getQuestionList();
