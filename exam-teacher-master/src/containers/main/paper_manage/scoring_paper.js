@@ -95,6 +95,7 @@ class ScoringPaper extends React.Component {
 
           data.push({
             key: i,
+            examId: respDate[i].examId,
             className: respDate[i].className,
             examName: respDate[i].examName,
             examDate: respDate[i].examDate,
@@ -133,6 +134,7 @@ class ScoringPaper extends React.Component {
 
           data.push({
             key: i,
+            examId: respDate[i].examId,
             className: respDate[i].className,
             examName: respDate[i].examName,
             examDate: respDate[i].examDate,

@@ -22,7 +22,6 @@ class ReadingPaper extends React.Component {
     }
     this.gapscorelist = [];
     this.shoscorelist = [];
-    this.proscorelist = [];
     this.totalScore = 0;
   }
 
@@ -30,7 +29,6 @@ class ReadingPaper extends React.Component {
     httpServer({
       url : URL.get_stu_answer
     },{
-      //className : 'GetQuestionStuAnswerImpl',
       instId : instId,
     })
     .then((res)=>{
@@ -44,9 +42,6 @@ class ReadingPaper extends React.Component {
         }
         else if(respDate[i].type == '5') { //简答题
           shortAnswerList.push(respDate[i]);
-        }
-        else if(respDate[i].type == '6') {//编程题
-          programList.push(respDate[i]);
         }
       }
       this.gapscorelist.length = fillInList.length;
@@ -67,9 +62,6 @@ class ReadingPaper extends React.Component {
     }
     else if(type == '5') { //简答题
       this.shoscorelist[i] = value;
-    }
-    else if(type == '6') {//编程题
-      this.proscorelist[i] = value;
     }
   }
 
@@ -95,14 +87,6 @@ class ReadingPaper extends React.Component {
       totalScore += parseInt(this.shoscorelist[i]);
     }
 
-    for(let i = 0;i<this.proscorelist.length;i++) {
-      if(typeof this.proscorelist[i] == "undefined") {
-        flag = true;
-        this.proscorelist[i] = 0;
-      }
-      totalScore += parseInt(this.proscorelist[i]);
-    }
-
     if(flag) {
       Modal.warning({
         title: '您有题目还没有评分，请评分后再提交',
@@ -114,11 +98,9 @@ class ReadingPaper extends React.Component {
     httpServer({
       url : URL.submit_score
     },{
-      className : 'StudentExamUpdateImpl',
       instId :this.props.match.params.instId,
       gapscorelist : this.gapscorelist,
       shoscorelist : this.shoscorelist,
-      proscorelist : this.proscorelist,
       totalScore : totalScore,
       updateType : 2,
     })
