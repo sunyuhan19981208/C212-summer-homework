@@ -1,8 +1,10 @@
 import React from 'react'
-import { Menu, Icon, Button, Layout, Typography } from 'antd';
+import { Menu, Icon,  Layout} from 'antd';
+
 const { Sider, Content, Header } = Layout;
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
+
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
