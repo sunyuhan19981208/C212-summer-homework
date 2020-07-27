@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Student;
+import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 import com.example.demo.util.CookieUtil;
 import org.apache.ibatis.annotations.Param;
@@ -99,5 +100,26 @@ public class UserInfoController {
                 put("respMsg", "删除成功，学号为:"+userId);
             }
         };
+    }
+    @RequestMapping(value="/changePassword",produces = {MediaType.APPLICATION_JSON_VALUE})
+    public HashMap<String,Object>changePassword(@RequestParam("userId")int userId,@RequestParam("oldPassword")String oldPassword,@RequestParam("newPassword")String newPassword){
+        User user=userService.selectByUserId(userId);
+        if(!user.getPassword().equals(oldPassword)){
+            return new HashMap<String,Object>(){
+                {
+                    put("respCode",0);
+                    put("respMsg","旧密码不正确");
+                }
+            };
+        }
+        else{
+            userService.changePassword(newPassword,userId);
+            return new HashMap<String,Object>(){
+                {
+                    put("respCode",1);
+                    put("respMsg","密码修改成功");
+                }
+            };
+        }
     }
 }

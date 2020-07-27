@@ -28,8 +28,8 @@ public class QuestionServiceImpl implements QuestionService{
     }
 
     @Override
-    public List<Question> selectQuestionByPointId(int pointId) {
-        return questionMapper.selectQuestionByPointId(pointId);
+    public List<Question> selectQuestionByPointId(int pointId,int type,int choiceType) {
+        return questionMapper.selectQuestionByPointId(pointId,type,choiceType);
     }
 
     @Override

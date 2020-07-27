@@ -12,4 +12,5 @@ public interface ClassInfoService {
     void updateClass(String newClassName,int status,String oldClassName);
     void updateClassStatus(String className,int status);
     void deleteClass(String className);
+
 }

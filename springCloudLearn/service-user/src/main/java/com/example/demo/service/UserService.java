@@ -24,5 +24,6 @@ public interface UserService {
     List<User> selectAllTeacher();
     public List<User>selectTeacherByName(String username);
     void deleteTeacher(int userId);
+    void changePassword(String password,int userId);
 
 }

@@ -22,8 +22,8 @@ public interface QuestionMapper {
     void addChoice(@Param("option")String option,@Param("choiceStem")String choiceStem,@Param("questionId")int questionId);
     @Select("select max(choiceId)+1 from Choice")
     int getNewChoiceId();
-    @Select("select * from question where pointId =#{pointId}")
-    List<Question> selectQuestionByPointId(@Param("pointId")int pointId);
+    @Select("select * from question where pointId =#{pointId} and type = #{type} and choiceType=#{choiceType}")
+    List<Question> selectQuestionByPointId(@Param("pointId")int pointId,@Param("type")int type,@Param("choiceType")int choiceType);
     @Select("select * from question where questionId= #{questionId}")
     Question selectQuestionById(@Param("questionId")int questionId);
     @Select("select * from choice where qid = #{qid}")

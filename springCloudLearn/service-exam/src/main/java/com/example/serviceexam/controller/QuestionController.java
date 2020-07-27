@@ -37,8 +37,16 @@ public class QuestionController {
         };
     }
     @RequestMapping(value="/getQuestion",produces = {MediaType.APPLICATION_JSON_VALUE})
-    public HashMap<String,Object>getQuestion(@RequestParam("pointId")int pointId){
-        List<Question>li=questionService.selectQuestionByPointId(pointId);
+    public HashMap<String,Object>getQuestion(@RequestParam("pointId")int pointId,@RequestParam("type")int qType){
+        int type=0;
+        int choiceType=0;
+        switch (qType){
+            case 1:type=2;choiceType=0;break;
+            case 2:type=2;choiceType=1;break;
+            case 3:type=1;break;
+            case 4:type=5;
+        }
+        List<Question>li=questionService.selectQuestionByPointId(pointId,type,choiceType);
         return new HashMap<String,Object>(){
             {
                 put("respCode",1);

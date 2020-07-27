@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.entity.ClassInfo;
 import com.example.demo.mapper.ClassMapper;
+import com.example.demo.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,4 +46,5 @@ public class ClassInfoServiceImpl implements ClassInfoService{
     public void deleteClass(String className) {
         classMapper.deleteClass(className);
     }
+
 }

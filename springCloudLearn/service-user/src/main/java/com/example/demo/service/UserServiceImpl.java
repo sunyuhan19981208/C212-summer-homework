@@ -94,4 +94,9 @@ public class UserServiceImpl implements UserService {
     public void deleteTeacher(int userId) {
         userMapper.deleteUser(userId);
     }
+
+    @Override
+    public void changePassword(String password, int userId) {
+        userMapper.changePassword(password,userId);
+    }
 }
