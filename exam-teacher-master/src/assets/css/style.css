@@ -401,3 +401,13 @@
 .el-button--text:hover {
   color: #000
 }
+
+
+/* 考试页面 */
+.nextbutton{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding-right: 80px;
+  padding-bottom: 30px;
+}
