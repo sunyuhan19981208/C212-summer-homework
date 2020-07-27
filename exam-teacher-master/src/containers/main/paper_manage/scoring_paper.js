@@ -26,7 +26,7 @@ class ScoringPaper extends React.Component {
         total: 0,
         defaultCurrent: 1,
       },
-      teacherId: '',
+      teacherId: 0,
       visibleChangeModal: false,
       curPaperInfo: {}
     }
@@ -36,9 +36,13 @@ class ScoringPaper extends React.Component {
   }
 
   componentWillMount() {
-    this.getPageDate();
+    
 
-    this.setState({ teacherId: localStorage.getItem("userId") })
+    this.setState({teacherId: decodeURIComponent(localStorage.getItem("userId"))},()=>{
+      this.getPageDate();
+    });
+
+    //this.setState({ teacherId: localStorage.getItem("userId") });
     //如果状态管理中没有内容（用户刷新网页）
     //去取localStorage的用户名
     // if(!this.props.userinfo.userId) {
@@ -83,10 +87,10 @@ class ScoringPaper extends React.Component {
     httpServer({
       url: URL.get_papers
     }, {
-      teacherId: this.state.teacherId,
+      userId: this.state.teacherId,
       page: this.state.pagination.current,
       rows: this.state.pagination.pageSize,
-      type: 1,
+      //type: 1,
     })
       .then((res) => {
         let respDate = res.data.data;
@@ -112,7 +116,7 @@ class ScoringPaper extends React.Component {
         })
 
 
-      })
+      }).catch((e) => { })
   }
 
   //得到一页数据
@@ -120,7 +124,7 @@ class ScoringPaper extends React.Component {
     httpServer({
       url: URL.search_papers
     }, {
-      teacherId: this.state.teacherId,
+      userId: this.state.teacherId,
       page: this.state.pagination.current,
       rows: this.state.pagination.pageSize,
       type: 1,

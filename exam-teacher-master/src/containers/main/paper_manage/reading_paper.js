@@ -35,7 +35,6 @@ class ReadingPaper extends React.Component {
       let respDate = res.data.data;
       let fillInList =[];
       let shortAnswerList=[];
-      let programList=[];
       for(let i=0;i<respDate.length;i++) {
         if(respDate[i].type == '1') { //填空题
           fillInList.push(respDate[i]);
@@ -46,11 +45,9 @@ class ReadingPaper extends React.Component {
       }
       this.gapscorelist.length = fillInList.length;
       this.shoscorelist.length = shortAnswerList.length;
-      this.proscorelist.length = programList.length;
       this.setState({
         fillInList : fillInList,
         shortAnswerList : shortAnswerList,
-        programList : programList,
       })
     })
   }
@@ -129,7 +126,6 @@ class ReadingPaper extends React.Component {
             <div className="m-b-20">
               <ReadingCard title="简答题" scoreChange={this.scoreChange.bind(this)} questionList={this.state.shortAnswerList}></ReadingCard>
             </div>
-            <ReadingCard title="程序题" scoreChange={this.scoreChange.bind(this)} questionList={this.state.programList}></ReadingCard>
             <div className="m-t-20 clearfix">
               <Button type="primary" className="f-r" onClick={this.submitScore.bind(this)}>提交</Button>
             </div>

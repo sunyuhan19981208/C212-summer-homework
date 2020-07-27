@@ -54,6 +54,7 @@ class Login extends React.Component {
 						openNotification();
 
 						//本地存储用户名
+						
 						localStorage.setItem("username", values.username);
 						localStorage.setItem("userId", res.data.userId);
 						// localStorage.setItem("roleSet",res.roleSet[0])
