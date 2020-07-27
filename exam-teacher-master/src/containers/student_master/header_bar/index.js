@@ -48,9 +48,13 @@ class HeaderBar extends React.Component {
     return(
       <Menu
         mode="horizontal"
+        theme="dark"
         onClick={this.handleClick.bind(this)}
       >
-        <SubMenu title={<span><Icon type="user" />{this.props.userinfo.username}</span>}>
+        <Menu.Item className="h1" key="h1" ><img className="tlogo" src={require("@assets/images/title-logo.png")}/></Menu.Item>
+        <Menu.Item className="h2" key="h2" ><img className="title" src={require("@assets/images/title.png")}/></Menu.Item>
+
+        <SubMenu title={<span><img className="logo-user" src={require("@assets/images/sun.png")}/>{this.props.userinfo.username}</span>} >
             <Menu.Item key="sign_out"><Link to="/login">退出</Link></Menu.Item>
             <Menu.Item key="change_password"><Link to="/main/personal_center/change_password">修改密码</Link></Menu.Item>
         </SubMenu>

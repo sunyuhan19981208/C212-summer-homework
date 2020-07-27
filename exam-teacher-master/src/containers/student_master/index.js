@@ -1,7 +1,10 @@
 import React from 'react'
-import { Menu, Icon, Button, Card } from 'antd';
+import { Menu, Icon,  Layout} from 'antd';
+
+const { Sider, Content, Header } = Layout;
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
+
 import * as classinfoActions from '../../actions/classinfo'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -79,46 +82,48 @@ class StuMaster extends React.Component {
 
     render() {
         return (
-            <div>
-                <div id="leftMenu">
-                    {/* <img className="logo" src="/sxt_exam/lqw/images/logo.jpg"/> */}
-                    <img className="logo" src={require("@assets/images/logo-bg.png")} />
-                    <div>
-                        <Menu
-                            mode="inline"
-                            defaultOpenKeys={this.state.defaultOpenKeys}
-                            defaultSelectedKeys={this.state.defaultSelectedKeys}
-                            openKeys={this.state.openKeys}
-                            onOpenChange={this.onOpenChange.bind(this)}
-                        >
+            <Layout>
+				<Header className="header">
+					<HeaderBar></HeaderBar>
+				</Header>
+                <Layout>
+                    <Sider>	
+						<Menu
+							mode="inline"
+							defaultOpenKeys={this.state.defaultOpenKeys}
+							defaultSelectedKeys={this.state.defaultSelectedKeys}
+							openKeys={this.state.openKeys}
+							onOpenChange={this.onOpenChange.bind(this)}
+							style={{ height: '100%', borderRight: 0 }}>
 
+                            <div><img className="logo" src={require("@assets/images/logo-bg.png")} /></div>
+                            
                             <Menu.Item key="exam_card">
-                                <Link to="/student_master/exam_card">
-                                    <Icon type="profile" />
-                                    <span>开始考试</span>
-                                </Link>
+                                <Link to="/student_master/exam_card"><Icon type="profile" /> <span>开始考试</span> </Link>                                                                                                     
                             </Menu.Item>
+
                             <SubMenu key="personal_center" title={<span><Icon type="user" /><span>个人中心</span></span>}>
                                 <Menu.Item key="change_password"><Link to="/student_master/personal_center/change_password">修改密码</Link></Menu.Item>
                             </SubMenu>
                         </Menu>
-                    </div>
-                </div>
-                <div id="rightWrap">
-                    <HeaderBar></HeaderBar>
-                    <div className="right-box">
-                        <Switch>
-                            {/* 主页 */}
-                            <Route path="/student_master/homepage" component={Homepage} />
-                            {/* 个人中心 */}
-                            <Route path="/student_master/personal_center/change_password" component={ChangePassword} />
-                            {/* 答题卡 */}
-                            <Route path="/student_master/exam_card" component={ExamCard} />
+                    </Sider>
+                    <Layout style={{ padding: '30px 20px' }}>
+						<Content className="site-layout-background" style={{ padding: 24, margin: 0, minHeight: 280, }}>                                  
+                            <div className="right-box">
+                                <Switch>
+                                    {/* 主页 */}
+                                    <Route path="/student_master/homepage" component={Homepage} />
+                                    {/* 个人中心 */}
+                                    <Route path="/student_master/personal_center/change_password" component={ChangePassword} />
+                                    {/* 答题卡 */}
+                                    <Route path="/student_master/exam_card" component={ExamCard} />
 
-                        </Switch>
-                    </div>
-                </div>
-            </div>
+                                </Switch>
+                            </div>	
+						</Content>
+					</Layout>
+                </Layout>
+            </Layout>
 
 
         )

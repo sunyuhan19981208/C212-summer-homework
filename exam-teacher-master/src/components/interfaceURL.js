@@ -147,7 +147,7 @@ export const create_exam = "http://39.107.84.0:8763/createExam";
 export const get_paper = "http://39.107.84.0:8763/getExamByClassName";
 
 //查询试卷（得到一页数据）
-export const get_papers = "data/get_papers.json";
+export const get_papers = "http://39.107.84.0:8763/getExamByTeacherId";
 
 //获取工号
 export const get_manager_id = "data/get_manager_id.json";

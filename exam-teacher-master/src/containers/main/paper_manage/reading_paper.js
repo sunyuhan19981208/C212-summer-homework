@@ -22,7 +22,6 @@ class ReadingPaper extends React.Component {
     }
     this.gapscorelist = [];
     this.shoscorelist = [];
-    this.proscorelist = [];
     this.totalScore = 0;
   }
 
@@ -30,14 +29,12 @@ class ReadingPaper extends React.Component {
     httpServer({
       url : URL.get_stu_answer
     },{
-      //className : 'GetQuestionStuAnswerImpl',
       instId : instId,
     })
     .then((res)=>{
       let respDate = res.data.data;
       let fillInList =[];
       let shortAnswerList=[];
-      let programList=[];
       for(let i=0;i<respDate.length;i++) {
         if(respDate[i].type == '1') { //填空题
           fillInList.push(respDate[i]);
@@ -45,17 +42,12 @@ class ReadingPaper extends React.Component {
         else if(respDate[i].type == '5') { //简答题
           shortAnswerList.push(respDate[i]);
         }
-        else if(respDate[i].type == '6') {//编程题
-          programList.push(respDate[i]);
-        }
       }
       this.gapscorelist.length = fillInList.length;
       this.shoscorelist.length = shortAnswerList.length;
-      this.proscorelist.length = programList.length;
       this.setState({
         fillInList : fillInList,
         shortAnswerList : shortAnswerList,
-        programList : programList,
       })
     })
   }
@@ -67,9 +59,6 @@ class ReadingPaper extends React.Component {
     }
     else if(type == '5') { //简答题
       this.shoscorelist[i] = value;
-    }
-    else if(type == '6') {//编程题
-      this.proscorelist[i] = value;
     }
   }
 
@@ -95,14 +84,6 @@ class ReadingPaper extends React.Component {
       totalScore += parseInt(this.shoscorelist[i]);
     }
 
-    for(let i = 0;i<this.proscorelist.length;i++) {
-      if(typeof this.proscorelist[i] == "undefined") {
-        flag = true;
-        this.proscorelist[i] = 0;
-      }
-      totalScore += parseInt(this.proscorelist[i]);
-    }
-
     if(flag) {
       Modal.warning({
         title: '您有题目还没有评分，请评分后再提交',
@@ -114,11 +95,9 @@ class ReadingPaper extends React.Component {
     httpServer({
       url : URL.submit_score
     },{
-      className : 'StudentExamUpdateImpl',
       instId :this.props.match.params.instId,
       gapscorelist : this.gapscorelist,
       shoscorelist : this.shoscorelist,
-      proscorelist : this.proscorelist,
       totalScore : totalScore,
       updateType : 2,
     })
@@ -147,7 +126,6 @@ class ReadingPaper extends React.Component {
             <div className="m-b-20">
               <ReadingCard title="简答题" scoreChange={this.scoreChange.bind(this)} questionList={this.state.shortAnswerList}></ReadingCard>
             </div>
-            <ReadingCard title="程序题" scoreChange={this.scoreChange.bind(this)} questionList={this.state.programList}></ReadingCard>
             <div className="m-t-20 clearfix">
               <Button type="primary" className="f-r" onClick={this.submitScore.bind(this)}>提交</Button>
             </div>

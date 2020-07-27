@@ -118,7 +118,18 @@
 .login .login-tip {
   color: red;
   margin-bottom: 10px;
+  font-family:  Georgia, 'Times New Roman', Times, serif ;
 }
+
+.ant-notification-notice{  /* 消息提醒框 */
+  background: url(../images/logo-bg.png) #fff no-repeat;
+  background-position: 100% 90%;
+  background-size: 150px 35px;
+}
+.ant-notification-notice-message {
+  color: #0050b3;
+}
+
 
 /* 使用layout代替 */
 /* #leftMenu {
@@ -201,18 +212,42 @@
   height: 36px;
 }
 .ant-layout-header .ant-menu-item .title{
-  width: 170px;
+  width: 160px;
   height: 32px;
 }
 .ant-layout-header .ant-menu-submenu{
     position: relative;
     float: right;
 }
+
 .ant-layout-header .ant-menu-submenu img{
   width: 25px;
   height: 20px;
-  padding-right: 5px;
+  padding-right: 5px;  
+  
 }
+
+/* user-logo图像动画 */
+@media (prefers-reduced-motion: no-preference) {
+  .ant-layout-header .ant-menu-submenu img {
+    animation: logo-spin infinite 10s linear;
+  }
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ant-layout-header .ant-menu-submenu :hover{
+  animation-play-state:paused;
+}
+
+
 
 /* 面包屑 */
 .ant-breadcrumb {
@@ -365,4 +400,14 @@
 
 .el-button--text:hover {
   color: #000
+}
+
+
+/* 考试页面 */
+.nextbutton{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding-right: 80px;
+  padding-bottom: 30px;
 }

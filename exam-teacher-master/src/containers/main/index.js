@@ -1,8 +1,10 @@
 import React from 'react'
-import { Menu, Icon, Button, Layout, Typography } from 'antd';
+import { Menu, Icon,  Layout} from 'antd';
+
 const { Sider, Content, Header } = Layout;
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
+
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
@@ -123,8 +125,8 @@ class Main extends React.Component {
 	}
 
 	componentWillMount() {
-
-		document.title = this.props.title;
+	
+		document.title = "在线考试平台";  //设置页面Title   this.props.title
 		//判断用户是否已经登录
 		if (!localStorage.getItem("username")) {
 			this.props.history.push('/login');//跳转至登录页
@@ -152,7 +154,6 @@ class Main extends React.Component {
 			method: 'get',
 			url: URL.get_class_info
 		}, {
-			className: 'ClassServiceImpl',
 			type: 5
 		})
 			.then((res) => {
@@ -198,10 +199,7 @@ class Main extends React.Component {
 					<HeaderBar></HeaderBar>
 				</Header>
 				<Layout>
-					{/* <div id="leftMenu">     */}
-					{/* <img className="logo" src={require("@assets/images/logo.jpg")}/> */}
-					<Sider>
-						{/* <div><img className="logo" src={require("@assets/images/logo.jpg")}/></div>	 */}
+					<Sider>	
 						<Menu
 							mode="inline"
 							defaultOpenKeys={this.state.defaultOpenKeys}

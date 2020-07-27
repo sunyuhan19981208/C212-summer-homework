@@ -89,6 +89,7 @@ class ChooseCard extends React.Component {
       url: URL.get_question
     }, {
       pointId: this.props.singleQuestion.knowledgePointInfo[i].knowledge
+      
     })
       .then((res) => {
         this.state.questionInfo = res.data.data;
