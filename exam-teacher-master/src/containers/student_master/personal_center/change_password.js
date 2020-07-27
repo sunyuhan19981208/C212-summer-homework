@@ -21,25 +21,32 @@ class ChangePassword extends React.Component {
     console.log(`selected ${value}`);
   }
 
-  submitChange(e){
+  submitChange(e) {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        if(values.password1 !== values.password2) {
+        if (values.password1 !== values.password2) {
           Modal.warning({
-            title : '两次输入的密码不一致',
-            okText : '确定'
+            title: '两次输入的密码不一致',
+            okText: '确定'
           })
           return;
         }
-        httpServer({
-          url : URL.change_password
-        },{
-          className : 'UpdateUserPwdServiceImpl',
-          type : 1,
-          password : values.password1,
-          oldPassword : values.oldPassword
-        })
+        else if (values.oldPassword === values.password1) {
+          Modal.warning({
+            title: '旧密码和新密码相同，请重新输入！',
+            okText: '确定'
+          })
+        }
+        else {
+          httpServer({
+            url: URL.change_password
+          }, {
+            userId: localStorage.getItem("userId"),
+            newPassword: values.password1,
+            oldPassword: values.oldPassword
+          })
+        }
       }
     });
   }

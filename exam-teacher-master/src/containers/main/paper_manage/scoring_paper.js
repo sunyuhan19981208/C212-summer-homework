@@ -55,26 +55,9 @@ class ScoringPaper extends React.Component {
     // }
   }
 
-  //搜索类型
-  handleChange(value) {
-    this.searchKey = value;
-  }
 
-  //点击搜索
-  searchPapers(value) {
-    if (value == "") {
-      Modal.error({
-        content: "搜索内容不能为空！",
-        okText: '确定'
-      });
-      return;
-    }
-    this.turnStatus = "SEARCH";//把翻页状态置为搜索
-    this.state.pagination.current = 1;//当前页置为第一页
-    this.setState({ pagination: this.state.pagination });
-    this.searchContent = value;
-    this.getSearchData();
-  }
+
+
 
   //选择某一行
   onSelectChange(selectedRowKeys) {
@@ -102,7 +85,7 @@ class ScoringPaper extends React.Component {
             examId: respDate[i].examId,
             className: respDate[i].className,
             examName: respDate[i].examName,
-            examDate: respDate[i].examDate,
+            examDate: respDate[i].startTime,
             paperId: respDate[i].paperId,
           });
 
@@ -119,44 +102,6 @@ class ScoringPaper extends React.Component {
       }).catch((e) => { })
   }
 
-  //得到一页数据
-  getSearchData() {
-    httpServer({
-      url: URL.search_papers
-    }, {
-      userId: this.state.teacherId,
-      page: this.state.pagination.current,
-      rows: this.state.pagination.pageSize,
-      type: 1,
-      searchType: this.searchKey,
-      content: this.searchContent,
-    })
-      .then((res) => {
-        let respDate = res.data.data;
-        const data = [];
-        for (let i = 0; i < respDate.length; i++) {
-
-          data.push({
-            key: i,
-            examId: respDate[i].examId,
-            className: respDate[i].className,
-            examName: respDate[i].examName,
-            examDate: respDate[i].examDate,
-            paperId: respDate[i].paperId,
-          });
-
-        }
-
-        this.state.pagination.total = parseInt(res.data.total);
-
-        this.setState({
-          data: data,
-          pagination: this.state.pagination
-        })
-
-
-      })
-  }
 
 
 
@@ -191,10 +136,7 @@ class ScoringPaper extends React.Component {
   }
 
 
-  //点击展示所有试卷
-  showAllPapers() {
-    this.getPageDate();
-  }
+
 
   render() {
     //const { getFieldDecorator } = this.props.form;
@@ -235,22 +177,7 @@ class ScoringPaper extends React.Component {
         <BreadcrumbCustom pathList={['试卷管理', ['在线阅卷']]}></BreadcrumbCustom>
         <div className="scoring-paper-content">
           <div className="m-b-20">
-            <Row>
-              <Col span={24}>
-                <Search
-                  className="f-r"
-                  placeholder="请输入关键字"
-                  onSearch={this.searchPapers.bind(this)}
-                  enterButton
-                  style={{ width: 200 }}
-                />
-                <Select className="f-r m-r-20" defaultValue="1" style={{ width: 120 }} onChange={this.handleChange.bind(this)}>
-                  <Option value="1">班级</Option>
-                  <Option value="2">考试名称</Option>
-                </Select>
-                <Button type="primary" className="f-l" onClick={this.showAllPapers.bind(this)}>所有试卷</Button>
-              </Col>
-            </Row>
+            
           </div>
           <Table
             // rowSelection={rowSelection}

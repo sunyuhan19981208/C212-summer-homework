@@ -168,13 +168,16 @@ export const submit_score = "data/submit_score.json";
 export const search_papers = "data/search_papers.json";
 
 //修改密码
-export const change_password = "data/change_password.json";
+export const change_password = "http://39.107.84.0:8762/changePassword";
 
 //自动阅卷
 export const auto_read = "data/auto_read.json";
 
 //得到试卷编号
 export const get_paperId = "http://39.107.84.0:8763/getPaperList";
+
+//根据试卷获取题目列表
+export const get_questionlist_by_paperId = "http://39.107.84.0:8763/getQuestionList";
 
 
 /*
