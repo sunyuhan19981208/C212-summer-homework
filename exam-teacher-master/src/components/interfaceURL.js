@@ -179,6 +179,8 @@ export const get_paperId = "http://39.107.84.0:8763/getPaperList";
 //根据试卷获取题目列表
 export const get_questionlist_by_paperId = "http://39.107.84.0:8763/getQuestionList";
 
+//根据题目ID获取题目内容
+export const get_question_by_questionById = "http://39.107.84.0:8763/getQuestionById";
 
 /*
 import httpServer from '@components/httpServer.js'

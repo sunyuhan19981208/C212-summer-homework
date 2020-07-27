@@ -12,36 +12,57 @@ class ChangePassword extends React.Component {
   constructor() {
     super()
     this.state = {
-      questionInfo:[],
+      // questionInfo:[],
+      opt:[],
+      qid:[],
+      stem:[],
       pathList: ['个人中心', '修改密码'],//面包屑路径
     }
   }
 
   //test
   //
-  // componentWillMount() {
+  componentWillMount() {
 
-  //   this.getQuestionList();
+    this.getQuestionList();
   
-  // }
+  }
 
-  // getQuestionList(){
-  //   httpServer({
-  //     url:URL.get_questionlist_by_paperId
-  //   },{
-  //     paperId : 2
-  //   })
-  //   .then((res)=>{
-  //     for(var i=0;i<res.data.data.length;i++){
-  //       this.state.questionInfo[i] = res.data.data[i].questionId;
-  //       alert(this.state.questionInfo[i]);
-  //     }
-  //     localStorage.setItem("questionList", JSON.stringify(this.state.questionInfo));
-  //     let list = JSON.parse(localStorage.getItem("questionList"))
-  //     alert(list);
+  getQuestionList(){
+    // httpServer({
+    //   url:URL.get_questionlist_by_paperId
+    // },{
+    //   paperId : 2
+    // })
+    // .then((res)=>{
+    //   for(var i=0;i<res.data.data.length;i++){
+    //     this.state.questionInfo[i] = res.data.data[i].questionId;
+    //     alert(this.state.questionInfo[i]);
+    //   }
+    //   localStorage.setItem("questionList", JSON.stringify(this.state.questionInfo));
+    //   let list = JSON.parse(localStorage.getItem("questionList"))
+    //   alert(list);
 
-  //   })
-  // }
+    // })
+
+    httpServer({
+      url:URL.get_question_by_questionById
+    },{
+      questionId : 79
+    })
+    .then((res)=>{  
+      for(var i=0;i<res.data.data.choice.length;i++){
+        this.state.opt[i] = res.data.data.choice[i].opt;
+        this.state.qid[i] = res.data.data.choice[i].qid;
+        this.state.stem[i] = res.data.data.choice[i].stem;
+        // alert(this.state.stem[i]);
+      }
+      localStorage.setItem("stem", JSON.stringify(this.state.stem));
+      let list = JSON.parse(localStorage.getItem("stem"))
+      alert(list);
+
+    })
+  }
 
   //选择班级
   handleChange(value) {
