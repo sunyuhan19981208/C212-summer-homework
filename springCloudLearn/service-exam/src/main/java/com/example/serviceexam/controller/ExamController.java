@@ -42,4 +42,15 @@ public class ExamController {
             }
         };
     }
+    @RequestMapping(value = "/getExamByTeacherId",produces = {MediaType.APPLICATION_JSON_VALUE})
+    public HashMap<String,Object>getExamByTeacherId(@RequestParam("userId")int userId){
+        List<Exam> list=examService.getExamByTeacherId(userId);
+        return new HashMap<String,Object>(){
+                {
+                    put("respCode",1);
+                    put("data",list);
+                    put("total",list.size());
+                }
+        };
+    }
 }

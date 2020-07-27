@@ -11,4 +11,5 @@ public interface ExamService {
     int createExam(String examName,String startTime,String endTime,int paperId,String className);
     List<Exam>selectExamByClassName(String className);
     void relateExamToTeacher(int examId,int userId);
+    List<Exam>getExamByTeacherId(int userId);
 }

@@ -40,4 +40,10 @@ public class ExamServiceImpl implements ExamService{
         examMapper.relateExamToTeacher(examId,userId);
     }
 
+    @Override
+    public List<Exam> getExamByTeacherId(int userId) {
+        List<Exam>list=examMapper.selectExamByTeacherId(userId);
+        return list;
+    }
+
 }
