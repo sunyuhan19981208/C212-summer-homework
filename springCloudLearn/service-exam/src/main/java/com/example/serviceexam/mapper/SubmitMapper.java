@@ -9,7 +9,8 @@ import org.springframework.stereotype.Repository;
 public interface SubmitMapper {
     @Select("select max(submitId) from submit")
     Integer getMaxSubmitId();
-    @Insert("insert into submit(submitId,examId,userId)values(#{submitId},#{examId},#{userId})")
+    @Insert("insert into submit(submitId,examId,userId.status)values(#{submitId},#{examId},#{userId},0)")
     void insertSubmit(@Param("submitId")int submitId,@Param("examId")int examId,@Param("userId")int userId);
-
+    @Insert("insert into q_in_submit()")
+    void insertQuestionInSubmit();
 }

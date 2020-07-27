@@ -60,8 +60,7 @@ public class QuestionController {
         Question question=questionService.selectQuestionById(questionId);
         data.put("stem",question.getQuestionStem());
         List<Choice>chList=questionService.selectChoiceByQid(questionId);
-        for(Choice ch:chList)
-            data.put(ch.getOpt(),ch.getStem());
+        data.put("choice",chList);
         if(chList!=null)data.put("total",chList.size());
         return new HashMap<String,Object>(){
             {
