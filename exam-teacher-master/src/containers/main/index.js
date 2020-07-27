@@ -152,7 +152,6 @@ class Main extends React.Component {
 			method: 'get',
 			url: URL.get_class_info
 		}, {
-			className: 'ClassServiceImpl',
 			type: 5
 		})
 			.then((res) => {

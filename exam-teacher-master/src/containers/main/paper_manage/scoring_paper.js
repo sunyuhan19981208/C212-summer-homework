@@ -9,7 +9,7 @@ const confirm = Modal.confirm;
 //路由组件
 import { Link } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 
 import httpServer from '@components/httpServer.js';
 import * as URL from '@components/interfaceURL.js'
@@ -26,6 +26,7 @@ class ScoringPaper extends React.Component {
         total: 0,
         defaultCurrent: 1,
       },
+      teacherId: '',
       visibleChangeModal: false,
       curPaperInfo: {}
     }
@@ -36,6 +37,8 @@ class ScoringPaper extends React.Component {
 
   componentWillMount() {
     this.getPageDate();
+
+    this.setState({ teacherId: localStorage.getItem("userId") })
     //如果状态管理中没有内容（用户刷新网页）
     //去取localStorage的用户名
     // if(!this.props.userinfo.userId) {
@@ -80,7 +83,7 @@ class ScoringPaper extends React.Component {
     httpServer({
       url: URL.get_papers
     }, {
-      teacherId: this.props.userinfo.userId,
+      teacherId: this.state.teacherId,
       page: this.state.pagination.current,
       rows: this.state.pagination.pageSize,
       type: 1,
@@ -116,6 +119,7 @@ class ScoringPaper extends React.Component {
     httpServer({
       url: URL.search_papers
     }, {
+      teacherId: this.state.teacherId,
       page: this.state.pagination.current,
       rows: this.state.pagination.pageSize,
       type: 1,
@@ -177,7 +181,7 @@ class ScoringPaper extends React.Component {
       className: this.state.curPaperInfo.className,
       paperId: this.state.curPaperInfo.paperId,
     })
-    this.props.history.push("/main/paper_manage/scoring/all_papers/" + this.state.curPaperInfo.paperId + "/" + this.state.curPaperInfo.className);//react-router 4.0 写法
+    this.props.history.push("/main/paper_manage/scoring/all_papers/" + this.state.curPaperInfo.paperId + "/" + this.state.curPaperInfo.className + "/" + this.state.teacherId);//react-router 4.0 写法
   }
 
 
@@ -261,10 +265,11 @@ class ScoringPaper extends React.Component {
 
 // connect(mapStateToProps,mapDispatchToProps);
 
-export default withRouter(
-  connect((state) => {
-    return {
-      userinfo: state.userinfo
-    }
-  })(ScoringPaper)
-);
+// export default withRouter(
+//   connect((state) => {
+//     return {
+//       userinfo: state.userinfo
+//     }
+//   })(ScoringPaper)
+// );
+export default withRouter(Form.create()(ScoringPaper));
