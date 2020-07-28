@@ -43,8 +43,8 @@ class CreateExam extends React.Component {
     httpServer({
       url: URL.get_paperId
     }, {
-      gradeId: this.gradeId,
-      subjectId: this.subjectId,
+      subjectId: this.gradeId,
+      gradeId: this.subjectId,
     })
       .then((res) => {
         let respData = res.data.data;

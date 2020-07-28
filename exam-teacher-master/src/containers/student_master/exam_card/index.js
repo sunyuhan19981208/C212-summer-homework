@@ -4,7 +4,7 @@ import { Menu, Icon, Button, Card } from 'antd';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 // import * as classinfoActions from '../../actions/classinfo'
- import { connect } from 'react-redux'
+import { connect } from 'react-redux'
 // import { bindActionCreators } from 'redux'
 
 
@@ -19,43 +19,96 @@ class ExamCard extends React.Component {
     constructor() {
         super()
         this.state = {
-            data:{
-                stem:"",
-                A:'',
-                B:'',
-                C:'',
-                D:'',
-                E:'',
-                total:'',    
+            data: {
+                stem: "",
+                A: '',
+                B: '',
+                C: '',
+                D: '',
+                E: '',
+                total: '',
             },
-            type:'',
-            choiceType:'',
-            key:'choice',  //默认是选择题
+            type: '',
+            choiceType: '',
+            key: 'choice',  //默认是选择题
 
         }
     }
 
-    onTabChange(key, types){     //选项切换函数
-        console.log(key, types);
-        this.setState({ [types]: key });
-    }
+
     componentWillMount() {
+        this.getPaperList();
+        // this.getQuestionList();
+        // this.getQuestionInfoList();
 
-        // //获取试卷信息
-        // httpServer({
-        //     url: URL.get_paper
-        // }, {
-        //     className: this.props.userinfo.classOfCurStudent
-        // })
-        // .then((res) =>{
+    }
 
-        // })
-
-        console.log(this);
+    //根据className获取paperId（查询考试）
+    getPaperList() {
+        var paperInfo2 = [];
+        httpServer({
+            url: URL.get_paper
+        }, {
+            className: localStorage.getItem("classOfCurStudent")
+        })
+            .then((res) => {
+                for (var i = 0; i < res.data.data.length; i++) {
+                    paperInfo2.push(res.data.data[i].paperId);
+                    // alert(this.state.questionInfo[i]);
+                }
+                localStorage.setItem("paperList", JSON.stringify(paperInfo2));
+                let list = JSON.parse(localStorage.getItem("paperList"));
+                alert("paperList:" + list);
+            })
+        this.getQuestionList();
     }
 
 
-    render(){
+    //根据paperId获取questionId
+    getQuestionList() {
+        var questionInfo2 = [];
+        let list = JSON.parse(localStorage.getItem("paperList"))
+        for (var j = 0; j < list.length; j++) {
+            httpServer({
+                url: URL.get_questionlist_by_paperId
+            }, {
+                paperId: list[j]
+            })
+                .then((res) => {
+                    for (var i = 0; i < res.data.data.length; i++) {
+                        questionInfo2.push(res.data.data[i].questionId);
+                        // alert(this.state.questionInfo[i]);
+                    }
+                    localStorage.setItem("questionList", JSON.stringify(questionInfo2));
+                    let list = JSON.parse(localStorage.getItem("questionList"));
+                    alert("questionList:" + list);
+                })
+            this.getQuestionInfoList();
+        }
+    }
+
+    // 根据questionId获取题目
+    getQuestionInfoList() {
+        var questionInfoList = [];
+        let list = JSON.parse(localStorage.getItem("questionList"));
+        for (var j = 0; j < list.length; j++) {
+            httpServer({
+                url: URL.get_question_by_questionById
+            }, {
+                questionId: list[j]
+            })
+                .then((res) => {
+                    questionInfoList.push(res.data);
+                    // alert(this.state.stem[i]);
+                    // console.log(questionInfoList);
+                    localStorage.setItem("questionInfoList2", JSON.stringify(questionInfoList));
+                    let list2 = JSON.parse(localStorage.getItem("questionInfoList2"));
+                    // console.log(list2);
+                })
+        }
+    }
+
+    render() {
         const typeList = [
             {
                 key: 'choice',
@@ -73,7 +126,7 @@ class ExamCard extends React.Component {
                 key: 'jianda',
                 tab: '简答题',
             },
-          ];
+        ];
         const contentListNoTitle = {
             choice: <p>单选 content</p>,
             multichoice: <p>多选 content</p>,
@@ -91,7 +144,7 @@ class ExamCard extends React.Component {
             >   
                 这是试题和选项页面
                 <div>
-                     {this.state.data.stem}题干  {/* 题干 */}
+                    {this.state.data.stem}题干  {/* 题干 */}
                 </div>
                 <div>
                     {contentListNoTitle[this.state.key]}
@@ -99,7 +152,7 @@ class ExamCard extends React.Component {
                 <div className="nextbutton">
                     <Button type="primary">下一题</Button>
                 </div>
-                               
+
             </Card>
         )
     }

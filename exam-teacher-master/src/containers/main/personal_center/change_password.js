@@ -12,10 +12,11 @@ class ChangePassword extends React.Component {
   constructor() {
     super()
     this.state = {
-      // questionInfo:[],
-      opt:[],
-      qid:[],
-      stem:[],
+      questionInfo: [],
+      paperInfo: [],
+      opt: [],
+      qid: [],
+      stem: [],
       pathList: ['个人中心', '修改密码'],//面包屑路径
     }
   }
@@ -23,46 +24,81 @@ class ChangePassword extends React.Component {
   //test
   //
   componentWillMount() {
+    this.getPaperList();
+    // this.getQuestionList();
+    // this.getQuestionInfoList();
 
-    this.getQuestionList();
-  
   }
 
-  getQuestionList(){
-    // httpServer({
-    //   url:URL.get_questionlist_by_paperId
-    // },{
-    //   paperId : 2
-    // })
-    // .then((res)=>{
-    //   for(var i=0;i<res.data.data.length;i++){
-    //     this.state.questionInfo[i] = res.data.data[i].questionId;
-    //     alert(this.state.questionInfo[i]);
-    //   }
-    //   localStorage.setItem("questionList", JSON.stringify(this.state.questionInfo));
-    //   let list = JSON.parse(localStorage.getItem("questionList"))
-    //   alert(list);
-
-    // })
-
+  //根据className获取paperId（查询考试）
+  getPaperList() {
+    var paperInfo2 = [];
     httpServer({
-      url:URL.get_question_by_questionById
-    },{
-      questionId : 79
+      url: URL.get_paper
+    }, {
+      className: "软件sy1701"
     })
-    .then((res)=>{  
-      for(var i=0;i<res.data.data.choice.length;i++){
-        this.state.opt[i] = res.data.data.choice[i].opt;
-        this.state.qid[i] = res.data.data.choice[i].qid;
-        this.state.stem[i] = res.data.data.choice[i].stem;
-        // alert(this.state.stem[i]);
-      }
-      localStorage.setItem("stem", JSON.stringify(this.state.stem));
-      let list = JSON.parse(localStorage.getItem("stem"))
-      alert(list);
-
-    })
+      .then((res) => {
+        for (var i = 0; i < res.data.data.length; i++) {
+          paperInfo2.push(res.data.data[i].paperId);
+          // alert(this.state.questionInfo[i]);
+        }
+        localStorage.setItem("paperList", JSON.stringify(paperInfo2));
+        let list = JSON.parse(localStorage.getItem("paperList"));
+        alert("paperList:" + list);
+      })
+    this.getQuestionList();
   }
+
+
+  //根据paperId获取questionId
+  getQuestionList() {
+    var questionInfo2 = [];
+    let list = JSON.parse(localStorage.getItem("paperList"))
+    for (var j = 0; j < list.length; j++) {
+      httpServer({
+        url: URL.get_questionlist_by_paperId
+      }, {
+        paperId: list[j]
+      })
+        .then((res) => {
+          for (var i = 0; i < res.data.data.length; i++) {
+            questionInfo2.push(res.data.data[i].questionId);
+            // alert(this.state.questionInfo[i]);
+          }
+          localStorage.setItem("questionList", JSON.stringify(questionInfo2));
+          let list = JSON.parse(localStorage.getItem("questionList"));
+          alert("questionList:" + list);
+        })
+      this.getQuestionInfoList();
+    }
+  }
+
+
+
+  // 根据questionId获取题目
+  getQuestionInfoList() {
+    var questionInfoList = [];
+    let list = JSON.parse(localStorage.getItem("questionList"));
+    for (var j = 0; j < list.length; j++) {
+      httpServer({
+        url: URL.get_question_by_questionById
+      }, {
+        questionId: list[j]
+      })
+        .then((res) => {
+          questionInfoList.push(res.data);
+          // alert(this.state.stem[i]);
+          // console.log(questionInfoList);
+          localStorage.setItem("questionInfoList2", JSON.stringify(questionInfoList));
+          let list2 = JSON.parse(localStorage.getItem("questionInfoList2"));
+          // console.log(list2);
+        })
+    }
+  }
+
+  
+
 
   //选择班级
   handleChange(value) {

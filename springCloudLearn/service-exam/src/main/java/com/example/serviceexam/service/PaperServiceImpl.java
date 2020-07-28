@@ -30,9 +30,8 @@ public class PaperServiceImpl implements PaperService{
 
     @Override
     public void addQuestion(HashMap<Integer, Integer> mp,int paperId) {
-        Integer num=0;
         for(Map.Entry<Integer,Integer>entry:mp.entrySet())
-            paperMapper.addQuestion(entry.getKey(),paperId,entry.getValue(),++num);
+            paperMapper.addQuestion(entry.getKey(),paperId,entry.getValue());
     }
 
     @Override

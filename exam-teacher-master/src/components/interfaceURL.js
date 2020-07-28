@@ -144,7 +144,7 @@ export const add_teacher = "http://39.107.84.0:8762/addTeacher";
 //创建考试
 export const create_exam = "http://39.107.84.0:8763/createExam";
 //获得试卷题目
-export const get_paper = "http://39.107.84.0:8763/getExamByClassName";
+export const get_paper = "http://39.107.84.0:8763/getExamByClass";
 
 //查询试卷（得到一页数据）
 export const get_papers = "http://39.107.84.0:8763/getExamByTeacherId";
