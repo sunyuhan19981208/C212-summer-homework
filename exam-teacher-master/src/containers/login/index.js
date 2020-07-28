@@ -48,7 +48,6 @@ class Login extends React.Component {
 						//发送Action  向Store 写入用户名和密码
 						this.props.userinfoActions.login({
 							username: values.username,
-							classOfCurStudent:res.data.className,
 							//userId:res.data.userId
 						})
 						openNotification();
@@ -69,6 +68,9 @@ class Login extends React.Component {
 							this.props.history.push('/main/homepage');
 						}
 						else if(res.data.level === "学生") {
+							this.props.userinfoActions.login({
+								classOfCurStudent:res.data.className,
+							})
 							localStorage.setItem("classOfCurStudent",res.data.className)
 							this.props.history.push('/student_master/homepage')
 						}
