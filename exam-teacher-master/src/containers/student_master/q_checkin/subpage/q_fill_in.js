@@ -103,18 +103,3 @@ class QFillIn extends React.Component {
 }
 
 export default Form.create()(QFillIn);
-
-{/* <Tabs type="card" defaultActiveKey={this.state.q_checkin_type} activeKey={this.state.q_checkin_type} onChange={this.callback.bind(this)}>
-              <TabPane tab="单选题" key="single">
-                <QSingle  type={this.props.match.params.type} level={this.props.match.params.level}></QSingle>
-              </TabPane>
-              <TabPane tab="多选题" key="multiple">
-                <QMultiple  type={this.props.match.params.type} level={this.props.match.params.level}></QMultiple>
-              </TabPane>
-              <TabPane tab="填空题" key="4">
-                <QFillIn  type={this.props.match.params.type} level={this.props.match.params.level}></QFillIn>
-              </TabPane>
-              <TabPane tab="简答题" key="5">
-                <QShortAnswer  type={this.props.match.params.type} level={this.props.match.params.level}></QShortAnswer>
-              </TabPane>
-            </Tabs> */}

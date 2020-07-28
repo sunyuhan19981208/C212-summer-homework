@@ -1,19 +1,15 @@
 //！！！！！试题录入改————考试页面
 import React from 'react';
-import { Tabs,Form,Input,Select,Radio,Row,Col,Button,message,Card,Checkbox } from 'antd';
+import { Tabs } from 'antd';
 const TabPane = Tabs.TabPane;
-const FormItem = Form.Item;
-const Option = Select.Option;
-const { TextArea } = Input;
-const RadioGroup = Radio.Group;
 
 import { connect } from 'react-redux'
 
-// import QSingle from './subpage/q_single'
-// import QMultiple from './subpage/q_multiple'
+import QSingle from './subpage/q_single'
+import QMultiple from './subpage/q_multiple'
 
-// import QFillIn from './subpage/q_fill_in'
-// import QShortAnswer from './subpage/q_short_answer'
+import QFillIn from './subpage/q_fill_in'
+import QShortAnswer from './subpage/q_short_answer'
 
 
 import httpServer from '@components/httpServer.js'
@@ -23,7 +19,7 @@ class QCheckin extends React.Component {
   constructor(){
     super();
     this.state = {     
-      // q_checkin_type : 'single',//选项卡用户选择的题目类型
+      q_checkin_type : 'single',//选项卡用户选择的题目类型
       // data:{
       //   stem:"",
       //   A:'',
@@ -39,7 +35,10 @@ class QCheckin extends React.Component {
     }
   }
 
-  componentWillMount() {
+  
+
+  componentWillMount(){
+
     if(sessionStorage.getItem("q_checkin_type")) {
       //设置选项卡的题目的类型
       console.log(sessionStorage.getItem("q_checkin_type"));
@@ -138,10 +137,6 @@ class QCheckin extends React.Component {
     });
     sessionStorage.setItem("q_checkin_type", key);//存储用户点击选项卡的题目类型
   }
-
-
-  
-  
 
   render(){
     var type =3;
