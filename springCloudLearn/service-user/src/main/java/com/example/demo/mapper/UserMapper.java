@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 @Repository
 public interface UserMapper {
@@ -41,4 +42,6 @@ public interface UserMapper {
     List<User>selectAllTeacher();
     @Select("select * from user where level = \"老师\" and username like concat('%',#{username},'%')")
     List<User>selectTeacherByName(@Param("username")String username);
+    @Select("select className from student where userId=#{userId}")
+    HashMap<String,Object> getClassNameByUserId(@Param("userId")int userId);
 }

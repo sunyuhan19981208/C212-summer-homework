@@ -47,14 +47,14 @@ public class LoginController {
 //            String sessionId= MD5Util.getMD5(user.getUsername());
 //            redisTemplate.opsForValue().set(sessionId,user.getUserId());
 //            response.addCookie(new Cookie("sessionId",sessionId));
-            return  new HashMap<String,Object>(){
-                {
-                    put("respCode",1);
-                    put("respMsg","登录成功");
-                    put("userId",user.getUserId());
-                    put("level",user.getLevel());
-                }
-            };
+            HashMap<String,Object>res=new HashMap<>();
+            res.put("respCode",1);
+            res.put("respMsg","登录成功");
+            res.put("userId",user.getUserId());
+            res.put("level",user.getLevel());
+
+            if(user.getLevel().equals("学生"))res.put("className",userService.getClassNameByUserId(user.getUserId()));
+            return res;
         }
     }
 }
