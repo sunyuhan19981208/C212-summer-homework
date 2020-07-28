@@ -182,6 +182,9 @@ export const get_questionlist_by_paperId = "http://39.107.84.0:8763/getQuestionL
 //根据题目ID获取题目内容
 export const get_question_by_questionById = "http://39.107.84.0:8763/getQuestionById";
 
+//提交试卷
+export const submit ="";
+
 /*
 import httpServer from '@components/httpServer.js'
 import * as URL from '@components/interfaceURL.js'

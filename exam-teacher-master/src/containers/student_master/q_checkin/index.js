@@ -1,6 +1,6 @@
 //！！！！！试题录入改————考试页面
 import React from 'react';
-import { Tabs,Form,Input,Select,Radio,Row,Col,Button,message,Card,Checkbox } from 'antd';
+import { Tabs, Form, Input, Select, Radio, Row, Col, Button, message, Card, Checkbox } from 'antd';
 
 const TabPane = Tabs.TabPane;
 const FormItem = Form.Item;
@@ -22,35 +22,39 @@ import httpServer from '@components/httpServer.js'
 import * as URL from '@components/interfaceURL.js'
 
 class QCheckin extends React.Component {
-  constructor(){
+  constructor() {
     super();
-    this.state = {     
-      q_checkin_type : 'single',//选项卡用户选择的题目类型
-      data:{
-        stem:"",
-        A:'',
-        B:'',
-        C:'',
-        D:'',
-        E:'',
-        total:'',    
-      },
-      type:'5',
-      choiceType:'0',
-      key:'choice',  //默认是选择题
+    this.state = {
+      index: 0,
+      stem: '',
+      type: 0,
+      choiceType: 0,
+      questionId: 0,
+      answerList: [],
+      stemOfChoice: '',
+
+
     }
   }
 
-  
 
-  componentWillMount(){
 
-    if(sessionStorage.getItem("q_checkin_type")) {
-      //设置选项卡的题目的类型
-      console.log(sessionStorage.getItem("q_checkin_type"));
-      this.setState({q_checkin_type : sessionStorage.getItem("q_checkin_type")});
-    }
+  componentWillMount() {
+
     this.getPaperList();
+    this.setState(() => {
+      let list = JSON.parse(localStorage.getItem("questionContent"));
+      this.state.stem = list[this.state.index].data.stem;
+      //console.log(this.state.stem);
+      this.state.type = list[this.state.index].type;
+      this.state.choiceType = list[this.state.index].choiceType;
+      this.state.questionId = list[this.state.index].data.questionId;
+      this.state.stemOfChoice = list[this.state.index].data.choice.stem;
+
+
+
+
+    })
     // this.getQuestionList();
     // this.getQuestionInfoList();
 
@@ -70,8 +74,12 @@ class QCheckin extends React.Component {
           // alert(this.state.questionInfo[i]);
         }
         localStorage.setItem("paperList", JSON.stringify(paperInfo2));
-        let list = JSON.parse(localStorage.getItem("paperList"));
-        alert("paperList:" + list);
+        let examId = res.data.data[0].examId;
+        localStorage.setItem("examId", examId);
+
+
+        //let list = JSON.parse(localStorage.getItem("paperList"));
+        // alert("paperList:" + list);
       })
     this.getQuestionList();
   }
@@ -93,8 +101,8 @@ class QCheckin extends React.Component {
             // alert(this.state.questionInfo[i]);
           }
           localStorage.setItem("questionList", JSON.stringify(questionInfo2));
-          let list = JSON.parse(localStorage.getItem("questionList"));
-          alert("questionList:" + list);
+
+          //let list2 = JSON.parse(localStorage.getItem("questionList"));
         })
       this.getQuestionInfoList();
     }
@@ -114,63 +122,109 @@ class QCheckin extends React.Component {
       })
         .then((res) => {
           questionInfoList.push(res.data);
-          // alert(this.state.stem[i]);
-          // console.log(questionInfoList);
-          localStorage.setItem("questionInfoList2", JSON.stringify(questionInfoList));
-          let list2 = JSON.parse(localStorage.getItem("questionInfoList2"));
-          // console.log(list2);
+          localStorage.setItem("questionContent", JSON.stringify(questionInfoList));
+          // let questionContent = localStorage.getItem("questionContent");
+          // console.log(questionContent);
         })
     }
   }
 
+  //下一题
+  getNextQuestion() {
+    this.props.form.validateFieldsAndScroll((err, values) => {
+      if (!err) {
+        var entry = {
+          questionId: this.state.questionId,
+          answer: values.answer,
+        };
+        this.state.answerList.push(entry);
 
-  componentWillUpdate(nextProps){
-    //在这里使用this.setState会导致无限触发
-  }
+        this.setState(() => {
+          this.state.index++;
+        })
 
-  // componentWillReceiveProps(nextProps){
-  //     if (nextProps.location.pathname != this.props.location.pathname) {
-  //       this.setState({// 重置q_checkin_type
-  //         q_checkin_type : '3'
-  //       });
-  //       sessionStorage.setItem("q_checkin_type", '3');
-  //     }
-  // }
-
-  callback(key) {
-    this.setState({
-      q_checkin_type : key
+      }
     });
-    sessionStorage.setItem("q_checkin_type", key);//存储用户点击选项卡的题目类型
+
+
+
+
   }
 
-  handleSubmit(){
-    alert("123")
+
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.form.validateFieldsAndScroll((err, values) => {
+      if (!err) {
+        var entry = {
+          questionId: this.state.questionId,
+          answer: values.answer,
+        };
+        this.state.answerList.push(entry);
+
+        //提交题目信息
+        httpServer({
+          url: URL.submit,
+          method: post
+        }, {
+          answerList: this.state.answerList,
+          userId: localStorage.getItem("userId"),
+          examId: localStorage.getItem("examId"),
+
+        })
+
+      }
+    });
+
   }
-  
 
-  render(){
 
-    const item=[{       //选项，用于保存选项数目
-      option : 'A',
-      key : 0
-    },{
-      option : 'B',
-      key : 1
-    },{
-      option : 'C',
-      key : 2
-    },{
-      option : 'D',
-      key : 3
-    }] 
-    
+  render() {
+
+    const { getFieldDecorator } = this.props.form;
+
+
+
+
+
+    const item = [{       //选项，用于保存选项数目
+      option: 'A',
+      key: 0
+    }, {
+      option: 'B',
+      key: 1
+    }, {
+      option: 'C',
+      key: 2
+    }, {
+      option: 'D',
+      key: 3
+    }]
+
+    const is_submit = (index) => {
+      console.log(JSON.parse(localStorage.getItem("questionList")).length);
+      if (index === localStorage.getItem("questionList").length - 1) {
+        return (
+          <Button type="primary" htmlType="submit" className="f-r">提交</Button>
+        )
+      }
+      else {
+        return (
+          <Button type="primary" onClick={this.getNextQuestion} className="f-r">下一题</Button>
+        )
+      }
+
+    }
+
     const singal_answerList = item.map((item, i) => {      //!！单选，此处是选项，包括abcd和选项内容，待修改
       return (
-        <Row key = {item.key}>
+        <Row key={item.key}>
           <Col span={21}>
             <FormItem>
-              <Radio >{item.option}：选型内容</Radio>
+              {getFieldDecorator('answer' + item.option)(
+                <Radio >{item.option}：{this.state.stemOfChoice}</Radio>
+              )}
             </FormItem>
           </Col>
         </Row>
@@ -179,103 +233,107 @@ class QCheckin extends React.Component {
 
     const multi_answerList = item.map((item, i) => {     // !！多选   此处是选项，包括选项和选项内容，待修改
       return (
-        <Row key = {item.key}>
+        <Row key={item.key}>
           <Col span={21}>
-            <FormItem >  
-              <Checkbox >{item.option}：选项内容</Checkbox>
+            <FormItem >
+              {getFieldDecorator('answer' + item.option)(
+                <Checkbox >{item.option}：{this.state.stemOfChoice}</Checkbox>
+              )}
             </FormItem>
           </Col>
-      </Row>
+        </Row>
       )
     })
 
-    const proList = (thistype,ctype) => {         //题目页面
-        console.log(this);
-        if (thistype==="2"&&ctype==="0"){     //单选
-          return(
-            <div>
-              {singal_answerList}
-            </div>
-          );
-    
-        }else if(thistype==="2"&&ctype==="1"){       //多选
-          return(
+    const proList = (thistype, ctype) => {         //题目页面
+      // console.log(this);
+      if (thistype === 2 && ctype === 0) {     //单选
+        return (
+          <div>
+            {singal_answerList}
+          </div>
+        );
+
+      } else if (thistype === 2 && ctype === 1) {       //多选
+        return (
           <div>
             {multi_answerList}
           </div>
-          );
-        }else if(thistype==="1"){      //填空
-          return(
-            <div> 
-              <FormItem>          
+        );
+      } else if (thistype === 1) {      //填空
+        return (
+          <div>
+            <FormItem>
+              {getFieldDecorator('answer', {})(
                 <Row>
                   <Col sm={3} xs={0}></Col>
                   <Col>
-                    <TextArea rows={3} placeholder="请输入你的答案，多个答案用空格或逗号隔开" />
+                    <TextArea rows={3} placeholder="请输入你的答案" />
                   </Col>
                 </Row>
-              </FormItem> 
-            </div>
-            ) 
-        }else if(thistype==="5"){        //简答
-          return(
-            <div>
-              <FormItem>
-                <Row gutter={[0,10]}>
+              )}
+            </FormItem>
+          </div>
+        )
+      } else if (thistype === 5) {        //简答
+        return (
+          <div>
+            <FormItem>
+              {getFieldDecorator('answer', {})(
+                <Row gutter={[0, 10]}>
                   <Col sm={3} xs={0}></Col>
                   <Col>
-                    <TextArea rows={3} placeholder="请输入你的答案，多个答案用空格或逗号隔开" />
+                    <TextArea rows={3} placeholder="请输入你的答案" />
                   </Col>
                 </Row>
-              </FormItem>
-            </div>
-          );
-          }else{
-            alert("数据出错");
-          }       
+              )}
+            </FormItem>
+          </div>
+        );
+      } else {
+        alert("数据出错");
       }
-      
+    }
 
-    return(   
+
+    return (
       <div className="q-checkin">
         <div className="q-checkin-content">
           <div className="card-container">
             <Form onSubmit={this.handleSubmit.bind(this)}>
-              <FormItem>          
+              <FormItem>
                 <Row>
                   <Col span={24}>
-                    <Card>题目：</Card>       {/* //题干this.state.stem */}
+                    <Card>第{this.state.index + 1}题：{this.state.stem}</Card>       {/* //题干this.state.stem */}
                   </Col>
                 </Row>
               </FormItem>
 
-              {proList(this.state.type,this.state.choiceType)}
+              {proList(this.state.type, this.state.choiceType)}
 
-             <FormItem>              
+              <FormItem>
                 <Row>
                   <Col sm={20} xs={24}>
-                    <Button type="primary" htmlType="submit" className="f-r">下一题</Button>
+                    {is_submit(this.state.index)}
                   </Col>
                   {/* ！！！点击下一题提交答案，同时跳转到下一题 */}
                 </Row>
-             </FormItem>
-         
-          </Form>
+              </FormItem>
+
+            </Form>
 
           </div>
         </div>
       </div>
     )
 
-}
-}
-
-function mapStateToProps(state) {
-    return {
-        subjectinfo: state.subjectinfo
-    }
+  }
 }
 
-export default connect(
-    mapStateToProps
-)(QCheckin)
+
+
+// export default connect(
+//   mapStateToProps
+// )(Form.create(QCheckin))
+
+export default Form.create()(QCheckin);
