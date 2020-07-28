@@ -1,7 +1,13 @@
 //！！！！！试题录入改————考试页面
 import React from 'react';
-import { Tabs } from 'antd';
+import { Tabs,Form,Input,Select,Radio,Row,Col,Button,message,Card,Checkbox } from 'antd';
+
 const TabPane = Tabs.TabPane;
+const FormItem = Form.Item;
+const Option = Select.Option;
+const { TextArea } = Input;
+const RadioGroup = Radio.Group;
+
 
 import { connect } from 'react-redux'
 
@@ -20,18 +26,18 @@ class QCheckin extends React.Component {
     super();
     this.state = {     
       q_checkin_type : 'single',//选项卡用户选择的题目类型
-      // data:{
-      //   stem:"",
-      //   A:'',
-      //   B:'',
-      //   C:'',
-      //   D:'',
-      //   E:'',
-      //   total:'',    
-      // },
-      // type:'',
-      // choiceType:'',
-      // key:'choice',  //默认是选择题
+      data:{
+        stem:"",
+        A:'',
+        B:'',
+        C:'',
+        D:'',
+        E:'',
+        total:'',    
+      },
+      type:'5',
+      choiceType:'0',
+      key:'choice',  //默认是选择题
     }
   }
 
@@ -139,15 +145,124 @@ class QCheckin extends React.Component {
   }
 
   render(){
-    var type =3;
-    var res="";
-    switch(type){
-      case (1):return(<QFillIn ></QFillIn>);break;
-      case (2):return(<QSingle ></QSingle>);break;
-      case (3):return(<QMultiple ></QMultiple>);break;
-      case (5):return(<QShortAnswer ></QShortAnswer>);break;
-    };
-  }
+
+    const item=[{       //选项，用于保存选项数目
+      option : 'A',
+      key : 0
+    },{
+      option : 'B',
+      key : 1
+    },{
+      option : 'C',
+      key : 2
+    },{
+      option : 'D',
+      key : 3
+    }] 
+    
+    const singal_answerList = item.map((item, i) => {      //!！单选，此处是选项，包括abcd和选项内容，待修改
+      return (
+        <Row key = {item.key}>
+          <Col span={21}>
+            <FormItem>
+              <Radio >{item.option}：选型内容</Radio>
+            </FormItem>
+          </Col>
+        </Row>
+      )
+    })
+
+    const multi_answerList = item.map((item, i) => {     // !！多选   此处是选项，包括选项和选项内容，待修改
+      return (
+        <Row key = {item.key}>
+          <Col span={21}>
+            <FormItem >  
+              <Checkbox >{item.option}：选项内容</Checkbox>
+            </FormItem>
+          </Col>
+      </Row>
+      )
+    })
+
+    const proList = (thistype,ctype) => {         //题目页面
+        console.log(this);
+        if (thistype==="2"&&ctype==="0"){     //单选
+          return(
+            <div>
+              {singal_answerList}
+            </div>
+          );
+    
+        }else if(thistype==="2"&&ctype==="1"){       //多选
+          return(
+          <div>
+            {multi_answerList}
+          </div>
+          );
+        }else if(thistype==="1"){      //填空
+          return(
+            <div> 
+              <FormItem>          
+                <Row>
+                  <Col sm={3} xs={0}></Col>
+                  <Col>
+                    <TextArea rows={3} placeholder="请输入你的答案，多个答案用空格或逗号隔开" />
+                  </Col>
+                </Row>
+              </FormItem> 
+            </div>
+            ) 
+        }else if(thistype==="5"){        //简答
+          return(
+            <div>
+              <FormItem>
+                <Row gutter={[0,10]}>
+                  <Col sm={3} xs={0}></Col>
+                  <Col>
+                    <TextArea rows={3} placeholder="请输入你的答案，多个答案用空格或逗号隔开" />
+                  </Col>
+                </Row>
+              </FormItem>
+            </div>
+          );
+          }else{
+            alert("数据出错");
+          }       
+      }
+      
+
+    return(   
+      <div className="q-checkin">
+        <div className="q-checkin-content">
+          <div className="card-container">
+            <Form >
+              <FormItem>          
+                <Row>
+                  <Col span={24}>
+                    <Card>题目：</Card>       {/* //题干this.state.stem */}
+                  </Col>
+                </Row>
+              </FormItem>
+
+              {proList(this.state.type,this.state.choiceType)}
+
+             <FormItem>              
+                <Row>
+                  <Col sm={20} xs={24}>
+                    <Button type="primary" htmlType="submit" className="f-r">下一题</Button>
+                  </Col>
+                  {/* ！！！点击下一题提交答案，同时跳转到下一题 */}
+                </Row>
+             </FormItem>
+         
+          </Form>
+
+          </div>
+        </div>
+      </div>
+    )
+
+}
 }
 
 function mapStateToProps(state) {
