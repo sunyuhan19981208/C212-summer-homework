@@ -137,10 +137,10 @@ class QMultiple extends React.Component {
     })
 
 
+
     return(
       <div>
         <Form onSubmit={this.handleSubmit.bind(this)}>
-
           <FormItem>
             <Row>
               <Col span={24}>

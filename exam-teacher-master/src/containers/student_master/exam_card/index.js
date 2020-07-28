@@ -82,12 +82,12 @@ class ExamCard extends React.Component {
         }
         return(
             <Card 
-            style={{ width: "100%" ,padding:40 }} 
-            title="name of paper"
-            extra={<a href="#">交卷</a>}  
-            tabList={typeList} 
-            activeTabKey = {this.state.key}
-            onTabChange = { key => {this.onTabChange(key, 'key'); }}
+                style={{ width: "100%" ,padding:40 }} 
+                title="name of paper"
+                extra={<a href="#">交卷</a>}  
+                tabList={typeList} 
+                activeTabKey = {this.state.key}
+                onTabChange = { key => {this.onTabChange(key, 'key'); }}
             >   
                 这是试题和选项页面
                 <div>
