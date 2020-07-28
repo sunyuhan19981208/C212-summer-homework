@@ -19,7 +19,7 @@ class QCheckin extends React.Component {
   constructor(){
     super();
     this.state = {     
-      q_checkin_type : 'single',//选项卡用户选择的题目类型
+      // q_checkin_type : 'single',//选项卡用户选择的题目类型
       // data:{
       //   stem:"",
       //   A:'',
@@ -41,7 +41,8 @@ class QCheckin extends React.Component {
 
     if(sessionStorage.getItem("q_checkin_type")) {
       //设置选项卡的题目的类型
-      this.setState({q_checkin_type : sessionStorage.getItem("q_checkin_type")})
+      console.log(sessionStorage.getItem("q_checkin_type"));
+      this.setState({q_checkin_type : sessionStorage.getItem("q_checkin_type")});
     }
 
   }
@@ -50,14 +51,14 @@ class QCheckin extends React.Component {
     //在这里使用this.setState会导致无限触发
   }
 
-  componentWillReceiveProps(nextProps){
-      if (nextProps.location.pathname != this.props.location.pathname) {
-        this.setState({// 重置q_checkin_type
-          q_checkin_type : 'single'
-        });
-        sessionStorage.setItem("q_checkin_type", 'single');
-      }
-  }
+  // componentWillReceiveProps(nextProps){
+  //     if (nextProps.location.pathname != this.props.location.pathname) {
+  //       this.setState({// 重置q_checkin_type
+  //         q_checkin_type : '3'
+  //       });
+  //       sessionStorage.setItem("q_checkin_type", '3');
+  //     }
+  // }
 
   callback(key) {
     this.setState({
@@ -67,28 +68,14 @@ class QCheckin extends React.Component {
   }
 
   render(){
-    return(   
-      <div className="q-checkin">
-        <div className="q-checkin-content">
-          <div className="card-container">
-            <Tabs type="card" defaultActiveKey={this.state.q_checkin_type} activeKey={this.state.q_checkin_type} onChange={this.callback.bind(this)}>
-              <TabPane tab="单选题" key="single">
-                <QSingle knowledgePoint={this.state.knowledgePoint} type={this.props.match.params.type} level={this.props.match.params.level}></QSingle>
-              </TabPane>
-              <TabPane tab="多选题" key="multiple">
-                <QMultiple knowledgePoint={this.state.knowledgePoint} type={this.props.match.params.type} level={this.props.match.params.level}></QMultiple>
-              </TabPane>
-              <TabPane tab="填空题" key="4">
-                <QFillIn knowledgePoint={this.state.knowledgePoint} type={this.props.match.params.type} level={this.props.match.params.level}></QFillIn>
-              </TabPane>
-              <TabPane tab="简答题" key="5">
-                <QShortAnswer knowledgePoint={this.state.knowledgePoint} type={this.props.match.params.type} level={this.props.match.params.level}></QShortAnswer>
-              </TabPane>
-            </Tabs>
-          </div>
-        </div>
-      </div>
-    )
+    var type =3;
+    var res="";
+    switch(type){
+      case (1):return(<QFillIn ></QFillIn>);break;
+      case (2):return(<QSingle ></QSingle>);break;
+      case (3):return(<QMultiple ></QMultiple>);break;
+      case (5):return(<QShortAnswer ></QShortAnswer>);break;
+    };
   }
 }
 

@@ -68,7 +68,7 @@ public class PaperController {
             return new HashMap<String,Object>(){
                 {
                     put("respCode",1);
-                    put("respMsg","添加成功");
+                    put("respMsg","添加成功,试卷编号为："+paperId);
                 }
             };
         }

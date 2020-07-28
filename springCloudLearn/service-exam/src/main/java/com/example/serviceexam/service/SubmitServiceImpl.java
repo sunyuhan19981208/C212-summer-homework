@@ -16,7 +16,7 @@ public class SubmitServiceImpl implements SubmitService{
     }
 
     @Override
-    public int insertSubmit(int examId, int userId) {
+    public int initSubmit(int examId, int userId) {
         int submitId=getNewSubmitId();
         submitMapper.insertSubmit(submitId,examId,userId);
         return submitId;

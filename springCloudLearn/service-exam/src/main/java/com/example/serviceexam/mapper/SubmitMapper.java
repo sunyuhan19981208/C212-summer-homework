@@ -11,6 +11,6 @@ public interface SubmitMapper {
     Integer getMaxSubmitId();
     @Insert("insert into submit(submitId,examId,userId.status)values(#{submitId},#{examId},#{userId},0)")
     void insertSubmit(@Param("submitId")int submitId,@Param("examId")int examId,@Param("userId")int userId);
-    @Insert("insert into q_in_submit()")
-    void insertQuestionInSubmit();
+    @Insert("insert into q_in_submit(submitId,questionId,score)values(#{submitId},#{questionId},#{score})")
+    void insertQuestionInSubmit(@Param("submitId")int submitId,@Param("questionId")int questionId,@Param("score")int score);
 }
