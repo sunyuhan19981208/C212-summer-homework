@@ -35,24 +35,57 @@ class ExamCard extends React.Component {
         }
     }
 
-    onTabChange(key, types){     //选项切换函数
-        console.log(key, types);
-        this.setState({ [types]: key });
-    }
+
     componentWillMount() {
-
-        // //获取试卷信息
-        // httpServer({
-        //     url: URL.get_paper
-        // }, {
-        //     className: this.props.userinfo.classOfCurStudent
-        // })
-        // .then((res) =>{
-
-        // })
-
-        console.log(this);
-    }
+        this.getPaperList();
+        // this.getQuestionList();
+        // this.getQuestionInfoList();
+    
+      }
+    
+      //根据className获取paperId（查询考试）
+      getPaperList() {
+        var paperInfo2 = [];
+        httpServer({
+          url: URL.get_paper
+        }, {
+          className: localStorage.getItem("classOfCurStudent")
+        })
+          .then((res) => {
+            for (var i = 0; i < res.data.data.length; i++) {
+              paperInfo2.push(res.data.data[i].paperId);
+              // alert(this.state.questionInfo[i]);
+            }
+            localStorage.setItem("paperList", JSON.stringify(paperInfo2));
+            let list = JSON.parse(localStorage.getItem("paperList"));
+            alert("paperList:" + list);
+          })
+        this.getQuestionList();
+      }
+    
+    
+      //根据paperId获取questionId
+      getQuestionList() {
+        var questionInfo2 = [];
+        let list = JSON.parse(localStorage.getItem("paperList"))
+        for (var j = 0; j < list.length; j++) {
+          httpServer({
+            url: URL.get_questionlist_by_paperId
+          }, {
+            paperId: list[j]
+          })
+            .then((res) => {
+              for (var i = 0; i < res.data.data.length; i++) {
+                questionInfo2.push(res.data.data[i].questionId);
+                // alert(this.state.questionInfo[i]);
+              }
+              localStorage.setItem("questionList", JSON.stringify(questionInfo2));
+              let list = JSON.parse(localStorage.getItem("questionList"));
+              alert("questionList:" + list);
+            })
+          this.getQuestionInfoList();
+        }
+      }
 
 
     render(){
