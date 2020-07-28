@@ -144,6 +144,11 @@ class QCheckin extends React.Component {
     sessionStorage.setItem("q_checkin_type", key);//存储用户点击选项卡的题目类型
   }
 
+  handleSubmit(){
+    alert("123")
+  }
+  
+
   render(){
 
     const item=[{       //选项，用于保存选项数目
@@ -235,7 +240,7 @@ class QCheckin extends React.Component {
       <div className="q-checkin">
         <div className="q-checkin-content">
           <div className="card-container">
-            <Form >
+            <Form onSubmit={this.handleSubmit.bind(this)}>
               <FormItem>          
                 <Row>
                   <Col span={24}>
