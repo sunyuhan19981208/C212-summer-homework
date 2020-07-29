@@ -198,7 +198,20 @@ class QCheckin extends React.Component {
 
   render() {
 
-
+  //   {
+  //     "userId":4,
+  //     "examId":7,
+  //     "answerList":[
+  //         {
+  //             "questionId":1,
+  //             "answer":"A"
+  //         },
+  //         {
+  //             "questionId":2,
+  //             "answer":"A"
+  //         }
+  //     ]
+  // }
 
     const { getFieldDecorator } = this.props.form;
 
