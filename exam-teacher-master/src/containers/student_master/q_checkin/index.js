@@ -32,9 +32,8 @@ class QCheckin extends React.Component {
       questionId: 0,
       answerList: [],
       stemOfChoice: '',
-
-
     }
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
 
@@ -51,12 +50,27 @@ class QCheckin extends React.Component {
       this.state.questionId = list[this.state.index].data.questionId;
       this.state.stemOfChoice = list[this.state.index].data.choice.stem;
 
-
-
-
     })
     // this.getQuestionList();
     // this.getQuestionInfoList();
+
+  }
+
+  shouldComponentUpdate() {
+    return true;
+  }
+
+  componentDidUpdate() {
+    //alert(this.state.index);
+
+    let list = JSON.parse(localStorage.getItem("questionContent"));
+    this.state.stem = list[this.state.index].data.stem;
+    //console.log(this.state.stem);
+    this.state.type = list[this.state.index].type;
+    this.state.choiceType = list[this.state.index].choiceType;
+    this.state.questionId = list[this.state.index].data.questionId;
+    this.state.stemOfChoice = list[this.state.index].data.choice.stem;
+
 
   }
 
@@ -129,53 +143,55 @@ class QCheckin extends React.Component {
     }
   }
 
-  //下一题
-  getNextQuestion() {
-    this.props.form.validateFieldsAndScroll((err, values) => {
-      if (!err) {
-        var entry = {
-          questionId: this.state.questionId,
-          answer: values.answer,
-        };
-        this.state.answerList.push(entry);
 
-        this.setState(() => {
-          this.state.index++;
-        })
-
-      }
-    });
-
-
-
-
-  }
 
 
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.form.validateFieldsAndScroll((err, values) => {
-      if (!err) {
-        var entry = {
-          questionId: this.state.questionId,
-          answer: values.answer,
-        };
-        this.state.answerList.push(entry);
 
-        //提交题目信息
-        httpServer({
-          url: URL.submit,
-          method: post
-        }, {
-          answerList: this.state.answerList,
-          userId: localStorage.getItem("userId"),
-          examId: localStorage.getItem("examId"),
+    if (this.state.index === localStorage.getItem("questionList").length - 1) {
+      this.props.form.validateFields((err, values) => {
+        if (!err) {
+          var entry2 = {
+            questionId: this.state.questionId,
+            answer: values.answer,
+          };
+          this.state.answerList.push(entry2);
 
-        })
+          //提交题目信息
+          httpServer({
+            url: URL.submit,
+            method: post
+          }, {
+            answerList: this.state.answerList,
+            userId: localStorage.getItem("userId"),
+            examId: localStorage.getItem("examId"),
+          })
+        }
+      });
+    }
+    else {
+      this.props.form.validateFields((err, values) => {
+        if (!err) {
+          alert("进入下一题");
+          var entry = {
+            questionId: this.state.questionId,
+            answer: values.answer,
+          };
+          this.state.answerList.push(entry);
 
-      }
-    });
+          this.setState({
+            index: this.state.index + 1,
+          });
+
+
+
+        }
+      });
+
+    }
+
 
   }
 
@@ -183,6 +199,14 @@ class QCheckin extends React.Component {
   render() {
 
     const { getFieldDecorator } = this.props.form;
+
+    // let list = JSON.parse(localStorage.getItem("questionContent"));
+    // this.state.stem = list[this.state.index].data.stem;
+    // //console.log(this.state.stem);
+    // this.state.type = list[this.state.index].type;
+    // this.state.choiceType = list[this.state.index].choiceType;
+    // this.state.questionId = list[this.state.index].data.questionId;
+    // this.state.stemOfChoice = list[this.state.index].data.choice.stem;
 
 
 
@@ -202,8 +226,13 @@ class QCheckin extends React.Component {
       key: 3
     }]
 
+
+
+
+
+
     const is_submit = (index) => {
-      console.log(JSON.parse(localStorage.getItem("questionList")).length);
+      //console.log(JSON.parse(localStorage.getItem("questionList")).length);
       if (index === localStorage.getItem("questionList").length - 1) {
         return (
           <Button type="primary" htmlType="submit" className="f-r">提交</Button>
@@ -211,7 +240,7 @@ class QCheckin extends React.Component {
       }
       else {
         return (
-          <Button type="primary" onClick={this.getNextQuestion} className="f-r">下一题</Button>
+          <Button id="next_question" type="primary" htmlType="submit" className="f-r">下一题</Button>
         )
       }
 
