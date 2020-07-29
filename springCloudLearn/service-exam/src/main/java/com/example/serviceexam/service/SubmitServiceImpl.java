@@ -21,4 +21,9 @@ public class SubmitServiceImpl implements SubmitService{
         submitMapper.insertSubmit(submitId,examId,userId);
         return submitId;
     }
+
+    @Override
+    public void insertQIS(int submitId, int questionId, String answer) {
+        submitMapper.insertQuestionInSubmit(submitId,questionId,answer);
+    }
 }

@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
@@ -98,5 +99,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void changePassword(String password, int userId) {
         userMapper.changePassword(password,userId);
+    }
+
+    @Override
+    public String getClassNameByUserId(int userId) {
+        return (String)userMapper.getClassNameByUserId(userId).get("className");
     }
 }

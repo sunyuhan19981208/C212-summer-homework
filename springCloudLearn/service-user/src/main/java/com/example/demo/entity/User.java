@@ -3,11 +3,11 @@ package com.example.demo.entity;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    private String userId;
+    private int userId;
     private String username;
     private String password;
     private String level;
-    public User(String userId,String username,String password,String level){
+    public User(int userId,String username,String password,String level){
         this.userId=userId;
         this.username=username;
         this.password=password;
@@ -17,7 +17,7 @@ public class User implements Serializable {
     public User() {
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
@@ -29,7 +29,7 @@ public class User implements Serializable {
         this.level = level;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
