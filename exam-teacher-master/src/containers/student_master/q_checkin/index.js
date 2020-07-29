@@ -31,8 +31,7 @@ class QCheckin extends React.Component {
       choiceType: 0,
       questionId: 0,
       answerList: [],
-      stemOfChoice: [],
-      opt: '',
+      stemOfChoice: '',
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -42,46 +41,35 @@ class QCheckin extends React.Component {
   componentWillMount() {
 
     this.getPaperList();
-    // this.setState(() => {
+    this.setState(() => {
+      let list = JSON.parse(localStorage.getItem("questionContent"));
+      this.state.stem = list[this.state.index].data.stem;
+      //console.log(this.state.stem);
+      this.state.type = list[this.state.index].type;
+      this.state.choiceType = list[this.state.index].choiceType;
+      this.state.questionId = list[this.state.index].data.questionId;
+      this.state.stemOfChoice = list[this.state.index].data.choice.stem;
 
-    //   let list = JSON.parse(localStorage.getItem("questionContent"));
-    //   this.state.stem = list.data.stem;
-    //   //console.log(this.state.stem);
-    //   this.state.type = list.type;
-    //   this.state.choiceType = list.choiceType;
-    //   this.state.stemOfChoice = list.data.choice.stem;
-
-    //   this.state.questionId = localStorage.getItem("questionId");
-    //   //console.log(this.state.questionId);
-    
-    // })
+    })
     // this.getQuestionList();
-    // this.getQuestionInfo();
+    // this.getQuestionInfoList();
 
   }
 
-  shouldComponentUpdate(nextState) {
-    if (nextState.index !== this.state.index) {
-      return true;
-    }
-    return false;
+  shouldComponentUpdate() {
+    return true;
   }
 
   componentDidUpdate() {
     //alert(this.state.index);
 
-    this.getQuestionInfo();
-
-    // let list = JSON.parse(localStorage.getItem("questionContent"));
-
-    // this.state.stem = list.data.stem;
-    // //console.log(this.state.stem);
-    // this.state.type = list.type;
-    // this.state.choiceType = list.choiceType;
-    // this.state.stemOfChoice = list.data.choice.stem;
-
-    // this.state.questionId = localStorage.getItem("questionId");
-    // console.log(this.state.questionId);
+    let list = JSON.parse(localStorage.getItem("questionContent"));
+    this.state.stem = list[this.state.index].data.stem;
+    //console.log(this.state.stem);
+    this.state.type = list[this.state.index].type;
+    this.state.choiceType = list[this.state.index].choiceType;
+    this.state.questionId = list[this.state.index].data.questionId;
+    this.state.stemOfChoice = list[this.state.index].data.choice.stem;
 
 
   }
@@ -95,10 +83,10 @@ class QCheckin extends React.Component {
       className: localStorage.getItem("classOfCurStudent")
     })
       .then((res) => {
-     
-          paperInfo2.push(res.data.data[0].paperId);
+        for (var i = 0; i < res.data.data.length; i++) {
+          paperInfo2.push(res.data.data[i].paperId);
           // alert(this.state.questionInfo[i]);
-        
+        }
         localStorage.setItem("paperList", JSON.stringify(paperInfo2));
         let examId = res.data.data[0].examId;
         localStorage.setItem("examId", examId);
@@ -115,11 +103,11 @@ class QCheckin extends React.Component {
   getQuestionList() {
     var questionInfo2 = [];
     let list = JSON.parse(localStorage.getItem("paperList"))
-    
+    for (var j = 0; j < list.length; j++) {
       httpServer({
         url: URL.get_questionlist_by_paperId
       }, {
-        paperId: list[0]
+        paperId: list[j]
       })
         .then((res) => {
           for (var i = 0; i < res.data.data.length; i++) {
@@ -130,34 +118,29 @@ class QCheckin extends React.Component {
 
           //let list2 = JSON.parse(localStorage.getItem("questionList"));
         })
-      this.getQuestionInfo();
-    
+      this.getQuestionInfoList();
+    }
   }
 
 
 
   // 根据questionId获取题目
-  getQuestionInfo() {
-
+  getQuestionInfoList() {
+    var questionInfoList = [];
     let list = JSON.parse(localStorage.getItem("questionList"));
-
-    httpServer({
-      url: URL.get_question_by_questionById
-    }, {
-      questionId: list[this.state.index]
-    })
-      .then((res) => {
-        localStorage.removeItem("questionContent");
-        localStorage.removeItem("questionId");
-        localStorage.setItem("questionId", list[this.state.index]);
-        localStorage.setItem("questionContent", JSON.stringify(res.data));
-
-        // questionInfoList.push(res.data);
-        // localStorage.setItem("questionContent", JSON.stringify(questionInfoList));
-        // let questionContent = localStorage.getItem("questionContent");
-        // console.log(questionContent);
+    for (var j = 0; j < list.length; j++) {
+      httpServer({
+        url: URL.get_question_by_questionById
+      }, {
+        questionId: list[j]
       })
-
+        .then((res) => {
+          questionInfoList.push(res.data);
+          localStorage.setItem("questionContent", JSON.stringify(questionInfoList));
+          // let questionContent = localStorage.getItem("questionContent");
+          // console.log(questionContent);
+        })
+    }
   }
 
 
@@ -167,32 +150,23 @@ class QCheckin extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    if (this.state.index === JSON.parse(localStorage.getItem("questionList")).length - 1) {
+    if (this.state.index === localStorage.getItem("questionList").length - 1) {
       this.props.form.validateFields((err, values) => {
         if (!err) {
-          if(this.state.type === 2){
-            var entry1 = {
-              questionId: this.state.questionId,
-              answer: this.state.opt,
-            }
-            this.state.answerList.push(entry1);
-          }
-          else{
           var entry2 = {
             questionId: this.state.questionId,
             answer: values.answer,
           };
           this.state.answerList.push(entry2);
-        }
 
           //提交题目信息
           httpServer({
             url: URL.submit,
-            method : "post",
+            method: post
           }, {
             answerList: this.state.answerList,
-            userId: parseInt(localStorage.getItem("userId"),10),
-            examId: parseInt(localStorage.getItem("examId"),10),
+            userId: localStorage.getItem("userId"),
+            examId: localStorage.getItem("examId"),
           })
         }
       });
@@ -200,20 +174,12 @@ class QCheckin extends React.Component {
     else {
       this.props.form.validateFields((err, values) => {
         if (!err) {
-          if(this.state.type === 2){
-            var entry3 = {
-              questionId: this.state.questionId,
-              answer: this.state.opt,
-            }
-            this.state.answerList.push(entry3);
-          }
-          else{
-          var entry4 = {
+          alert("进入下一题");
+          var entry = {
             questionId: this.state.questionId,
             answer: values.answer,
           };
-          this.state.answerList.push(entry4);
-        }
+          this.state.answerList.push(entry);
 
           this.setState({
             index: this.state.index + 1,
@@ -227,24 +193,6 @@ class QCheckin extends React.Component {
     }
 
 
-  }
-
-
-  clickOption(option) {          //处理单选选中的问题
-    this.setState({ opt: option })
-  }
-
-  clickWhichAnswer(option){
-    if(this.state.opt.indexOf(option) === -1) {
-      this.state.opt.push(option);
-    }
-    else {
-      this.state.opt = this.state.opt.filter(item=>item !== option);
-    }
-
-    this.state.opt = this.state.opt.sort();
-
-    this.setState({opt : this.state.opt});
   }
 
 
@@ -266,22 +214,16 @@ class QCheckin extends React.Component {
   // }
 
     const { getFieldDecorator } = this.props.form;
-    const { setFieldsValue } = this.props.form;
 
-    let list = JSON.parse(localStorage.getItem("questionContent"));
+    // let list = JSON.parse(localStorage.getItem("questionContent"));
+    // this.state.stem = list[this.state.index].data.stem;
+    // //console.log(this.state.stem);
+    // this.state.type = list[this.state.index].type;
+    // this.state.choiceType = list[this.state.index].choiceType;
+    // this.state.questionId = list[this.state.index].data.questionId;
+    // this.state.stemOfChoice = list[this.state.index].data.choice.stem;
 
-    this.state.stem = list.data.stem;
-    //console.log(this.state.stem);
-    this.state.type = list.type;
-    this.state.choiceType = list.choiceType;
-    for(var i=0;i<list.data.choice.length;i++){
-    this.state.stemOfChoice.push(list.data.choice[i].stem);
-    }
 
-    this.state.questionId = localStorage.getItem("questionId");
-    //console.log(this.state.stemOfChoice);
-
-    
 
 
 
@@ -305,10 +247,10 @@ class QCheckin extends React.Component {
 
 
     const is_submit = (index) => {
-
-      if (index === JSON.parse(localStorage.getItem("questionList")).length - 1) {
+      //console.log(JSON.parse(localStorage.getItem("questionList")).length);
+      if (index === localStorage.getItem("questionList").length - 1) {
         return (
-          <Button type="primary" htmlType="submit" className="f-r">交卷</Button>
+          <Button type="primary" htmlType="submit" className="f-r">提交</Button>
         )
       }
       else {
@@ -325,7 +267,7 @@ class QCheckin extends React.Component {
           <Col span={21}>
             <FormItem>
               {getFieldDecorator('answer' + item.option)(
-                <Radio onClick={this.clickOption.bind(this, item.option)} checked={this.state.opt == item.option} >{item.option}：{this.state.stemOfChoice[i]}</Radio>
+                <Radio >{item.option}：{this.state.stemOfChoice}</Radio>
               )}
             </FormItem>
           </Col>
@@ -339,7 +281,7 @@ class QCheckin extends React.Component {
           <Col span={21}>
             <FormItem >
               {getFieldDecorator('answer' + item.option)(
-                <Checkbox onClick={this.clickWhichAnswer.bind(this,item.option)}>{item.option}：{this.state.stemOfChoice[i]}</Checkbox>
+                <Checkbox >{item.option}：{this.state.stemOfChoice}</Checkbox>
               )}
             </FormItem>
           </Col>
@@ -348,16 +290,15 @@ class QCheckin extends React.Component {
     })
 
     const proList = (thistype, ctype) => {         //题目页面
-      if (thistype == "2" && ctype == "0") {     //单选 
+      // console.log(this);
+      if (thistype === 2 && ctype === 0) {     //单选
         return (
           <div>
-            {/* <Radio.Group name="radiogroup" value={this.state.opt}> */}
             {singal_answerList}
-            {/* </Radio.Group>  */}
           </div>
         );
 
-      } else if (thistype == "2" && ctype == "1") {       //多选
+      } else if (thistype === 2 && ctype === 1) {       //多选
         return (
           <div>
             {multi_answerList}
@@ -395,8 +336,6 @@ class QCheckin extends React.Component {
         );
       } else {
         alert("数据出错");
-        console.log(this.state.type);
-        console.log(this.state.choiceType);
       }
     }
 
@@ -418,7 +357,7 @@ class QCheckin extends React.Component {
 
               <FormItem>
                 <Row>
-                  <Col span={3} offset={11}>
+                  <Col sm={20} xs={24}>
                     {is_submit(this.state.index)}
                   </Col>
                   {/* ！！！点击下一题提交答案，同时跳转到下一题 */}
