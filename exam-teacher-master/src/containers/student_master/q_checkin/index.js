@@ -52,8 +52,8 @@ class QCheckin extends React.Component {
       this.state.stemOfChoice = list.data.choice.stem;
 
       this.state.questionId = localStorage.getItem("questionId");
-      console.log(this.state.questionId);
-
+      //console.log(this.state.questionId);
+    
     })
     // this.getQuestionList();
     // this.getQuestionInfo();
@@ -95,10 +95,10 @@ class QCheckin extends React.Component {
       className: localStorage.getItem("classOfCurStudent")
     })
       .then((res) => {
-        for (var i = 0; i < res.data.data.length; i++) {
-          paperInfo2.push(res.data.data[i].paperId);
+     
+          paperInfo2.push(res.data.data[0].paperId);
           // alert(this.state.questionInfo[i]);
-        }
+        
         localStorage.setItem("paperList", JSON.stringify(paperInfo2));
         let examId = res.data.data[0].examId;
         localStorage.setItem("examId", examId);
@@ -115,11 +115,11 @@ class QCheckin extends React.Component {
   getQuestionList() {
     var questionInfo2 = [];
     let list = JSON.parse(localStorage.getItem("paperList"))
-    for (var j = 0; j < list.length; j++) {
+    
       httpServer({
         url: URL.get_questionlist_by_paperId
       }, {
-        paperId: list[j]
+        paperId: list[0]
       })
         .then((res) => {
           for (var i = 0; i < res.data.data.length; i++) {
@@ -131,7 +131,7 @@ class QCheckin extends React.Component {
           //let list2 = JSON.parse(localStorage.getItem("questionList"));
         })
       this.getQuestionInfo();
-    }
+    
   }
 
 
@@ -167,19 +167,28 @@ class QCheckin extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    if (this.state.index === localStorage.getItem("questionList").length - 1) {
+    if (this.state.index === JSON.parse(localStorage.getItem("questionList")).length - 1) {
       this.props.form.validateFields((err, values) => {
         if (!err) {
+          if(this.state.type === 2){
+            var entry1 = {
+              questionId: this.state.questionId,
+              answer: this.state.opt,
+            }
+            this.state.answerList.push(entry1);
+          }
+          else{
           var entry2 = {
             questionId: this.state.questionId,
             answer: values.answer,
           };
           this.state.answerList.push(entry2);
+        }
 
           //提交题目信息
           httpServer({
             url: URL.submit,
-            method: post
+            method : "post",
           }, {
             answerList: this.state.answerList,
             userId: localStorage.getItem("userId"),
@@ -191,12 +200,20 @@ class QCheckin extends React.Component {
     else {
       this.props.form.validateFields((err, values) => {
         if (!err) {
-          alert("进入下一题");
-          var entry = {
+          if(this.state.type === 2){
+            var entry3 = {
+              questionId: this.state.questionId,
+              answer: this.state.opt,
+            }
+            this.state.answerList.push(entry3);
+          }
+          else{
+          var entry4 = {
             questionId: this.state.questionId,
             answer: values.answer,
           };
-          this.state.answerList.push(entry);
+          this.state.answerList.push(entry4);
+        }
 
           this.setState({
             index: this.state.index + 1,
@@ -223,15 +240,7 @@ class QCheckin extends React.Component {
     const { getFieldDecorator } = this.props.form;
     const { setFieldsValue } = this.props.form;
 
-    // let list = JSON.parse(localStorage.getItem("questionContent"));
-    // this.state.stem = list[this.state.index].data.stem;
-    // //console.log(this.state.stem);
-    // this.state.type = list[this.state.index].type;
-    // this.state.choiceType = list[this.state.index].choiceType;
-    // this.state.questionId = list[this.state.index].data.questionId;
-    // this.state.stemOfChoice = list[this.state.index].data.choice.stem;
-
-
+    
 
 
 
@@ -255,10 +264,10 @@ class QCheckin extends React.Component {
 
 
     const is_submit = (index) => {
-      //console.log(JSON.parse(localStorage.getItem("questionList")).length);
-      if (index === localStorage.getItem("questionList").length - 1) {
+
+      if (index === JSON.parse(localStorage.getItem("questionList")).length - 1) {
         return (
-          <Button type="primary" htmlType="submit" className="f-r">提交</Button>
+          <Button type="primary" htmlType="submit" className="f-r">交卷</Button>
         )
       }
       else {
