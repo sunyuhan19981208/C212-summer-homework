@@ -13,7 +13,7 @@
         <module name="service-ribbon" />
         <module name="service-user" />
         <module name="service-zuul" />
-        <module name="springCloudLearn" />
+        <module name="springCloud" />
         <module name="test" />
       </profile>
     </annotationProcessing>
@@ -25,7 +25,7 @@
       <module name="service-ribbon" target="1.8" />
       <module name="service-user" target="1.8" />
       <module name="service-zuul" target="1.8" />
-      <module name="springCloudLearn" target="1.8" />
+      <module name="springCloud" target="1.8" />
       <module name="test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -38,7 +38,7 @@
       <module name="service-ribbon" options="-parameters" />
       <module name="service-user" options="-parameters" />
       <module name="service-zuul" options="" />
-      <module name="springCloudLearn" options="-parameters" />
+      <module name="springCloud" options="-parameters" />
       <module name="test" options="-parameters" />
     </option>
   </component>

@@ -32,4 +32,24 @@ public class SubmitController {
             }
         };
     }
+    @RequestMapping(value = "/getSubmitByExamId",produces = {MediaType.APPLICATION_JSON_VALUE})
+    public HashMap<String,Object>getSubmitByExamId(@RequestParam("examId")int examId){
+        List<HashMap<String,Object>>data=submitService.selectSubmitByExamId(examId);
+        return new HashMap<String,Object>(){
+            {
+                put("data",data);
+                put("respCode",1);
+            }
+        };
+    }
+    @RequestMapping(value = "/getAnswerBySubmitId",produces = {MediaType.APPLICATION_JSON_VALUE})
+    public HashMap<String,Object>getAnswerBySubmitId(@RequestParam("submitId")int submitId){
+        List<HashMap<String,Object>>data=submitService.selectAnswerBySubmitId(submitId);
+        return new HashMap<String,Object>(){
+            {
+                put("data",data);
+                put("respCode",1);
+            }
+        };
+    }
 }

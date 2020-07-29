@@ -5,6 +5,9 @@ import org.apache.ibatis.annotations.Insert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.List;
+
 @Service
 public class SubmitServiceImpl implements SubmitService{
     @Autowired
@@ -25,5 +28,15 @@ public class SubmitServiceImpl implements SubmitService{
     @Override
     public void insertQIS(int submitId, int questionId, String answer) {
         submitMapper.insertQuestionInSubmit(submitId,questionId,answer);
+    }
+
+    @Override
+    public List<HashMap<String, Object>> selectSubmitByExamId(int examId) {
+        return submitMapper.selectSubmitByExamId(examId);
+    }
+
+    @Override
+    public List<HashMap<String, Object>> selectAnswerBySubmitId(int submitId) {
+        return submitMapper.selectAnswerBySubmitId(submitId);
     }
 }
