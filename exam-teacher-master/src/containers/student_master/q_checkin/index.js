@@ -38,6 +38,7 @@ class QCheckin extends React.Component {
       type:'5',
       choiceType:'0',
       key:'choice',  //默认是选择题
+      opt:'',
     }
   }
 
@@ -71,13 +72,13 @@ class QCheckin extends React.Component {
         }
         localStorage.setItem("paperList", JSON.stringify(paperInfo2));
         let list = JSON.parse(localStorage.getItem("paperList"));
-        alert("paperList:" + list);
+        // alert("paperList:" + list);
       })
     this.getQuestionList();
   }
 
 
-  //根据paperId获取questionId
+  根据paperId获取questionId
   getQuestionList() {
     var questionInfo2 = [];
     let list = JSON.parse(localStorage.getItem("paperList"))
@@ -94,7 +95,7 @@ class QCheckin extends React.Component {
           }
           localStorage.setItem("questionList", JSON.stringify(questionInfo2));
           let list = JSON.parse(localStorage.getItem("questionList"));
-          alert("questionList:" + list);
+          // alert("questionList:" + list);
         })
       this.getQuestionInfoList();
     }
@@ -148,7 +149,11 @@ class QCheckin extends React.Component {
     alert("123")
   }
   
-
+  clickOption(option){          //处理单选选中的问题
+    this.setState({opt:option})   
+    // console.log(this.state.opt)  //先执行，很奇怪。
+  }
+  
   render(){
 
     const item=[{       //选项，用于保存选项数目
@@ -170,7 +175,7 @@ class QCheckin extends React.Component {
         <Row key = {item.key}>
           <Col span={21}>
             <FormItem>
-              <Radio >{item.option}：选型内容</Radio>
+              <Radio value={item.option} onClick={this.clickOption.bind(this,item.option)}>{item.option}：选型内容</Radio>
             </FormItem>
           </Col>
         </Row>
@@ -194,7 +199,9 @@ class QCheckin extends React.Component {
         if (thistype==="2"&&ctype==="0"){     //单选
           return(
             <div>
-              {singal_answerList}
+              <Radio.Group name="radiogroup" value={this.state.opt}>
+                {singal_answerList}
+              </Radio.Group> 
             </div>
           );
     
@@ -240,7 +247,7 @@ class QCheckin extends React.Component {
       <div className="q-checkin">
         <div className="q-checkin-content">
           <div className="card-container">
-            <Form onSubmit={this.handleSubmit.bind(this)}>
+            <Form onSubmit={this.handleSubmit.bind(this)} >
               <FormItem>          
                 <Row>
                   <Col span={24}>
@@ -253,8 +260,8 @@ class QCheckin extends React.Component {
 
              <FormItem>              
                 <Row>
-                  <Col sm={20} xs={24}>
-                    <Button type="primary" htmlType="submit" className="f-r">下一题</Button>
+                  <Col span={3} offset={11}>
+                    <Button type="primary" htmlType="submit" className="nextpro">下一题</Button>
                   </Col>
                   {/* ！！！点击下一题提交答案，同时跳转到下一题 */}
                 </Row>
