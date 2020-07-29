@@ -34,7 +34,7 @@ export default class ReadingCard extends React.Component {
           <Tag>第{i+1}题</Tag>
           <span>（（后台未给）分）</span>
           <div className="content">
-            {item.questionstem}
+            {item.questionStem}
           </div>
           <div className="content">
             <div className="bold">学生答案：</div>

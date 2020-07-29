@@ -29,10 +29,11 @@ class ReadingPaper extends React.Component {
     httpServer({
       url : URL.get_stu_answer
     },{
-      instId : instId,
+      submitId : instId,
     })
     .then((res)=>{
       let respDate = res.data.data;
+      console.log(res.data.data);
       let fillInList =[];
       let shortAnswerList=[];
       for(let i=0;i<respDate.length;i++) {

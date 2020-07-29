@@ -132,7 +132,8 @@ class ScoringPaper extends React.Component {
       className: this.state.curPaperInfo.className,
       paperId: this.state.curPaperInfo.paperId,
     })
-    this.props.history.push("/main/paper_manage/scoring/all_papers/" + this.state.curPaperInfo.paperId + "/" + this.state.curPaperInfo.className + "/" + this.state.teacherId);//react-router 4.0 写法
+    this.props.history.push("/main/paper_manage/scoring/all_papers/" + this.state.curPaperInfo.examId+"/7/7");//react-router 4.0 写法
+    alert("/main/paper_manage/scoring/all_papers/" + this.state.curPaperInfo.examId);
   }
 
 
