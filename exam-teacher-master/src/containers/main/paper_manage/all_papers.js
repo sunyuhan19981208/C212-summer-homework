@@ -11,7 +11,7 @@ import * as URL from '@components/interfaceURL.js'
 
 class AllPapers extends React.Component {
   constructor(){
-    super()
+    super();
     this.state = {
       data : [],
       pagination : {
@@ -24,16 +24,11 @@ class AllPapers extends React.Component {
   }
 
   //得到所有试卷
-  getAllPapers(paperId,classId,managerId){
+  getAllPapers(examId2){
     httpServer({
       url : URL.get_all_papers
     },{
-      page : this.state.pagination.current,
-      rows : this.state.pagination.pageSize,
-      //type : 2,
-      paperId : paperId,
-      classId : classId,
-      managerId : managerId,
+      examId:examId2     
     })
     .then((res)=>{
       const data = [];
@@ -41,15 +36,14 @@ class AllPapers extends React.Component {
         let status = res.data.data[i].status == '3' ? '已阅卷' : '未阅卷';
         data.push({
           key: i,
-          name: res.data.data[i].name,
-          stuId : res.data.data[i].stuId,
-          statusId : res.data.data[i].status,
-          statusName : status,
-          instId : res.data.data[i].instId,
+          username: res.data.data[i].username,
+          userId : res.data.data[i].userId,
+          status : res.data.data[i].status,
+          examId : res.data.data[i].examId,
+          submitId: res.data.data[i].submitId,
         });
       }
 
-      this.state.pagination.total = res.data.total;
 
       this.setState({
         data:data,
@@ -69,7 +63,8 @@ class AllPapers extends React.Component {
   }
 
   componentWillMount(){
-    this.getAllPapers(this.props.match.params.paperId,this.props.match.params.classId,this.props.match.params.managerId);
+    this.getAllPapers(this.props.match.params.paperId);
+    alert(this.props.match.params.paperId);
   }
   componentDidmount(){
   }
@@ -108,16 +103,16 @@ class AllPapers extends React.Component {
   render(){
     const columns = [{
       title: '姓名',
-      dataIndex: 'name',
-      key: 'name',
+      dataIndex: 'username',
+      key: 'username',
     }, {
       title: '学号',
-      dataIndex: 'stuId',
-      key: 'stuId',
+      dataIndex: 'userId',
+      key: 'userId',
     }, {
       title: '状态',
-      dataIndex: 'statusName',
-      key: 'statusName',
+      dataIndex: 'status',
+      key: 'status',
     }, {
       title: '阅卷',
       key: 'action',
@@ -126,12 +121,12 @@ class AllPapers extends React.Component {
           {this.state.data[record.key].statusId == '3' ?
           <Button size="small" onClick={this.beginReading.bind(this)}>
             <Link
-              to={`/main/paper_manage/scoring/all_papers/reading_paper/${this.props.match.params.paperId}/${this.props.match.params.classId}/${this.state.data[record.key].instId}`}
+              to={`/main/paper_manage/scoring/all_papers/reading_paper/${this.props.match.params.paperId}/${this.props.match.params.classId}/${this.state.data[record.key].submitId}`}
             >重新阅卷</Link>
           </Button> :
           <Button type="primary" size="small" onClick={this.beginReading.bind(this)}>
             <Link
-              to={`/main/paper_manage/scoring/all_papers/reading_paper/${this.props.match.params.paperId}/${this.props.match.params.classId}/${this.state.data[record.key].instId}`}
+              to={`/main/paper_manage/scoring/all_papers/reading_paper/${this.props.match.params.paperId}/${this.props.match.params.classId}/${this.state.data[record.key].submitId}`}
             >开始阅卷</Link>
           </Button>
           }

@@ -156,10 +156,10 @@ export const get_manager_id = "data/get_manager_id.json";
 export const set_teacher = "data/set_teacher.json";
 
 //获取所有的试卷
-export const get_all_papers = "data/get_all_papers.json";
+export const get_all_papers = "http://39.107.84.0:8763/getSubmitByExamId";
 
 //获取主观题题目以及学生答案
-export const get_stu_answer = "data/get_stu_answer.json";
+export const get_stu_answer = "http://39.107.84.0:8763/getAnswerBySubmitId";
 
 //提交主观题学生答案
 export const submit_score = "data/submit_score.json";
