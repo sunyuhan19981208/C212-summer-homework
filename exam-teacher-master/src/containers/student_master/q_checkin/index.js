@@ -31,7 +31,7 @@ class QCheckin extends React.Component {
       choiceType: 0,
       questionId: 0,
       answerList: [],
-      stemOfChoice: '',
+      stemOfChoice: [],
       opt: '',
     }
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -42,19 +42,19 @@ class QCheckin extends React.Component {
   componentWillMount() {
 
     this.getPaperList();
-    this.setState(() => {
+    // this.setState(() => {
 
-      let list = JSON.parse(localStorage.getItem("questionContent"));
-      this.state.stem = list.data.stem;
-      //console.log(this.state.stem);
-      this.state.type = list.type;
-      this.state.choiceType = list.choiceType;
-      this.state.stemOfChoice = list.data.choice.stem;
+    //   let list = JSON.parse(localStorage.getItem("questionContent"));
+    //   this.state.stem = list.data.stem;
+    //   //console.log(this.state.stem);
+    //   this.state.type = list.type;
+    //   this.state.choiceType = list.choiceType;
+    //   this.state.stemOfChoice = list.data.choice.stem;
 
-      this.state.questionId = localStorage.getItem("questionId");
-      //console.log(this.state.questionId);
+    //   this.state.questionId = localStorage.getItem("questionId");
+    //   //console.log(this.state.questionId);
     
-    })
+    // })
     // this.getQuestionList();
     // this.getQuestionInfo();
 
@@ -72,16 +72,16 @@ class QCheckin extends React.Component {
 
     this.getQuestionInfo();
 
-    let list = JSON.parse(localStorage.getItem("questionContent"));
+    // let list = JSON.parse(localStorage.getItem("questionContent"));
 
-    this.state.stem = list.data.stem;
-    //console.log(this.state.stem);
-    this.state.type = list.type;
-    this.state.choiceType = list.choiceType;
-    this.state.stemOfChoice = list.data.choice.stem;
+    // this.state.stem = list.data.stem;
+    // //console.log(this.state.stem);
+    // this.state.type = list.type;
+    // this.state.choiceType = list.choiceType;
+    // this.state.stemOfChoice = list.data.choice.stem;
 
-    this.state.questionId = localStorage.getItem("questionId");
-    console.log(this.state.questionId);
+    // this.state.questionId = localStorage.getItem("questionId");
+    // console.log(this.state.questionId);
 
 
   }
@@ -191,8 +191,8 @@ class QCheckin extends React.Component {
             method : "post",
           }, {
             answerList: this.state.answerList,
-            userId: localStorage.getItem("userId"),
-            examId: localStorage.getItem("examId"),
+            userId: parseInt(localStorage.getItem("userId"),10),
+            examId: parseInt(localStorage.getItem("examId"),10),
           })
         }
       });
@@ -234,11 +234,37 @@ class QCheckin extends React.Component {
     this.setState({ opt: option })
   }
 
+  clickWhichAnswer(option){
+    if(this.state.opt.indexOf(option) === -1) {
+      this.state.opt.push(option);
+    }
+    else {
+      this.state.opt = this.state.opt.filter(item=>item !== option);
+    }
+
+    this.state.opt = this.state.opt.sort();
+
+    this.setState({opt : this.state.opt});
+  }
+
 
   render() {
 
     const { getFieldDecorator } = this.props.form;
     const { setFieldsValue } = this.props.form;
+
+    let list = JSON.parse(localStorage.getItem("questionContent"));
+
+    this.state.stem = list.data.stem;
+    //console.log(this.state.stem);
+    this.state.type = list.type;
+    this.state.choiceType = list.choiceType;
+    for(var i=0;i<list.data.choice.length;i++){
+    this.state.stemOfChoice.push(list.data.choice[i].stem);
+    }
+
+    this.state.questionId = localStorage.getItem("questionId");
+    //console.log(this.state.stemOfChoice);
 
     
 
@@ -284,7 +310,7 @@ class QCheckin extends React.Component {
           <Col span={21}>
             <FormItem>
               {getFieldDecorator('answer' + item.option)(
-                <Radio onClick={this.clickOption.bind(this, item.option)} checked={this.state.opt == item.option} >{item.option}：{this.state.stemOfChoice}</Radio>
+                <Radio onClick={this.clickOption.bind(this, item.option)} checked={this.state.opt == item.option} >{item.option}：{this.state.stemOfChoice[i]}</Radio>
               )}
             </FormItem>
           </Col>
@@ -298,7 +324,7 @@ class QCheckin extends React.Component {
           <Col span={21}>
             <FormItem >
               {getFieldDecorator('answer' + item.option)(
-                <Checkbox >{item.option}：{this.state.stemOfChoice}</Checkbox>
+                <Checkbox onClick={this.clickWhichAnswer.bind(this,item.option)}>{item.option}：{this.state.stemOfChoice[i]}</Checkbox>
               )}
             </FormItem>
           </Col>
