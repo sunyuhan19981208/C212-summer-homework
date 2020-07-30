@@ -1,7 +1,8 @@
 //！！！！！试题录入改————考试页面
 import React from 'react';
-import { Tabs, Form, Input, Select, Radio, Row, Col, Button, message, Card, Checkbox } from 'antd';
+import { Tabs, Form, Input, Select, Radio, Row, Col, Button, message, Card, Checkbox,Collapse,Tag } from 'antd';
 
+const Panel=Collapse.Panel;
 const TabPane = Tabs.TabPane;
 const FormItem = Form.Item;
 const Option = Select.Option;
@@ -310,7 +311,7 @@ class QCheckin extends React.Component {
 
     }
 
-    const singal_answerList = item.map((item, i) => {      //!！单选，此处是选项，包括abcd和选项内容，待修改
+    const singal_answerList = item.map((item, i) => {       //!！单选，此处是选项，包括abcd和选项内容，待修改
       return (
         <Row key={item.key}>
           <Col span={21}>
@@ -390,11 +391,87 @@ class QCheckin extends React.Component {
       }
     }
 
+    const Content = ({ children, extra }) => {
+      return (
+        <div className="content">
+          <div className="main">{children}</div>
+          <div className="extra">{extra}</div>
+        </div>
+      );
+    };
+    // style={{display: "flex", width: "max-content",justifyContent: "flex-end"}}
+    
+    const pageHeader=<div class="ant-page-header-heading-left">
+                          <span class="ant-page-header-heading-title" title="Title">期末英语大联考</span>
+                          <span><Tag color="blue">正在考试中</Tag></span>
+                        
+                        <div class="ant-page-header-heading-extra">
+                          <div class="ant-space-item">
+                              <Button type="primary" class="ant-btn">
+                                  <span>交 卷</span>
+                              </Button>
+                          </div>
+                              
+                          <div class="ant-space-item" style={{marginRight: 24}}>
+                            <div class="ant-statistic">
+                                <div class="ant-statistic-title">剩余时间</div>
+                                <div class="ant-statistic-content" style={{color:"red"}}>
+                                    <span class="ant-statistic-content-value">00:00:00</span>
+                                </div>
+                            </div>
+                          </div>
+                          
+                          <div class="ant-space-item" style={{marginRight: 24}}>
+                            <div class="ant-statistic">
+                                <div class="ant-statistic-title">考试时长</div>
+                                <div class="ant-statistic-content">
+                                    <span class="ant-statistic-content-value">02:00:00</span>
+                                </div>
+                            </div>   
+                          </div>
+                        </div>
+                      </div>
+    const contentMian=<div class="ant-descriptions-view">
+                        <table>
+                            <tbody>
+                                <tr class="ant-descriptions-row">
+                                    <th class="ant-descriptions-item-label" colspan="1">考试人</th>
+                                    <td class="ant-descriptions-item-content" colspan="1">Lili Qu</td>
+                                    <th class="ant-descriptions-item-label" colspan="1">教师</th>
+                                    <td class="ant-descriptions-item-content" colspan="1">sunyuhan</td>
+                                    <th class="ant-descriptions-item-label" colspan="1">试卷时长</th>
+                                    <td class="ant-descriptions-item-content" colspan="1">2小时</td>
+                                </tr>
+                                <tr class="ant-descriptions-row">
+                                   
+                                    <th class="ant-descriptions-item-label" colspan="1">题目数</th>
+                                    <td class="ant-descriptions-item-content" colspan="5">2017-10-10</td>
+                                </tr>
+                                <tr class="ant-descriptions-row">
+                                    <th class="ant-descriptions-item-label" colspan="1">考试须知</th>
+                                    <td class="ant-descriptions-item-content" colspan="5" style={{width:500}}>
+                                        <p>一、考试为在线考试，有时间限制</p>
+                                        <p>二、考试期间不得离开考试页面，否则离开两次将自动交卷</p>
+                                        <p>三、考试请独立思考，不得与他人交流</p>
+                                        <p>四、若还没开考，请耐心等待</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>             
 
     return (
-      <div className="q-checkin">
-        <div className="q-checkin-content">
-          <div className="card-container">
+      <div className="exam-card">
+        <div className="exam-header">
+          <Collapse defaultActiveKey={['1']} >
+            <Panel header={pageHeader} key="1" >   
+              <Content extra={<div></div>}>    {/*此处放图片 */}
+                {contentMian}
+              </Content>
+            </Panel>
+          </Collapse>
+        </div>
+        <div className="exam-subject">
             <Form onSubmit={this.handleSubmit.bind(this)}>
               <FormItem>
                 <Row>
@@ -416,8 +493,6 @@ class QCheckin extends React.Component {
               </FormItem>
 
             </Form>
-
-          </div>
         </div>
       </div>
     )
