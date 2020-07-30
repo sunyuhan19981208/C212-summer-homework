@@ -241,6 +241,7 @@ class QCheckin extends React.Component {
     const { getFieldDecorator } = this.props.form;
 
     let list = JSON.parse(localStorage.getItem("questionContent"));
+    this.state.questionId = parseInt(localStorage.getItem("questionId"),10);
 
     this.state.stem = list.data.stem;
     //console.log(this.state.stem);
@@ -250,7 +251,7 @@ class QCheckin extends React.Component {
     this.state.stemOfChoice.push(list.data.choice[i].stem);
     }
 
-    //this.state.questionId = localStorage.getItem("questionId");
+  
     //console.log(this.state.stemOfChoice);
 
 

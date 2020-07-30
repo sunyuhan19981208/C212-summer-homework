@@ -183,7 +183,7 @@ export const get_questionlist_by_paperId = "http://39.107.84.0:8763/getQuestionL
 export const get_question_by_questionById = "http://39.107.84.0:8763/getQuestionById";
 
 //提交试卷
-export const submit ="http://localhost:8763/submit";
+export const submit ="http://39.107.84.0:8763/submit";
 
 /*
 import httpServer from '@components/httpServer.js'
