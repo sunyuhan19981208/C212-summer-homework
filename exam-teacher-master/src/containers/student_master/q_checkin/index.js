@@ -33,7 +33,8 @@ class QCheckin extends React.Component {
       questionId: 0,
       answerList: [],
       stemOfChoice: [],
-      opt: '',
+      opt: "",
+      opts: [],
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -46,7 +47,7 @@ class QCheckin extends React.Component {
     this.getQuestionInfo();
 
 
-    
+
     // this.setState(() => {
 
 
@@ -174,11 +175,31 @@ class QCheckin extends React.Component {
       this.props.form.validateFields((err, values) => {
         if (!err) {
           if (this.state.type === 2) {
-            var entry1 = {
-              questionId: this.state.questionId,
-              answer: this.state.opt,
+            this.setState({ opt: " " });
+            if (this.state.choiceType === 0) {
+              var entry1 = {
+                questionId: this.state.questionId,
+                answer: this.state.opt,
+              }
+              this.state.answerList.push(entry1);
             }
-            this.state.answerList.push(entry1);
+            else {
+              if (this.state.opts.length === 0) {
+                Modal.warning({
+                  content: '请至少选择两个选项',
+                  okText: '确定'
+                });
+              }
+              this.state.opt=this.state.opts[0];
+              for (var i = 1; i < this.state.opts.length; i++) {
+                this.state.opt += this.state.opts[i] + "";
+              }
+              var entry1 = {
+                questionId: this.state.questionId,
+                answer: this.state.opt,
+              }
+              this.state.answerList.push(entry1);
+            }
           }
           else {
             var entry2 = {
@@ -204,11 +225,31 @@ class QCheckin extends React.Component {
       this.props.form.validateFields((err, values) => {
         if (!err) {
           if (this.state.type === 2) {
-            var entry3 = {
-              questionId: this.state.questionId,
-              answer: this.state.opt,
+            this.setState({ opt: " " });
+            if (this.state.choiceType === 0) {
+              var entry3 = {
+                questionId: this.state.questionId,
+                answer: this.state.opt,
+              }
+              this.state.answerList.push(entry3);
             }
-            this.state.answerList.push(entry3);
+            else {
+              if (this.state.opts.length === 0) {
+                Modal.warning({
+                  content: '请至少选择两个选项',
+                  okText: '确定'
+                });
+              }
+              this.state.opt=this.state.opts[0];
+              for (var i = 1; i < this.state.opts.length; i++) {
+                this.state.opt += this.state.opts[i] + "";
+              }
+              var entry3 = {
+                questionId: this.state.questionId,
+                answer: this.state.opt,
+              }
+              this.state.answerList.push(entry3);
+            }
           }
           else {
             var entry4 = {
@@ -230,16 +271,18 @@ class QCheckin extends React.Component {
   }
 
   clickWhichAnswer(option) {
-    if (this.state.opt.indexOf(option) === -1) {
-      this.state.opt.push(option);
+    if (this.state.opts.indexOf(option) === -1) {
+      this.state.opts.push(option);
     }
     else {
-      this.state.opt = this.state.opt.filter(item => item !== option);
+      this.state.opts = this.state.opts.filter(item => item !== option);
     }
 
-    this.state.opt = this.state.opt.sort();
+    this.state.opts = this.state.opts.sort();
+    // let option2 = "";
+    // option2 = this.state.opt + option;
 
-    this.setState({ opt: this.state.opt });
+    // this.setState({ opt: option2 });
   }
 
 
@@ -331,7 +374,7 @@ class QCheckin extends React.Component {
           <Col span={21}>
             <FormItem >
               {getFieldDecorator('answer' + item.option)(
-                <Checkbox onClick={this.clickWhichAnswer.bind(this, item.option)}>{item.option}：{this.state.stemOfChoice[i]}</Checkbox>
+                <Checkbox id="checkbox1" onClick={this.clickWhichAnswer.bind(this, item.option)} >{item.option}：{this.state.stemOfChoice[i]}</Checkbox>
               )}
             </FormItem>
           </Col>
