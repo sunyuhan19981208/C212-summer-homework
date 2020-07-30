@@ -32,7 +32,7 @@ export default class ReadingCard extends React.Component {
       questionList.push(
         <div className="question-single" key={i}>
           <Tag>第{i+1}题</Tag>
-          <span>（（后台未给）分）</span>
+          <span>{"("+item.score+")分"}</span>
           <div className="content">
             {item.questionStem}
           </div>

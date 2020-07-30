@@ -162,7 +162,7 @@ export const get_all_papers = "http://39.107.84.0:8763/getSubmitByExamId";
 export const get_stu_answer = "http://39.107.84.0:8763/getAnswerBySubmitId";
 
 //提交主观题学生答案
-export const submit_score = "data/submit_score.json";
+export const submit_score = "http://39.107.84.0:8763/judge";
 
 //搜索试卷
 export const search_papers = "data/search_papers.json";

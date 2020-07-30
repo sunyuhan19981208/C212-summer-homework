@@ -19,6 +19,7 @@ class ReadingPaper extends React.Component {
       fillInList : [],
       shortAnswerList : [],
       programList : [],
+      scoreList:[],
     }
     this.gapscorelist = [];
     this.shoscorelist = [];
@@ -33,9 +34,10 @@ class ReadingPaper extends React.Component {
     })
     .then((res)=>{
       let respDate = res.data.data;
-      console.log(res.data.data);
+      // console.log(res.data.data);
       let fillInList =[];
       let shortAnswerList=[];
+      let scoreList=[];
       for(let i=0;i<respDate.length;i++) {
         if(respDate[i].type == '1') { //填空题
           fillInList.push(respDate[i]);
@@ -43,12 +45,18 @@ class ReadingPaper extends React.Component {
         else if(respDate[i].type == '5') { //简答题
           shortAnswerList.push(respDate[i]);
         }
+        var entry1 = {
+          questionId: respDate[i].questionId,
+          score: respDate[i].score,
+        }
+        scoreList.push(entry1);
       }
       this.gapscorelist.length = fillInList.length;
       this.shoscorelist.length = shortAnswerList.length;
       this.setState({
         fillInList : fillInList,
         shortAnswerList : shortAnswerList,
+        scoreList:scoreList,
       })
     })
   }
@@ -65,7 +73,7 @@ class ReadingPaper extends React.Component {
 
   //提交
   submitScore(){
-
+    console.log(this.state.scoreList);
     //总分
     let totalScore = 0;
     let flag = false;
@@ -94,13 +102,15 @@ class ReadingPaper extends React.Component {
     }
 
     httpServer({
-      url : URL.submit_score
+      url : URL.submit_score,
+      method: "post",
     },{
-      instId :this.props.match.params.instId,
-      gapscorelist : this.gapscorelist,
-      shoscorelist : this.shoscorelist,
-      totalScore : totalScore,
-      updateType : 2,
+      submitId :parseInt(this.props.match.params.instId),
+      scoreList : this.state.scoreList,
+      // gapscorelist : this.gapscorelist,
+      // shoscorelist : this.shoscorelist,
+      // totalScore : totalScore,
+      // updateType : 2,
     })
     .then((res)=>{
       this.props.history.push(`/main/paper_manage/scoring/all_papers/${this.props.match.params.paperId}/${this.props.match.params.classId}`);
@@ -110,6 +120,7 @@ class ReadingPaper extends React.Component {
 
   componentWillMount(){
     this.getStuAnswer(this.props.match.params.instId);
+    // alert(this.props.match.params.instId);
   }
 
   render(){

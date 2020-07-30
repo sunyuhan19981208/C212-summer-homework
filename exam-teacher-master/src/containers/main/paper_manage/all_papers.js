@@ -58,13 +58,14 @@ class AllPapers extends React.Component {
   }
 
   //点击开始阅卷
-  beginReading(){
+  beginReading(i){
+    alert(this.state.data[i].submitId);
 
   }
 
   componentWillMount(){
     this.getAllPapers(this.props.match.params.paperId);
-    alert(this.props.match.params.paperId);
+    // alert(this.props.match.params.paperId);
   }
   componentDidmount(){
   }
@@ -124,7 +125,7 @@ class AllPapers extends React.Component {
               to={`/main/paper_manage/scoring/all_papers/reading_paper/${this.props.match.params.paperId}/${this.props.match.params.classId}/${this.state.data[record.key].submitId}`}
             >重新阅卷</Link>
           </Button> :
-          <Button type="primary" size="small" onClick={this.beginReading.bind(this)}>
+          <Button type="primary" size="small" onClick={this.beginReading.bind(this,record.key)}>
             <Link
               to={`/main/paper_manage/scoring/all_papers/reading_paper/${this.props.match.params.paperId}/${this.props.match.params.classId}/${this.state.data[record.key].submitId}`}
             >开始阅卷</Link>
