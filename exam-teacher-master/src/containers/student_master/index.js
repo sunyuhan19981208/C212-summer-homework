@@ -1,5 +1,5 @@
 import React from 'react'
-import { Menu, Icon,  Layout} from 'antd';
+import { Menu, Icon, Layout } from 'antd';
 
 const { Sider, Content, Header } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 //路由组件
-import { Route,Link,Switch  } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 
 //头部条
 import HeaderBar from './header_bar/index.js'
@@ -58,6 +58,7 @@ class StuMaster extends React.Component {
     }
 
     componentWillMount() {
+        console.log("componentWillMount");
         //判断用户是否已经登录
         if (!localStorage.getItem("username")) {
             this.props.history.push('/login');//跳转至登录页
@@ -67,6 +68,56 @@ class StuMaster extends React.Component {
 
         //菜单选择情况
         this.whoIsChecked();
+        //获取考试
+        this.getPaperList();
+    }
+
+
+
+    //根据班级获取试卷信息
+    getPaperList() {
+        console.log("getPaperList()");
+        var paperInfo2 = [];
+        httpServer({
+            url: URL.get_paper
+        }, {
+            className: localStorage.getItem("classOfCurStudent")
+        })
+            .then((res) => {
+
+                paperInfo2.push(res.data.data[0].paperId);
+                localStorage.setItem("paperList", JSON.stringify(paperInfo2));
+                let examId = res.data.data[0].examId;
+                localStorage.setItem("examId", examId);
+
+
+            })
+         this.getQuestionList();
+    }
+
+    //根据paperId获取questionId
+    getQuestionList() {
+        console.log("getQuestionList()");
+        var questionInfo2 = [];
+        let list = JSON.parse(localStorage.getItem("paperList"))
+        console.log(list);
+
+        httpServer({
+            url: URL.get_questionlist_by_paperId
+        }, {
+            paperId: list[0]
+        })
+            .then((res) => {
+                for (var i = 0; i < res.data.data.length; i++) {
+                    questionInfo2.push(res.data.data[i].questionId);
+                    // alert(this.state.questionInfo[i]);
+                }
+                localStorage.setItem("questionList", JSON.stringify(questionInfo2));
+                //console.log(JSON.parse(localStorage.getItem("questionList")));
+
+                //let list2 = JSON.parse(localStorage.getItem("questionList"));
+            })
+        //this.getQuestionInfo();
     }
 
     //点击菜单，收起其他展开的所有菜单，保持菜单聚焦简洁。
@@ -83,25 +134,26 @@ class StuMaster extends React.Component {
 
 
     render() {
+        console.log("render");
         return (
             <Layout>
-				<Header className="header">
-					<HeaderBar></HeaderBar>
-				</Header>
+                <Header className="header">
+                    <HeaderBar></HeaderBar>
+                </Header>
                 <Layout>
-                    <Sider>	
-						<Menu
-							mode="inline"
-							defaultOpenKeys={this.state.defaultOpenKeys}
-							defaultSelectedKeys={this.state.defaultSelectedKeys}
-							openKeys={this.state.openKeys}
-							onOpenChange={this.onOpenChange.bind(this)}
-							style={{ height: '100%', borderRight: 0 }}>
+                    <Sider>
+                        <Menu
+                            mode="inline"
+                            defaultOpenKeys={this.state.defaultOpenKeys}
+                            defaultSelectedKeys={this.state.defaultSelectedKeys}
+                            openKeys={this.state.openKeys}
+                            onOpenChange={this.onOpenChange.bind(this)}
+                            style={{ height: '100%', borderRight: 0 }}>
 
                             <div><img className="logo" src={require("@assets/images/logo-bg.png")} /></div>
-                            
+
                             <Menu.Item key="exam_card">
-                                <Link to="/student_master/q_checkin"><Icon type="profile" /> <span>开始考试</span> </Link>                                                                                                     
+                                <Link to="/student_master/q_checkin"><Icon type="profile" /> <span>开始考试</span> </Link>
                             </Menu.Item>
 
                             <SubMenu key="personal_center" title={<span><Icon type="user" /><span>个人中心</span></span>}>
@@ -110,7 +162,7 @@ class StuMaster extends React.Component {
                         </Menu>
                     </Sider>
                     <Layout style={{ padding: '30px 20px' }}>
-						<Content className="site-layout-background" style={{ padding: 24, margin: 0, minHeight: 280, }}>                                  
+                        <Content className="site-layout-background" style={{ padding: 24, margin: 0, minHeight: 280, }}>
                             <div className="right-box">
                                 <Switch>
                                     {/* 主页 */}
@@ -122,9 +174,9 @@ class StuMaster extends React.Component {
                                     <Route path="/student_master/q_checkin" component={QCheckin} />
 
                                 </Switch>
-                            </div>	
-						</Content>
-					</Layout>
+                            </div>
+                        </Content>
+                    </Layout>
                 </Layout>
             </Layout>
 
