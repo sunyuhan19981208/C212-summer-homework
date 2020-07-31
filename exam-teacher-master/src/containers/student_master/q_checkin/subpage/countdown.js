@@ -14,11 +14,16 @@ class CountDown extends Component {
   componentDidMount() {
     //  const end = Date.parse(new Date('2018-11-29 24:00'))
       this.countFun(this.state.end);
+     
   }
    
    //卸载组件取消倒计时
   componentWillUnmount(){
     clearInterval(this.timer);
+  }
+
+  thisOnFinish(){
+    this.props.onFinish;
   }
    
   countFun(end){
@@ -44,9 +49,8 @@ class CountDown extends Component {
 
         this.setState({
           hour: "00",minute: "00",second: "00"})
-
-        console.log(this)
-        this.props.oFinish()  //倒计时结束时触发父组件的onFinish方法
+ 
+        this.props.onFinish();   //倒计时结束时触发父组件的onFinish方法
       }
     }, 1000);  
   }

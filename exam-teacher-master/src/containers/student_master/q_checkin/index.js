@@ -121,8 +121,6 @@ class QCheckin extends React.Component {
   // }
 
 
-
-
   // 根据questionId获取题目
   getQuestionInfo() {
     console.log("getQuestionInfo()");
@@ -152,9 +150,6 @@ class QCheckin extends React.Component {
 
 
   }
-
-
-
 
 
   handleSubmit(e) {
@@ -259,7 +254,7 @@ class QCheckin extends React.Component {
     this.setState({ opt: option })
   }
 
-  clickWhichAnswer(option) {
+  clickWhichAnswer(option) {      //多选
     if (this.state.opts.indexOf(option) === -1) {
       this.state.opts.push(option);
     }
@@ -274,6 +269,10 @@ class QCheckin extends React.Component {
     // this.setState({ opt: option2 });
   }
 
+  onFinish(){
+    console.log('finished!');
+    alert("时间已到,考试结束！")
+  }
 
 
   render() {
@@ -316,11 +315,6 @@ class QCheckin extends React.Component {
       option: 'D',
       key: 3
     }]
-
-
-
-
-
 
     const is_submit = (index) => {
       //console.log(JSON.parse(localStorage.getItem("questionList")).length);
@@ -425,13 +419,19 @@ class QCheckin extends React.Component {
         </div>
       );
     };
-    // style={{display: "flex", width: "max-content",justifyContent: "flex-end"}}
-    const endtime=1596167177345+1000 * 700;
+    
 
-    const onFinish =() => {
-      console.log('finished!');
-      alert("时间已到,考试结束！")
-    }
+    //获取到的时间戳是UTC时间（你的电脑时间-8h），那么整体都以UTC时间为准
+    const endTime = new Date(localStorage.getItem("endTime"))  //Date函数自动将utc，转为中文时间
+    const endtime_s=endTime.getTime()    //转换为秒数
+    const utc_endtime=new Date(endtime_s-1000*60*60*8)      //时间相减，以UTC时间为准
+    const endtime=utc_endtime.toTimeString().slice(0,8)     //转字符串，切片获得 小时：分钟：秒
+
+    const startTime = new Date(localStorage.getItem("startTime"))    //开始时间
+    const lasttime = ((endTime.getTime()-startTime.getTime())/1000/60/60).toFixed(1)   //考试时长
+
+    const len = localStorage.getItem("questionList").length
+    
     const pageHeader=<div class="ant-page-header-heading-left">
                           <span class="ant-page-header-heading-title" title="Title">期末英语大联考</span>
                           <span><Tag color="blue">正在考试中</Tag></span>
@@ -447,16 +447,15 @@ class QCheckin extends React.Component {
                             <div class="ant-statistic">
                                 <div class="ant-statistic-title">剩余时间</div>
                                 <div class="ant-statistic-content" style={{color:"red"}}>
-                                    <span class="ant-statistic-content-value"><CountDown endtime={endtime} onFinish={onFinish}></CountDown></span>
+                                    <span class="ant-statistic-content-value"><CountDown endtime={endtime_s} onFinish={this.onFinish}></CountDown></span>
                                 </div>
                             </div>
                           </div>
-                          {/* <CountDown endtime={endtime} onFinish={onFinish}></CountDown> */}
                           <div class="ant-space-item" style={{marginRight: 24}}>
                             <div class="ant-statistic">
-                                <div class="ant-statistic-title">考试时长</div>
+                                <div class="ant-statistic-title">截止时间</div>
                                 <div class="ant-statistic-content">
-                                    <span class="ant-statistic-content-value">02:00:00</span>
+                                    <span class="ant-statistic-content-value">{endtime}</span>
                                 </div>
                             </div>   
                           </div>
@@ -467,16 +466,16 @@ class QCheckin extends React.Component {
                             <tbody>
                                 <tr class="ant-descriptions-row">
                                     <th class="ant-descriptions-item-label" colspan="1">考试人</th>
-                                    <td class="ant-descriptions-item-content" colspan="1">Lili Qu</td>
+                                    <td class="ant-descriptions-item-content" colspan="1">{localStorage.getItem("username")}</td>
                                     <th class="ant-descriptions-item-label" colspan="1">教师</th>
                                     <td class="ant-descriptions-item-content" colspan="1">sunyuhan</td>
                                     <th class="ant-descriptions-item-label" colspan="1">试卷时长</th>
-                                    <td class="ant-descriptions-item-content" colspan="1">2小时</td>
+                                    <td class="ant-descriptions-item-content" colspan="1">{lasttime}小时</td>
                                 </tr>
                                 <tr class="ant-descriptions-row">
                                    
                                     <th class="ant-descriptions-item-label" colspan="1">题目数</th>
-                                    <td class="ant-descriptions-item-content" colspan="5">2017-10-10</td>
+                                    <td class="ant-descriptions-item-content" colspan="5">{len}</td>
                                 </tr>
                                 <tr class="ant-descriptions-row">
                                     <th class="ant-descriptions-item-label" colspan="1">考试须知</th>
