@@ -301,13 +301,7 @@ class QCheckin extends React.Component {
 
     const { getFieldDecorator } = this.props.form;
 
-
-
-
     //console.log(this.state.stemOfChoice);
-
-
-
 
     const item = [{       //选项，用于保存选项数目
       option: 'A',
@@ -433,6 +427,7 @@ class QCheckin extends React.Component {
     };
     // style={{display: "flex", width: "max-content",justifyContent: "flex-end"}}
     const endtime=1596167177345+1000 * 700;
+
     const onFinish =() => {
       console.log('finished!');
       alert("时间已到,考试结束！")

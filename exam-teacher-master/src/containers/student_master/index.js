@@ -89,7 +89,13 @@ class StuMaster extends React.Component {
                 localStorage.setItem("paperList", JSON.stringify(paperInfo2));
                 let examId = res.data.data[0].examId;
                 localStorage.setItem("examId", examId);
-
+                let startTime = res.data.data[0].startTime;
+                let endTime = res.data.data[0].endTime;
+                localStorage.setItem("startTime",startTime);
+                localStorage.setItem("endTime",endTime);
+                console.log("开始时间戳"+localStorage.getItem("startTime"));
+                console.log("结束时间戳"+localStorage.getItem("endTime"));
+                
 
             })
          this.getQuestionList();

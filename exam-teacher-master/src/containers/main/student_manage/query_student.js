@@ -1,7 +1,7 @@
 import React from 'react'
 import BreadcrumbCustom from '@components/BreadcrumbCustom'
 import { Form } from 'antd';
-import {Row,Col,Select,Input,Table, Icon, Divider,Button,Modal,message} from 'antd'
+import { Row, Col, Select, Input, Table, Icon, Divider, Button, Modal, message } from 'antd'
 const Option = Select.Option;
 const Search = Input.Search;
 const FormItem = Form.Item;
@@ -12,25 +12,25 @@ import { connect } from 'react-redux'
 import * as URL from '@components/interfaceURL.js'
 
 class QueryStudent extends React.Component {
-  constructor(){
+  constructor() {
     super()
     this.state = {
-      selectedRowKeys : [], //选择的行
-      data : [],
-      pagination : {
-        pageSize : 10,
-        current : 1,
-        total : 0,
-        defaultCurrent : 1,
+      selectedRowKeys: [], //选择的行
+      data: [],
+      pagination: {
+        pageSize: 10,
+        current: 1,
+        total: 0,
+        defaultCurrent: 1,
       },
-      visibleChangeModal : false,//修改框是否显示
-      curSelectClass : {//当前所选的学生
-        key : 0,
-        username : "",
-        className : "",
-        userId : 1,
+      visibleChangeModal: false,//修改框是否显示
+      curSelectClass: {//当前所选的学生
+        key: 0,
+        username: "",
+        className: "",
+        userId: 1,
       },
-      classInfo : [],//班级信息
+      classInfo: [],//班级信息
     }
     this.searchKey = "1";//默认按照班级搜索  1班级 2科目  3状态
     this.turnStatus = "NORMAL"; //NORMAL:正常翻页   SEARCH:搜索翻页
@@ -38,97 +38,134 @@ class QueryStudent extends React.Component {
   }
 
   //得到一页数据
-  getPageDate(){
+  getPageDate() {
     httpServer({
-      url : URL.get_student
-    },{
+      url: URL.get_student
+    }, {
       // className : 'StudentServiceImpl',
-      page : this.state.pagination.current,
-      rows : this.state.pagination.pageSize,
-      type : 1,
+      page: this.state.pagination.current,
+      rows: this.state.pagination.pageSize,
+      type: 1,
     })
-    .then((res)=>{
-      const data = [];
-      for (let i = 0; i < res.data.data.length; i++) {
+      .then((res) => {
+        const data = [];
+        for (let i = 0; i < res.data.data.length; i++) {
 
-        // let className = "";
-        // this.props.classinfo.classArr.some((item)=>{
-        //   if(item.className == res.data.data[i].className) {
-        //     className = item.className;
-        //     return true;
-        //   }
-        //   return false;
-        // })
+          // let className = "";
+          // this.props.classinfo.classArr.some((item)=>{
+          //   if(item.className == res.data.data[i].className) {
+          //     className = item.className;
+          //     return true;
+          //   }
+          //   return false;
+          // })
 
-        data.push({
-          key: i,
-          username: res.data.data[i].username,
-          className : res.data.data[i].className,
-          // classId : res.data.data[i].classId,
-          userId : res.data.data[i].userId
-        });
-      }
+          data.push({
+            key: i,
+            username: res.data.data[i].username,
+            className: res.data.data[i].className,
+            // classId : res.data.data[i].classId,
+            userId: res.data.data[i].userId
+          });
+        }
 
-      this.state.pagination.total = res.data.total;
+        this.state.pagination.total = res.data.total;
 
-      this.setState({
-        data:data,
-        pagination : this.state.pagination
+        this.setState({
+          data: data,
+          pagination: this.state.pagination
+        })
       })
-    })
   }
 
   //得到搜索的数据
-  getSearchData(){
-    httpServer({
-      url : URL.search_student
-    },{
-      // className : 'StudentServiceImpl',
-      username : this.searchContent,
-      // searchType : this.searchKey,
-      page : this.state.pagination.current,
-      rows : this.state.pagination.pageSize,
-      // type : 1
-    })
-    .then((res)=>{
-      const data = [];
-      for (let i = 0; i < res.data.data.length; i++) {
-        // let className = "";
-        // this.props.classinfo.classArr.some((item)=>{
-        //   if(item.classId == res.data.data[i].classId) {
-        //     className = item.className;
-        //     return true;
-        //   }
-        //   return false;
-        // })
-
-        data.push({
-          // key: i,
-          username: res.data.data[i].username,
-          // class : className,
-          className : res.data.data[i].className,
-          userId : res.data.data[i].userId
-        });
-      }
-      this.state.pagination.total = res.data.total;
-
-      this.setState({
-        data:data,
-        pagination : this.state.pagination
+  getSearchData(searchKey) {
+    if (searchKey === "1") {
+      httpServer({
+        url: URL.search_student_by_username
+      }, {
+        // className : 'StudentServiceImpl',
+        username: this.searchContent,
+        // searchType : this.searchKey,
+        page: this.state.pagination.current,
+        rows: this.state.pagination.pageSize,
+        // type : 1
       })
+        .then((res) => {
+          const data = [];
+          for (let i = 0; i < res.data.data.length; i++) {
+            // let className = "";
+            // this.props.classinfo.classArr.some((item)=>{
+            //   if(item.classId == res.data.data[i].classId) {
+            //     className = item.className;
+            //     return true;
+            //   }
+            //   return false;
+            // })
 
-    })
+            data.push({
+              // key: i,
+              username: res.data.data[i].username,
+              // class : className,
+              className: res.data.data[i].className,
+              userId: res.data.data[i].userId
+            });
+          }
+
+          this.state.pagination.total = res.data.total;
+
+          this.setState({
+            data: data,
+            pagination: this.state.pagination
+          })
+
+        })
+    }
+    else if (searchKey === "2") {
+      httpServer({
+        url: URL.search_student_by_classname
+      }, {
+        // className : 'StudentServiceImpl',
+        className: this.searchContent,
+        // searchType : this.searchKey,
+        page: this.state.pagination.current,
+        rows: this.state.pagination.pageSize,
+        // type : 1
+      })
+        .then((res) => {
+          const data = [];
+          for (let i = 0; i < res.data.data.length; i++) {
+ 
+            data.push({
+              // key: i,
+              username: res.data.data[i].username,
+              // class : className,
+              className: res.data.data[i].className,
+              userId: res.data.data[i].userId
+            });
+          }
+
+          this.state.pagination.total = res.data.total;
+
+          this.setState({
+            data: data,
+            pagination: this.state.pagination
+          })
+
+        })
+
+    }
   }
 
   //翻页
-  handleTableChange(pagination, filters, sorter){
+  handleTableChange(pagination, filters, sorter) {
     const pager = this.state.pagination;
     pager.current = pagination.current;
     pager.pageSize = pagination.pageSize;
     this.setState({
       pagination: pager,
     });
-    if(this.turnStatus === "NORMAL") {
+    if (this.turnStatus === "NORMAL") {
       this.getPageDate();
     }
     else {
@@ -138,64 +175,64 @@ class QueryStudent extends React.Component {
   }
 
 
-  componentWillMount(){
+  componentWillMount() {
     this.getPageDate();
   }
 
   //删除学生
-  deleteClass(record){
-    this.setState({curSelectClass : record})
+  deleteClass(record) {
+    this.setState({ curSelectClass: record })
     confirm({
       title: '你确定删除吗？',
-      okText : '确定',
-      cancelText : '取消',
-      onOk:()=>{
+      okText: '确定',
+      cancelText: '取消',
+      onOk: () => {
         httpServer({
-          url : URL.delete_student
-        },{
+          url: URL.delete_student
+        }, {
           // className : 'StudentServiceImpl',
-          type : 4,
-          userId : this.state.curSelectClass.userId,
+          type: 4,
+          userId: this.state.curSelectClass.userId,
         })
-        .then((res)=>{
-          this.getPageDate();//重新获取第一页
-        })
+          .then((res) => {
+            this.getPageDate();//重新获取第一页
+          })
       },
     });
 
   }
 
   //点击修改学生
-  changeClass(record){
+  changeClass(record) {
     //TODO : 第一次点击this.state.curSelectClass.class为空
-    this.setState({curSelectClass : record})
-    const {form}=this.props;
+    this.setState({ curSelectClass: record })
+    const { form } = this.props;
     //重新设置修改模态框中三个选项的值
-    form.setFieldsValue({'className': record.className});
-    form.setFieldsValue({'username': record.username});
-    form.setFieldsValue({'password': record.password});
-    this.setState({visibleChangeModal:true})
+    form.setFieldsValue({ 'className': record.className });
+    form.setFieldsValue({ 'username': record.username });
+    form.setFieldsValue({ 'password': record.password });
+    this.setState({ visibleChangeModal: true })
   }
 
   //取消修改
-  changeCancel(){
-    this.setState({visibleChangeModal:false})
+  changeCancel() {
+    this.setState({ visibleChangeModal: false })
   }
 
   //确认修改
-  changeOk(){
-    this.setState({visibleChangeModal:false})
+  changeOk() {
+    this.setState({ visibleChangeModal: false })
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         httpServer({
-          url : URL.change_student
-        },{
+          url: URL.change_student
+        }, {
           // className : "StudentServiceImpl",
           // type : 3,
-          username : values.username,
-          className : values.className,
-          password : values.password,
-          userId : this.state.curSelectClass.userId
+          username: values.username,
+          className: values.className,
+          password: values.password,
+          userId: this.state.curSelectClass.userId
         })
         // .then((res)=>{
         //   // let className = "";
@@ -221,8 +258,8 @@ class QueryStudent extends React.Component {
     this.searchKey = value;
   }
 
-  //点击所有班级
-  showAllClass(){
+  //点击所有学生
+  showAllClass() {
     this.turnStatus === "NORMAL";
     this.state.pagination.current = 1;//当前页置为第一页
     this.getPageDate();
@@ -230,18 +267,18 @@ class QueryStudent extends React.Component {
 
   //点击搜索
   searchClass(value) {
-    if(value == "") {
+    if (value == "") {
       Modal.error({
         content: "搜索内容不能为空！",
-        okText : '确定'
+        okText: '确定'
       });
       return;
     }
     this.turnStatus = "SEARCH";//把翻页状态置为搜索
     this.state.pagination.current = 1;//当前页置为第一页
-    this.setState({pagination : this.state.pagination});
+    this.setState({ pagination: this.state.pagination });
     this.searchContent = value;
-    this.getSearchData();
+    this.getSearchData(this.searchKey);
   }
 
   //选择某一行
@@ -250,7 +287,7 @@ class QueryStudent extends React.Component {
     this.setState({ selectedRowKeys });
   }
 
-  render(){
+  render() {
     const { getFieldDecorator } = this.props.form;
 
     const columns = [{
@@ -270,16 +307,16 @@ class QueryStudent extends React.Component {
       // key: 'action',
       render: (text, record) => (
         <span>
-          <Button type="danger" size="small" onClick={this.deleteClass.bind(this,record)}>删除</Button>
+          <Button type="danger" size="small" onClick={this.deleteClass.bind(this, record)}>删除</Button>
           <Divider type="vertical" />
-          <Button size="small" onClick={this.changeClass.bind(this,record)}>修改</Button>
+          <Button size="small" onClick={this.changeClass.bind(this, record)}>修改</Button>
         </span>
       ),
     }];
 
     //行选择
     const rowSelection = {
-      selectedRowKeys : this.state.selectedRowKeys,
+      selectedRowKeys: this.state.selectedRowKeys,
       onChange: this.onSelectChange.bind(this),
     };
 
@@ -290,7 +327,7 @@ class QueryStudent extends React.Component {
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
-        sm: { span: 4 , offset : 4},
+        sm: { span: 4, offset: 4 },
       },
       wrapperCol: {
         xs: { span: 24 },
@@ -300,8 +337,8 @@ class QueryStudent extends React.Component {
 
     //班级信息
     let classArr = [];
-    if(this.props.classinfo.classArr) {
-      classArr = this.props.classinfo.classArr.map((item)=>{
+    if (this.props.classinfo.classArr) {
+      classArr = this.props.classinfo.classArr.map((item) => {
         return (
           <Option value={item.className} key={item.className}>{item.className}</Option>
         )
@@ -309,9 +346,9 @@ class QueryStudent extends React.Component {
     }
 
 
-    return(
+    return (
       <div>
-        <BreadcrumbCustom pathList={['班级管理','查询班级']}></BreadcrumbCustom>
+        <BreadcrumbCustom pathList={['学生管理', '查询学生']}></BreadcrumbCustom>
         <div className="class-manage-content">
           <Row>
             <Col span={24}>
@@ -324,8 +361,7 @@ class QueryStudent extends React.Component {
               />
               <Select className="f-r m-r-20" defaultValue="1" style={{ width: 120 }} onChange={this.handleChange.bind(this)}>
                 <Option value="1">姓名</Option>
-                <Option value="2">学号</Option>
-                <Option value="3">班级</Option>
+                <Option value="2">班级</Option>
               </Select>
               <Button type="primary" className="f-l" onClick={this.showAllClass.bind(this)}>所有学生</Button>
             </Col>
@@ -351,14 +387,14 @@ class QueryStudent extends React.Component {
                 {...formItemLayout}
                 label="学号"
               >
-              <span>{this.state.curSelectClass.userId}</span>
+                <span>{this.state.curSelectClass.userId}</span>
               </FormItem>
               <FormItem
                 {...formItemLayout}
                 label="姓名"
               >
-                {getFieldDecorator('username',{
-                  initialValue : this.state.curSelectClass.username
+                {getFieldDecorator('username', {
+                  initialValue: this.state.curSelectClass.username
                 })(
                   <Input />
                 )}
@@ -367,8 +403,8 @@ class QueryStudent extends React.Component {
                 {...formItemLayout}
                 label="班级"
               >
-                {getFieldDecorator('className',{
-                  initialValue : this.state.curSelectClass.className
+                {getFieldDecorator('className', {
+                  initialValue: this.state.curSelectClass.className
                 })(
                   <Select style={{ width: '100%' }} onChange={this.handleChange.bind(this)}>
                     {classArr}
@@ -378,9 +414,9 @@ class QueryStudent extends React.Component {
               <FormItem
                 {...formItemLayout}
                 label="登录密码"
-                // key = {this.state.curSelectClass.classId}
+              // key = {this.state.curSelectClass.classId}
               >
-                {getFieldDecorator('password',{
+                {getFieldDecorator('password', {
                   // initialValue : this.state.curSelectClass.className
                   // setFieldsValue : this.state.curSelectClass.className
                 })(
@@ -406,11 +442,11 @@ class QueryStudent extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return {
-        classinfo: state.classinfo
-    }
+  return {
+    classinfo: state.classinfo
+  }
 }
 
 export default connect(
-    mapStateToProps
+  mapStateToProps
 )(Form.create()(QueryStudent))
