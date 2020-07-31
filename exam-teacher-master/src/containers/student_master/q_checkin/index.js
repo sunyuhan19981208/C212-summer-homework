@@ -12,11 +12,8 @@ const RadioGroup = Radio.Group;
 
 import { connect } from 'react-redux'
 
-import QSingle from './subpage/q_single'
-import QMultiple from './subpage/q_multiple'
+import CountDown from './subpage/countdown'
 
-import QFillIn from './subpage/q_fill_in'
-import QShortAnswer from './subpage/q_short_answer'
 
 
 import httpServer from '@components/httpServer.js'
@@ -42,18 +39,10 @@ class QCheckin extends React.Component {
 
 
   componentWillMount() {
-    console.log("componentWillMount");
     //JSON.parse(localStorage.getItem("questionList"));
     this.getQuestionInfo();
-
-
-
-    // this.setState(() => {
-
-
-    // })
-
-
+    
+     
   }
 
   shouldComponentUpdate(nextState) {
@@ -443,7 +432,11 @@ class QCheckin extends React.Component {
       );
     };
     // style={{display: "flex", width: "max-content",justifyContent: "flex-end"}}
-    
+    const endtime=1596167177345+1000 * 700;
+    const onFinish =() => {
+      console.log('finished!');
+      alert("时间已到,考试结束！")
+    }
     const pageHeader=<div class="ant-page-header-heading-left">
                           <span class="ant-page-header-heading-title" title="Title">期末英语大联考</span>
                           <span><Tag color="blue">正在考试中</Tag></span>
@@ -459,11 +452,11 @@ class QCheckin extends React.Component {
                             <div class="ant-statistic">
                                 <div class="ant-statistic-title">剩余时间</div>
                                 <div class="ant-statistic-content" style={{color:"red"}}>
-                                    <span class="ant-statistic-content-value">00:00:00</span>
+                                    <span class="ant-statistic-content-value"><CountDown endtime={endtime} onFinish={onFinish}></CountDown></span>
                                 </div>
                             </div>
                           </div>
-                          
+                          {/* <CountDown endtime={endtime} onFinish={onFinish}></CountDown> */}
                           <div class="ant-space-item" style={{marginRight: 24}}>
                             <div class="ant-statistic">
                                 <div class="ant-statistic-title">考试时长</div>
