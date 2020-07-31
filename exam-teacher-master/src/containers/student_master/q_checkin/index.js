@@ -43,6 +43,8 @@ class QCheckin extends React.Component {
 
   componentWillMount() {
     console.log("componentWillMount");
+
+
     //JSON.parse(localStorage.getItem("questionList"));
     this.getQuestionInfo();
 
