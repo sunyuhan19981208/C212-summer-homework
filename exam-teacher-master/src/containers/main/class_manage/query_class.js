@@ -312,7 +312,6 @@ class QueryClass extends React.Component {
               />
               <Select className="f-r m-r-20" defaultValue="1" style={{ width: 120 }} onChange={this.handleChange.bind(this)}>
                 <Option value="1">班级</Option>
-                <Option value="2">状态</Option>
               </Select>
               <Button type="primary" className="f-l" onClick={this.showAllClass.bind(this)}>所有班级</Button>
             </Col>
