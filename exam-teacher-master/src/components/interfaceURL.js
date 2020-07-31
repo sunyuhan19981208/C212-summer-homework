@@ -110,8 +110,10 @@ export const search_score = "data/search_score.json";
 
 //查询所有学生（得到一页数据）
 export const get_student = "http://39.107.84.0:8762/getAllStudent";
-//查询学生（模糊搜索）
-export const search_student = "http://39.107.84.0:8762/queryStudentByName";
+//根据姓名查询学生（模糊搜索）
+export const search_student_by_username = "http://39.107.84.0:8762/queryStudentByName";
+//根据班级查询学生（模糊搜索）
+export const search_student_by_classname ="http://39.107.84.0:8762/getStudentByClassName";
 //删除学生
 export const delete_student = "http://39.107.84.0:8762/deleteStudent";
 //修改学生
