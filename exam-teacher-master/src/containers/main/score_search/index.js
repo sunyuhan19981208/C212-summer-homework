@@ -1,7 +1,7 @@
 import React from 'react'
 import BreadcrumbCustom from '@components/BreadcrumbCustom'
 import { Form } from 'antd';
-import {Row,Col,Select,Input,Table, Icon, Divider,Button,Modal,message} from 'antd'
+import { Row, Col, Select, Input, Table, Icon, Divider, Button, Modal, message } from 'antd'
 const Option = Select.Option;
 const Search = Input.Search;
 const FormItem = Form.Item;
@@ -12,25 +12,25 @@ import { connect } from 'react-redux'
 import * as URL from '@components/interfaceURL.js'
 
 class QueryStudent extends React.Component {
-  constructor(){
+  constructor() {
     super()
     this.state = {
-      selectedRowKeys : [], //选择的行
-      data : [],
-      pagination : {
-        pageSize : 10,
-        current : 1,
-        total : 0,
-        defaultCurrent : 1,
+      selectedRowKeys: [], //选择的行
+      data: [],
+      pagination: {
+        pageSize: 10,
+        current: 1,
+        total: 0,
+        defaultCurrent: 1,
       },
-      visibleChangeModal : false,//修改框是否显示
-      curSelectClass : {//当前所选的学生
-        key : 0,
-        name : "",
-        class : "",
-        studentId : 1,
+      visibleChangeModal: false,//修改框是否显示
+      curSelectClass: {//当前所选的学生
+        key: 0,
+        name: "",
+        class: "",
+        studentId: 1,
       },
-      classInfo : [],//班级信息
+      classInfo: [],//班级信息
     }
     this.searchKey = "1";//默认按照班级搜索  1班级 2科目  3状态
     this.turnStatus = "NORMAL"; //NORMAL:正常翻页   SEARCH:搜索翻页
@@ -39,42 +39,101 @@ class QueryStudent extends React.Component {
 
 
   //得到搜索的数据
-  getSearchData(){
-    httpServer({
-      url : URL.search_score
-    },{
-      className : 'StudentExamInfoServiceImpl',
-      content : this.searchContent,
-      searchType : this.searchKey,
-      page : this.state.pagination.current,
-      rows : this.state.pagination.pageSize,
-      type : 1
-    })
-    .then((res)=>{
-      const data = [];
-      for (let i = 0; i < res.data.data.length; i++) {
-
-        data.push({
-          key: i,
-          name: res.data.data[i].stuName,
-          class : res.data.data[i].className,
-          examName : res.data.data[i].examName,
-          studentId : res.data.data[i].stuId,
-          score : res.data.data[i].totalscore,
-        });
-      }
-      this.state.pagination.total = res.data.total;
-
-      this.setState({
-        data:data,
-        pagination : this.state.pagination
+  getSearchData(searchKey) {
+    if(searchKey === "1"){
+      httpServer({
+        url: URL.search_score_by_username
+      }, {
+        username: this.searchContent,
+        // page: this.state.pagination.current,
+        // rows: this.state.pagination.pageSize,
       })
-
-    })
+        .then((res) => {
+          const data = [];
+          for (let i = 0; i < res.data.data.length; i++) {
+  
+            data.push({
+              key: i,
+              name: res.data.data[i].username,
+              class: res.data.data[i].className,
+              examName: res.data.data[i].examName,
+              studentId: res.data.data[i].userId,
+              score: res.data.data[i].score,
+            });
+          }
+          this.state.pagination.total = res.data.total;
+  
+          this.setState({
+            data: data,
+            pagination: this.state.pagination
+          })
+        })
+    }
+    else if(searchKey === "2"){
+      httpServer({
+        url: URL.search_score_by_userId
+      }, {
+        userId: this.searchContent,
+        page: this.state.pagination.current,
+        rows: this.state.pagination.pageSize,
+      })
+        .then((res) => {
+          const data = [];
+          for (let i = 0; i < res.data.data.length; i++) {
+  
+            data.push({
+              key: i,
+              name: res.data.data[i].username,
+              class: res.data.data[i].className,
+              examName: res.data.data[i].examName,
+              studentId: res.data.data[i].userId,
+              score: res.data.data[i].score,
+            });
+          }
+          this.state.pagination.total = res.data.total;
+  
+          this.setState({
+            data: data,
+            pagination: this.state.pagination
+          })
+  
+        })
+    }
+    else if(searchKey === "3"){
+      httpServer({
+        url: URL.search_score_by_className
+      }, {
+        className: this.searchContent,
+        page: this.state.pagination.current,
+        rows: this.state.pagination.pageSize,
+      })
+        .then((res) => {
+          const data = [];
+          for (let i = 0; i < res.data.data.length; i++) {
+  
+            data.push({
+              key: i,
+              name: res.data.data[i].username,
+              class: res.data.data[i].className,
+              examName: res.data.data[i].examName,
+              studentId: res.data.data[i].userId,
+              score: res.data.data[i].score,
+            });
+          }
+          this.state.pagination.total = res.data.total;
+  
+          this.setState({
+            data: data,
+            pagination: this.state.pagination
+          })
+  
+        })
+    }
+    
   }
 
   //翻页
-  handleTableChange(pagination, filters, sorter){
+  handleTableChange(pagination, filters, sorter) {
     const pager = this.state.pagination;
     pager.current = pagination.current;
     pager.pageSize = pagination.pageSize;
@@ -85,7 +144,7 @@ class QueryStudent extends React.Component {
   }
 
 
-  componentWillMount(){
+  componentWillMount() {
   }
 
 
@@ -96,18 +155,18 @@ class QueryStudent extends React.Component {
 
   //点击搜索
   searchClass(value) {
-    if(value == "") {
+    if (value == "") {
       Modal.error({
         content: "搜索内容不能为空！",
-        okText : '确定'
+        okText: '确定'
       });
       return;
     }
     this.turnStatus = "SEARCH";//把翻页状态置为搜索
     this.state.pagination.current = 1;//当前页置为第一页
-    this.setState({pagination : this.state.pagination});
+    this.setState({ pagination: this.state.pagination });
     this.searchContent = value;
-    this.getSearchData();
+    this.getSearchData(this.searchKey);
   }
 
   //选择某一行
@@ -116,7 +175,7 @@ class QueryStudent extends React.Component {
     this.setState({ selectedRowKeys });
   }
 
-  render(){
+  render() {
     const { getFieldDecorator } = this.props.form;
 
     const columns = [{
@@ -135,7 +194,7 @@ class QueryStudent extends React.Component {
       title: '考试名称',
       dataIndex: 'examName',
       key: 'examName',
-    },{
+    }, {
       title: '成绩',
       dataIndex: 'score',
       key: 'score',
@@ -143,7 +202,7 @@ class QueryStudent extends React.Component {
 
     //行选择
     const rowSelection = {
-      selectedRowKeys : this.state.selectedRowKeys,
+      selectedRowKeys: this.state.selectedRowKeys,
       onChange: this.onSelectChange.bind(this),
     };
 
@@ -154,7 +213,7 @@ class QueryStudent extends React.Component {
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
-        sm: { span: 4 , offset : 4},
+        sm: { span: 4, offset: 4 },
       },
       wrapperCol: {
         xs: { span: 24 },
@@ -164,8 +223,8 @@ class QueryStudent extends React.Component {
 
     //班级信息
     let classArr = [];
-    if(this.props.classinfo.classArr) {
-      classArr = this.props.classinfo.classArr.map((item)=>{
+    if (this.props.classinfo.classArr) {
+      classArr = this.props.classinfo.classArr.map((item) => {
         return (
           <Option value={item.classId} key={item.classId}>{item.className}</Option>
         )
@@ -173,9 +232,9 @@ class QueryStudent extends React.Component {
     }
 
 
-    return(
+    return (
       <div>
-        <BreadcrumbCustom pathList={['班级管理','查询班级']}></BreadcrumbCustom>
+        <BreadcrumbCustom pathList={['成绩查询']}></BreadcrumbCustom>
         <div className="class-manage-content">
           <Row>
             <Col span={24}>
@@ -188,8 +247,8 @@ class QueryStudent extends React.Component {
               />
               <Select className="f-r m-r-20" defaultValue="1" style={{ width: 120 }} onChange={this.handleChange.bind(this)}>
                 <Option value="1">姓名</Option>
-                <Option value="3">班级</Option>
                 <Option value="2">学号</Option>
+                <Option value="3">班级</Option>
               </Select>
             </Col>
           </Row>
@@ -210,11 +269,11 @@ class QueryStudent extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return {
-        classinfo: state.classinfo
-    }
+  return {
+    classinfo: state.classinfo
+  }
 }
 
 export default connect(
-    mapStateToProps
+  mapStateToProps
 )(Form.create()(QueryStudent))

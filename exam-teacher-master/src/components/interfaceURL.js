@@ -105,8 +105,15 @@ export const q_checkin = "http://39.107.84.0:8763/addQuestion";
 //出卷
 export const paper_info = "http://39.107.84.0:8763/addPaper";
 
-//成绩查询
-export const search_score = "data/search_score.json";
+//成绩查询（模糊搜索，通过姓名）
+export const search_score_by_username = "http://39.107.84.0:8765/getStudentScoreByUsername";
+//成绩查询（模糊搜索，通过班级）
+export const search_score_by_className = "http://39.107.84.0:8765/getStudentScoreByClassName";
+//成绩查询（通过学号）
+export const search_score_by_userId = "http://39.107.84.0:8765/getStudentScoreByUserId";
+
+
+
 
 //查询所有学生（得到一页数据）
 export const get_student = "http://39.107.84.0:8762/getAllStudent";
