@@ -7,7 +7,7 @@
 # service-zuul 网关服务*0 --云服务器集群性能过差(1c2g+1c1g)--项目组很穷，纯属用爱发电，所以为了性能数据没有配置网关在云服务器，前端直接访问的对应服务
 ## 数据库：请勿修改数据库相关配置，所访问的数据库接口均是云数据库暴露的接口，可直接使用，若需sql文件请直接在issue中提出
 ## 接口：绝大部分接口采用添加参数，少数接口采用RequestBody传的json，返回均为json数据，格式自测，接口失效请提issue
- 登录：http://39.107.84.0:8762/login?username=sunyuhan&password=one11111
+ 登录：http://39.107.84.0:8762/login?username=sunyuhan&password=one11111  
  带着cookie查用户名：http://39.107.84.0:8762/getUsername
  添加学生:http://39.107.84.0:8762/addStudent?username=xialekun&className=软件sy1701
  学生默认密码123456,默认学号是当前所有用户+1
