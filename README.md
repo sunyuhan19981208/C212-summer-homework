@@ -4,6 +4,20 @@
 #### 项目采用React + ANTD + SpringCloud
 #### 开发环境使用Webpack搭建
 ---
+#### 目录
+- [功能板块-教师](#功能板块-教师)
+
+- [功能板块-学生](#功能板块-学生)
+
+- [管理端页面](#管理端主要页面展示)
+
+- [学生端页面](#学生端页面)
+
+- [项目搭建](#项目搭建)
+
+- [了解更多](#了解更多)
+
+***
 #### 功能板块-教师
 1.登录
 
@@ -54,34 +68,34 @@
 - 修改密码
 ---
 
-### 管理端主要页面截图
+### 管理端主要页面展示
 **1.登录页面**
-![login.png](image/login.png)
+![image](image/login.png)
 
 **2.管理端主页**
-![试题录入.png](image/teacher_home.png)
+![image](image/teacher_home.png)
 
 **3.试题录入**
-![试题录入.png](image/shitiluru.png)
+![image](image/shitiluru.png)
 
 **4.出卷**
-![出卷.png](image/chujuan.png)
+![image](image/chujuan.png)
 
 **5.学生管理**
-![试题录入.png](image/stu_manage.png)
+![image](image/stu_manage.png)
 
 **6.班级管理**
-![试题录入.png](image/class_manage.png)
+![image](image/class_manage.png)
 
 **7.阅卷页面**
-![试题录入.png](image/yuejuan.png)
-![试题录入.png](image/allpaper.png)
+![image](image/yuejuan.png)
+![image](image/allpaper.png)
 
 **8.创建考试**
-![试题录入.png](image/cjkaoshi.png)
+![image](image/cjkaoshi.png)
 
 **9.修改密码**
-![试题录入.png](image/xiugaip.png)
+![image](image/xiugaip.png)
 
 ---
 
@@ -100,19 +114,24 @@
 1.下载或克隆项目到本地 
 
 2.安装相关包
-- <table frame=void style="width:100%"><tr><td bgcolor="#f6f8fa" border=0 > npm install </td></tr></table>
+ ``` 
+ npm install
+ ```
 
 3.启动项目
-- <table frame=void><tr><td bgcolor="#f6f8fa" border=0> npm start </td></tr></table>
+```
+npm start 
+```
 
 4.其它命令
-- <table frame=void><tr><td bgcolor="#f6f8fa" border=0> 打包: npm run build </td></tr></table>
-
+```
+打包: npm run build
+```
 ---
 
-###了解更多
+### 了解更多
 
-- <mark>~~没有更多~~
+- ==~~没有更多~~==
 
 
 
