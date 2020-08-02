@@ -351,22 +351,6 @@
   padding: 10px 0;
 }
 
-/* 学生页面 */
-.exam-notice {
-  margin-top: 150px
-}
-
-
-.left-menu .logo{
-  display: block;
-  width: 130px;
-  margin: 50px auto;
-}
-
-.el-menu {
-  border-right : none;
-}
-
 
 /* .right-box {
   -webkit-box-sizing: border-box;
@@ -554,6 +538,46 @@ tr {
   line-height: 1.5715;
 }
 
-.ant-pagination{
-  margin:0 auto;
+/* 首页，轮播图 *//* 学生页面 */
+.ant-carousel .slick-slide{
+  width: 1200px;
+  /* text-indent: -13%; */
+  text-align: center;
+  height: 400px;
+  margin: 0 auto;
+  /* line-height: 400px;  */
+  background: #e6f7ff;
+  overflow: hidden;
+  
+  /* color: #fff; */
+}
+
+/* .ant-carousel{
+  height: 100%;
+} */
+/* .ant-carousel .slick-slide h1 */
+.ant-carousel .slick-slide h1 {
+  color:rgba(0, 0, 0, 0.65);
+  line-height: 400px; 
+  /* text-align: center; */
+  /* text-indent: 50%; */
+}
+.ant-carousel .slick-slide h1 a {
+  color:rgba(0, 0, 0, 0.65);
+  
+}
+/* .exam-notice {
+  padding: 10px;
+} */
+.clearfix{
+  margin-top: 100px;
+}
+
+.left-menu .logo{
+  display: block;
+  width: 130px;
+  margin: 50px auto;
+}
+.el-menu {
+  border-right : none;
 }
