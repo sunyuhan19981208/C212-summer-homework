@@ -105,4 +105,19 @@ public class UserServiceImpl implements UserService {
     public String getClassNameByUserId(int userId) {
         return (String)userMapper.getClassNameByUserId(userId).get("className");
     }
+
+    @Override
+    public List<HashMap<String, Object>> getStudentByClassName(String className) {
+        return userMapper.getStudentByClassName(className);
+    }
+
+    @Override
+    public List<HashMap<String, Object>> getStudentByUserId(int userId) {
+        return userMapper.getStudentByUserId(userId);
+    }
+
+    @Override
+    public List<HashMap<String, Object>> getStudentByUsername(String username) {
+        return userMapper.getStudentByUsername(username);
+    }
 }

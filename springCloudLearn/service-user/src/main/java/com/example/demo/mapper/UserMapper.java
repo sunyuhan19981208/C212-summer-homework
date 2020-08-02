@@ -44,4 +44,10 @@ public interface UserMapper {
     List<User>selectTeacherByName(@Param("username")String username);
     @Select("select className from student where userId=#{userId}")
     HashMap<String,Object> getClassNameByUserId(@Param("userId")int userId);
+    @Select("select user.*,student.className from user join student on user.userId=student.userId where student.className like concat('%',#{className},'%')")
+    List<HashMap<String,Object>> getStudentByClassName(@Param("className")String className);
+    @Select("select user.*,student.className from user join student on user.userId=student.userId where user.userId =#{userId}")
+    List<HashMap<String,Object>> getStudentByUserId(@Param("userId")int userId);
+    @Select("select user.*,student.className from user join student on user.userId=student.userId where user.username like concat('%',#{username},'%')")
+    List<HashMap<String,Object>> getStudentByUsername(@Param("username")String username);
 }

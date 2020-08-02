@@ -4,6 +4,7 @@ import com.example.demo.entity.Student;
 import com.example.demo.entity.User;
 import org.mybatis.spring.annotation.MapperScan;
 
+import java.util.HashMap;
 import java.util.List;
 public interface UserService {
     List<User>selectAllUser();
@@ -26,4 +27,7 @@ public interface UserService {
     void deleteTeacher(int userId);
     void changePassword(String password,int userId);
     String getClassNameByUserId(int userId);
+    List<HashMap<String,Object>>getStudentByClassName(String className);
+    List<HashMap<String,Object>>getStudentByUserId(int userId);
+    List<HashMap<String,Object>>getStudentByUsername(String username);
 }

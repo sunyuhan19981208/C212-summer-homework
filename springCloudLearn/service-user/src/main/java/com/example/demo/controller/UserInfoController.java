@@ -122,4 +122,34 @@ public class UserInfoController {
             };
         }
     }
+    @RequestMapping(value="/getStudentByClassName",produces = {MediaType.APPLICATION_JSON_VALUE})
+    public HashMap<String,Object>getStudentByClassName(@RequestParam("className")String className){
+        List<HashMap<String,Object>>list=userService.getStudentByClassName(className);
+        return new HashMap<String,Object>(){
+            {
+                put("data",list);
+                put("respCode",1);
+            }
+        };
+    }
+    @RequestMapping(value = "/getStudentByUserId",produces = {MediaType.APPLICATION_JSON_VALUE})
+    public HashMap<String,Object>getStudentByUserId(@RequestParam("userId")int userId){
+        List<HashMap<String,Object>>list=userService.getStudentByUserId(userId);
+        return new HashMap<String,Object>(){
+            {
+                put("data",list);
+                put("respCode",1);
+            }
+        };
+    }
+    @RequestMapping(value="/getStudentByUsername",produces = {MediaType.APPLICATION_JSON_VALUE})
+    public HashMap<String,Object>getStudentByUsername(@RequestParam("username")String username){
+        List<HashMap<String,Object>>list=userService.getStudentByUsername(username);
+        return new HashMap<String,Object>(){
+            {
+                put("data",list);
+                put("respCode",1);
+            }
+        };
+    }
 }

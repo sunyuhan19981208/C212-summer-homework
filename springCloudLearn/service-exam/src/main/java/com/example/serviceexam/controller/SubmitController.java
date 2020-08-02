@@ -6,6 +6,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 
 @RestController
@@ -51,5 +52,40 @@ public class SubmitController {
                 put("respCode",1);
             }
         };
+    }
+    @RequestMapping(value = "/judge",produces = {MediaType.APPLICATION_JSON_VALUE})
+    public HashMap<String,Object>judge(@RequestBody HashMap<String,Object>mp){
+        List<HashMap<Integer,Integer>>li=(List<HashMap<Integer,Integer>>)mp.get("scoreList");
+        int submitId=(int)mp.get("submitId");
+        submitService.judge(li,submitId);
+        return new HashMap<String, Object>(){
+            {
+                put("respCode",1);
+                put("respMsg","批改提交成功");
+            }
+        };
+    }
+    @RequestMapping(value="/getScoreByStudentList")
+    public List<HashMap<String,Object>>getScoreByStudentList(@RequestBody List<HashMap<String,Object>>studentList){
+        List<HashMap<String,Object>>resList=new LinkedList<>();
+        for(HashMap<String,Object> student:studentList){
+            int userId=(int)student.get("userId");
+            String className=(String)student.get("className");
+            String username=(String)student.get("username");
+            List<HashMap<String,Object>>submitList=submitService.selectSubmitByUserId(userId);
+            for(HashMap<String,Object>submit:submitList){
+                int submitId=(int)submit.get("submitId");
+                HashMap<String,Object>line=new HashMap<>();
+                line.put("submitId",submitId);
+                int score=submitService.getScoreBySubmitId(submitId);
+                line.put("score",score);
+                line.put("userId",userId);
+                line.put("username",username);
+                line.put("className",className);
+                line.put("examName",submit.get("examName"));
+                resList.add(line);
+            }
+        }
+        return resList;
     }
 }
