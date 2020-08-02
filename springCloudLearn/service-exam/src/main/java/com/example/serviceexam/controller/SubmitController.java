@@ -74,6 +74,7 @@ public class SubmitController {
             String username=(String)student.get("username");
             List<HashMap<String,Object>>submitList=submitService.selectSubmitByUserId(userId);
             for(HashMap<String,Object>submit:submitList){
+                if((int)submit.get("status")==1)continue;
                 int submitId=(int)submit.get("submitId");
                 HashMap<String,Object>line=new HashMap<>();
                 line.put("submitId",submitId);
