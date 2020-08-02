@@ -1,6 +1,7 @@
-//！！！！！试题录入改————考试页面
+//考试页面
 import React from 'react';
-import { Tabs, Form, Input, Select, Radio, Row, Col, Button, message, Card, Checkbox,Collapse,Tag } from 'antd';
+import ReactDom from 'react-dom';
+import { Tabs, Form, Input, Select, Radio, Row, Col, Button, message, Card, Checkbox,Collapse,Tag,Pagination,Modal } from 'antd';
 
 const Panel=Collapse.Panel;
 const TabPane = Tabs.TabPane;
@@ -32,6 +33,12 @@ class QCheckin extends React.Component {
       stemOfChoice: [],
       opt: "",
       opts: [],
+      style:{
+        color:"#1890ff",
+        background:"#e6f7ff",
+        borderColor:"#91d5ff"
+      },
+      tagtext:"正在考试中",
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -154,7 +161,7 @@ class QCheckin extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
+    console.log("handleSubmit")
     if (this.state.index === JSON.parse(localStorage.getItem("questionList")).length) {
       this.props.form.validateFields((err, values) => {
         if (!err) {
@@ -244,7 +251,6 @@ class QCheckin extends React.Component {
           }
 
           this.getQuestionInfo();
-
         }
       });
     }
@@ -268,12 +274,129 @@ class QCheckin extends React.Component {
 
     // this.setState({ opt: option2 });
   }
-
+  
+  
   onFinish(){
-    console.log('finished!');
+
+    const newstyle={
+      color:"#f5222d",
+      background:"#fff1f0",
+      borderColor:"#ffa39e"
+    }
+
+    this.setState({style : newstyle});
+    this.setState({tagtext : "考试已结束"})
+    
     alert("时间已到,考试结束！")
   }
 
+  onChange(page) {
+    console.log(page);
+    
+    if (this.state.index === JSON.parse(localStorage.getItem("questionList")).length) {
+      this.props.form.validateFields((err, values) => {
+        if (!err) {
+          if (this.state.type === 2) {
+            this.setState({ opt: " " });
+            if (this.state.choiceType === 0) {
+              var entry1 = {
+                questionId: this.state.questionId,
+                answer: this.state.opt,
+              }
+              this.state.answerList.push(entry1);
+            }
+            else {
+              if (this.state.opts.length === 0) {
+                Modal.warning({
+                  content: '请至少选择两个选项',
+                  okText: '确定'
+                });
+              }
+              this.state.opt=this.state.opts[0];
+              for (var i = 1; i < this.state.opts.length; i++) {
+                this.state.opt += this.state.opts[i] + "";
+              }
+              var entry1 = {
+                questionId: this.state.questionId,
+                answer: this.state.opt,
+              }
+              this.state.answerList.push(entry1);
+            }
+          }
+          else {
+            var entry2 = {
+              questionId: this.state.questionId,
+              answer: values.answer,
+            };
+            this.state.answerList.push(entry2);
+          }
+
+          //提交题目信息
+          httpServer({
+            url: URL.submit,
+            method: "post",
+          }, {
+            answerList: this.state.answerList,
+            userId: parseInt(localStorage.getItem("userId"), 10),
+            examId: parseInt(localStorage.getItem("examId"), 10),
+          })
+        }
+      });
+    }
+    else {
+      this.props.form.validateFields((err, values) => {
+        if (!err) {
+          if (this.state.type === 2) {
+            this.setState({ opt: " " });
+            if (this.state.choiceType === 0) {
+              var entry3 = {
+                questionId: this.state.questionId,
+                answer: this.state.opt,
+              }
+              this.state.answerList.push(entry3);
+            }
+            else {
+              if (this.state.opts.length === 0) {
+                Modal.warning({
+                  content: '请至少选择两个选项',
+                  okText: '确定'
+                });
+              }
+              this.state.opt=this.state.opts[0];
+              for (var i = 1; i < this.state.opts.length; i++) {
+                this.state.opt += this.state.opts[i] + "";
+              }
+              var entry3 = {
+                questionId: this.state.questionId,
+                answer: this.state.opt,
+              }
+              this.state.answerList.push(entry3);
+            }
+          }
+          else {
+            var entry4 = {
+              questionId: this.state.questionId,
+              answer: values.answer,
+            };
+            this.state.answerList.push(entry4);
+          }
+
+          this.getQuestionInfo();
+          this.setState({
+            index: page,
+          });
+
+        }
+      });
+    }
+    console.log(this)
+  };
+
+  // handleClick(){
+  //   this.setState({
+  //     current: 1,
+  //   });
+  // }
 
   render() {
 
@@ -315,6 +438,7 @@ class QCheckin extends React.Component {
       option: 'D',
       key: 3
     }]
+
 
     const is_submit = (index) => {
       //console.log(JSON.parse(localStorage.getItem("questionList")).length);
@@ -430,11 +554,12 @@ class QCheckin extends React.Component {
     const startTime = new Date(localStorage.getItem("startTime"))    //开始时间
     const lasttime = ((endTime.getTime()-startTime.getTime())/1000/60/60).toFixed(1)   //考试时长
 
-    const len = localStorage.getItem("questionList").length
-    
+    // const len = localStorage.getItem("questionList").length
+    const len = JSON.parse(localStorage.getItem("questionList")).length    //题目数
+        
     const pageHeader=<div class="ant-page-header-heading-left">
                           <span class="ant-page-header-heading-title" title="Title">期末英语大联考</span>
-                          <span><Tag color="blue">正在考试中</Tag></span>
+                          <span><Tag style={this.state.style} color="blue">{this.state.tagtext}</Tag></span>
                         
                         <div class="ant-page-header-heading-extra">
                           <div class="ant-space-item">
@@ -447,7 +572,7 @@ class QCheckin extends React.Component {
                             <div class="ant-statistic">
                                 <div class="ant-statistic-title">剩余时间</div>
                                 <div class="ant-statistic-content" style={{color:"red"}}>
-                                    <span class="ant-statistic-content-value"><CountDown endtime={endtime_s} onFinish={this.onFinish}></CountDown></span>
+                                    <span class="ant-statistic-content-value"><CountDown endtime={endtime_s} onFinish={this.onFinish.bind(this)}></CountDown></span>
                                 </div>
                             </div>
                           </div>
@@ -515,14 +640,19 @@ class QCheckin extends React.Component {
 
               <FormItem>
                 <Row>
-                  <Col span={3} offset={11}>
+                  <Col span={3} offset={9}>
                     {is_submit(this.state.index)}
                   </Col>
                   {/* ！！！点击下一题提交答案，同时跳转到下一题 */}
                 </Row>
               </FormItem>
-
-            </Form>
+            <Row>
+              <Col span={12} offset={7}>
+                <Pagination current={this.state.index} onChange={this.onChange.bind(this)} total={len*10} /> 
+                
+              </Col>
+            </Row>     
+          </Form>
         </div>
       </div>
     )

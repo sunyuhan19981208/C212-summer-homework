@@ -554,3 +554,6 @@ tr {
   line-height: 1.5715;
 }
 
+.ant-pagination{
+  margin:0 auto;
+}
