@@ -19,12 +19,12 @@ import HeaderBar from './header_bar/index.js'
 import Homepage from './homepage/index.js'
 
 //答题卡
-import ExamCard from './exam_card/index.js'
+import QCheckin from './q_checkin/index.js';
 
 //个人中心
 import ChangePassword from './personal_center/change_password';
 
-import QCheckin from './q_checkin/index.js';
+
 
 import httpServer from '@components/httpServer.js'
 import * as URL from '@components/interfaceURL.js'

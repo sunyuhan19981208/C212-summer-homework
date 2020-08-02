@@ -13,7 +13,7 @@ export default class Homepage extends React.Component {
   }
   render(){
     return(
-      <div  className="homepage clearfix">
+      <div  className="homepage">
         <div className="fast-enter-card">
           <Link to="/main/q_checkin/java/primary">
             <FastEnterCard title="试题录入" icon="form"></FastEnterCard>
