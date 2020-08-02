@@ -1,5 +1,5 @@
 import React from 'react'
-import { Menu, Icon,  Layout} from 'antd';
+import { Menu, Icon, Layout } from 'antd';
 
 const { Sider, Content, Header } = Layout;
 const SubMenu = Menu.SubMenu;
@@ -125,7 +125,7 @@ class Main extends React.Component {
 	}
 
 	componentWillMount() {
-	
+
 		document.title = "在线考试平台";  //设置页面Title   this.props.title
 		//判断用户是否已经登录
 		if (!localStorage.getItem("username")) {
@@ -199,7 +199,7 @@ class Main extends React.Component {
 					<HeaderBar></HeaderBar>
 				</Header>
 				<Layout>
-					<Sider>	
+					<Sider>
 						<Menu
 							mode="inline"
 							defaultOpenKeys={this.state.defaultOpenKeys}
@@ -210,9 +210,12 @@ class Main extends React.Component {
 
 							<div><img className="logo" src={require("@assets/images/logo-bg.png")} /></div>
 							{/* 试题录入 */}
-							<SubMenu key="q_checkin" title={<span><Icon type="form" /><span>试题录入</span></span>}>
-								{subjectArr}
-							</SubMenu>
+							{this.state.roleSet == '0' ?
+								<SubMenu key="q_checkin" title={<span><Icon type="form" /><span>试题录入</span></span>}>
+									{subjectArr}
+								</SubMenu> :
+								''
+							}
 
 							{/* 出卷 */}
 							{
