@@ -70,42 +70,42 @@
 
 ### 管理端主要页面展示
 **1.登录页面**
-![image](image/login.png)
+![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/login.png)
 
 **2.管理端主页**
-![image](image/teacher_home.png)
+![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/teacher_home.png)
 
 **3.试题录入**
-![image](image/shitiluru.png)
+![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/shitiluru.png)
 
 **4.出卷**
-![image](image/chujuan.png)
+![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/chujuan.png)
 
 **5.学生管理**
-![image](image/stu_manage.png)
+![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/stu_manage.png)
 
 **6.班级管理**
-![image](image/class_manage.png)
+![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/class_manage.png)
 
 **7.阅卷页面**
-![image](image/yuejuan.png)
+![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/yuejuan.png)
 ![image](image/allpaper.png)
 
 **8.创建考试**
-![image](image/cjkaoshi.png)
+![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/cjkaoshi.png)
 
 **9.修改密码**
-![image](image/xiugaip.png)
+![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/xiugaip.png)
 
 ---
 
 ### 学生端页面
 
 **学生主页**
-![image](image/stu_homepage.png)
+![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/stu_homepage.png)
 
 **考试页面**
-![image](image/exam_card.png)
+![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/exam_card.png)
 
 ---
 
