@@ -31,6 +31,6 @@ public interface SubmitMapper {
     void updateStatus(@Param("submitId")int submitId);
     @Select("select score from q_in_submit where submitId= #{submitId}")
     List<Integer>selectScoreBySubmitId(@Param("submitId")int submitId);
-    @Select("SELECT submitId,examName FROM submit join exam on submit.examId =exam.examId where userId=#{userId}")
+    @Select("SELECT submitId,examName,status FROM submit join exam on submit.examId =exam.examId where userId=#{userId}")
     List<HashMap<String,Object>>getSubmitByUserId(@Param("userId")int userId);
 }
