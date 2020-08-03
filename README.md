@@ -76,7 +76,7 @@
 ![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/teacher_home.PNG)
 
 **3.试题录入**
-![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/shitiluru.PNG)
+![image](image/shitiluru.PNG)
 
 **4.出卷**
 ![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/chujuan.PNG)
