@@ -1,4 +1,5 @@
-# -C212倾情奉献——在线考试平台    
+###### -C212
+# 倾情奉献——在线考试平台    
 
 #### 管理端+前端+后端    三合一大礼包，没有更全只有更全！！！
 #### 项目采用React + ANTD + SpringCloud
@@ -70,42 +71,42 @@
 
 ### 管理端主要页面展示
 **1.登录页面**
-![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/login.png)
+![image](image/login.png)
 
 **2.管理端主页**
-![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/teacher_home.PNG)
+![image](image/teacher_home.png)
 
 **3.试题录入**
-![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/shitiluru.PNG)
+![image](image/shitiluru.png)
 
 **4.出卷**
-![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/chujuan.PNG)
+![image](image/chujuan.png)
 
 **5.学生管理**
-![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/stu_manage.PNG)
+![image](image/stu_manage.png)
 
 **6.班级管理**
-![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/class_manage.PNG)
+![image](image/class_manage.png)
 
 **7.阅卷页面**
-![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/yuejuan.PNG)
-![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/allpaper.PNG)
+![image](image/yuejuan.png)
+![image](image/allpaper.png)
 
 **8.创建考试**
-![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/cjkaoshi.PNG)
+![image](image/cjkaoshi.png)
 
 **9.修改密码**
-![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/xiugaip.PNG)
+![image](image/xiugaip.png)
 
 ---
 
 ### 学生端页面
 
 **学生主页**
-![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/stu_homepage.PNG)
+![image](image/stu_homepage.png)
 
 **考试页面**
-![image](https://github.com/sunyuhan19981208/spring-cloud-react-/tree/master/image/exam_card.PNG)
+![image](image/exam_card.png)
 
 ---
 
